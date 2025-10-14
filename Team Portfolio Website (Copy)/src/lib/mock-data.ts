@@ -170,9 +170,19 @@ export const teamMembers: TeamMember[] = [
         period: "2020 - 2025",
       },
       {
-        title: "Project Leader: UI-Design project",
-        company: "Oslo Konserthus",
-        period: "2018 - 2020",
+        title: "Project Leader: Trolljegern",
+        company: "Høgskolen i Østfold: UI-Design Project",
+        period: "2025",
+      },
+      {
+        title: "Web Developer: Daily Bugle - a digital news platform",
+        company: "Høgskolen i Østfold: Kommunikasjonsdesign",
+        period: "2024",
+      },
+      {
+        title: "Grafisk Designer: Laftemannen",
+        company: "Høgskolen i Østfold: Grafisk Design",
+        period: "2025",
       },
       {
         title: "Production Manager",
@@ -262,10 +272,10 @@ export const teamMembers: TeamMember[] = [
       },
     ],
     links: {
-      email: "linehenriksen0.com", // Replace with email
-      github: "https://github.com/Flowerafro", // Replace or remove
-      linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
-      website: "https://flowerafro.github.io/application-cv/", // Replace or remove
+      email: "linehenriksen0@gmail.com",
+      github: "https://github.com/Flowerafro",
+      linkedin: "https://www.linkedin.com/in/line-henriksen-542a44290/",
+      website: "https://flowerafro.github.io/application-cv/",
     },
     contactInfo: {
       phone: "+47 482 22 033", // Replace with phone number
