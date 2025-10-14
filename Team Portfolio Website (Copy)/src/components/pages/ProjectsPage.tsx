@@ -210,7 +210,7 @@ export const ProjectsPage: React.FC = () => {
         )}
 
         {/* Side Projects Section */}
-        <div className="mt-24">
+        <div className="mt-40">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold mb-2">{t.projects.sideProjects}</h2>
             <p className="text-muted-foreground">{t.projects.sideProjectsSubtitle}</p>

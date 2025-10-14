@@ -138,7 +138,7 @@ export const teamMembers: TeamMember[] = [
       address: "Fredrikstad, Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "2", "3", "5", "6"],
+    projectIds: ["1", "5", "6", "7", "8"],
   },
 
   // TEAM MEMBER 2
@@ -257,7 +257,7 @@ export const teamMembers: TeamMember[] = [
       address: "Fredrikstad, Norway", // Replace with address/city
     },
     cvUrl: "/src/assets/ResumeLH.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "3", "4", "5", "6"],
+    projectIds: ["5", "6", "7"],
   },
 
   // TEAM MEMBER 3
@@ -317,7 +317,7 @@ export const teamMembers: TeamMember[] = [
       address: "Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "2", "4", "5"],
+    projectIds: ["5", "6", "7"],
   },
 
   // TEAM MEMBER 4
@@ -380,7 +380,7 @@ export const teamMembers: TeamMember[] = [
       address: "Oslo, Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "2", "3", "6"],
+    projectIds: ["7"],
   },
 
   // TEAM MEMBER 5
@@ -439,7 +439,102 @@ export const teamMembers: TeamMember[] = [
       address: "Soul, Korea", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["2", "3", "4"],
+    projectIds: ["1"    ],
+  },
+  {
+    id: "7",
+    title: "Oplero – Prosjektledelse (Høst 2025)",
+    summary:
+      "Et pågående prosjekt i faget Prosjektledelse ved Høgskolen i Østfold. Oplero er en digital plattform for forelesninger, sanntidssamarbeid og AI-drevne læringsverktøy.",
+    description:
+      "Oplero – Prosjektledelse (Høst 2025) er et pågående prosjekt i faget Prosjektledelse ved Høgskolen i Østfold. Oplero er en digital plattform for forelesninger, sanntidssamarbeid og AI-drevne læringsverktøy.",
+    goals: [
+      "Å utvikle en pilot for Høgskolen i Østfold som kombinerer forelesningsopptak, gruppefunksjoner og sanntidsinteraksjon mellom studenter og forelesere",
+      "Implementere gruppeinndeling og AI-assistent",
+      "Sikre GDPR-kompatibel databehandling",
+      "Levere en fungerende prototype",
+    ],
+    responsibilities: [
+      "Prosjektleder – ansvarlig for planlegging, koordinering og leveranse",
+      "Team Lead og koordinering",
+      "Scrum Master og prosjektmedarbeid",
+      "Design Lead og prosjektmedarbeid",
+      "Prosjektmedarbeid og DesignTeam",
+    ],
+    outcomes: [
+      "Prosjektet er i utvikling og skal resultere i en prototype med implementert gruppeinndeling",
+      "AI-assistent og GDPR-kompatibel databehandling",
+      "Digital plattform for forelesninger og sanntidssamarbeid",
+      "Pilot for Høgskolen i Østfold",
+    ],
+    tags: ["Project Management", "AI", "Education", "In Progress"],
+    tech: [
+      "Miro",
+      "Trello",
+      "Figma",
+      "Microsoft 365",
+      "ChatGPT",
+      "Gemini",
+      "Sora",
+    ],
+    teamMemberIds: ["1", "3", "2", "4"],
+    teamMemberRoles: {
+      "1": ["Team Lead"],
+      "3": ["Scrum Master", "Prosjektmedarbeider"],
+      "2": ["Design Lead", "Prosjektmedarbeider"],
+      "4": ["Prosjektmedarbeider", "DesignTeam"]
+    },
+    coverImage:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1080",
+    images: [
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800",
+    ],
+  },
+  {
+    id: "8",
+    title: "Treningsprogramsystem – Database og Systemdesign",
+    summary:
+      "Et database- og systemdesignprosjekt utviklet for å håndtere treningsplaner, øvelser og resultater mellom trenere og utøvere. Systemet legger til rette for individuell oppfølging, logging av resultater og visuell progresjonsanalyse.",
+    description:
+      "Treningsprogramsystem – Database og Systemdesign er et database- og systemdesignprosjekt utviklet for å håndtere treningsplaner, øvelser og resultater mellom trenere og utøvere. Systemet legger til rette for individuell oppfølging, logging av resultater og visuell progresjonsanalyse.",
+    goals: [
+      "Å utforme en relasjonsdatabase i MySQL som støtter opprettelse og administrasjon av treningsplaner",
+      "Implementere funksjoner for logging, progresjon og tilgangsstyring",
+      "Sikre dataintegritet med relasjoner og fremmednøkler",
+      "Støtte individuell oppfølging og visuell progresjonsanalyse",
+    ],
+    responsibilities: [
+      "Utvikler – ansvarlig for hele prosjektet",
+      "Kravspesifikasjon og systemutforming",
+      "Databaseutforming og ER-modellering",
+      "1NF–3NF normalisering",
+      "Testing og implementering",
+    ],
+    outcomes: [
+      "En fullstendig database i MySQL med tabeller for brukere, treningsplaner, øvelser og logger",
+      "Implementert med relasjoner og fremmednøkler for å sikre dataintegritet",
+      "Funksjoner for logging og progresjon",
+      "Tilgangsstyring mellom trenere og utøvere",
+    ],
+    tags: ["Database", "MySQL", "System Design", "Completed"],
+    tech: [
+      "MySQL Workbench",
+      "SQL",
+      "ER-modellering",
+      "1NF–3NF normalisering",
+      "Database Design",
+    ],
+    teamMemberIds: ["1"],
+    teamMemberRoles: {
+      "1": ["Utvikler"]
+    },
+    coverImage:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1080",
+    images: [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+    ],
   },
 ];
 
@@ -487,150 +582,16 @@ export const projects: Project[] = [
       "Trello",
       "Miro",
     ],
-    teamMemberIds: ["1", "2", "3"],
+    teamMemberIds: ["1", "5"],
     teamMemberRoles: {
       "1": ["Team Leader", "Project Manager", "System Architect"],
-      "2": ["DevOps Engineer", "Infrastructure Specialist"],
-      "3": ["Business Analyst", "Quality Assurance"]
+      "5": ["Backend Developer", "Full Stack Developer"]
     },
     coverImage:
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1080",
     images: [
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800",
       "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800",
-    ],
-  },
-  {
-    id: "2",
-    title: "Healthcare Portal",
-    summary:
-      "Patient management system with secure data handling",
-    description:
-      "A secure healthcare portal enabling patients to access medical records, book appointments, and communicate with healthcare providers.",
-    goals: [
-      "Provide secure access to medical records",
-      "Streamline appointment booking process",
-      "Enable secure patient-doctor communication",
-      "Ensure HIPAA and GDPR compliance",
-    ],
-    responsibilities: [
-      "Frontend development with focus on accessibility",
-      "Secure API development",
-      "Integration with existing healthcare systems",
-      "Security auditing and compliance",
-      "User research and UX design",
-    ],
-    outcomes: [
-      "50K+ active users in first 6 months",
-      "Reduced appointment no-shows by 30%",
-      "Achieved full HIPAA compliance",
-      "95% user satisfaction rating",
-    ],
-    tags: ["Healthcare", "Web", "Security"],
-    tech: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "MongoDB",
-      "AWS",
-      "Encryption",
-    ],
-    teamMemberIds: ["1", "3", "4", "5"],
-    coverImage:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1080",
-    images: [
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800",
-      "https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=800",
-    ],
-  },
-  {
-    id: "3",
-    title: "Analytics Dashboard",
-    summary:
-      "Real-time data visualization platform for business intelligence",
-    description:
-      "A powerful analytics dashboard providing real-time insights into business metrics with customizable widgets and reports.",
-    goals: [
-      "Create intuitive data visualization tools",
-      "Support real-time data streaming",
-      "Enable custom report generation",
-      "Provide role-based access control",
-    ],
-    responsibilities: [
-      "Frontend development with complex visualizations",
-      "Real-time data pipeline setup",
-      "Database optimization for analytics queries",
-      "Infrastructure scaling and monitoring",
-      "Dashboard UI/UX design",
-    ],
-    outcomes: [
-      "Processing 1M+ data points per minute",
-      "Reduced report generation time from hours to seconds",
-      "Adopted by 100+ teams across organization",
-      "Winner of internal innovation award",
-    ],
-    tags: ["Analytics", "Dashboard", "Data"],
-    tech: [
-      "React",
-      "D3.js",
-      "Python",
-      "Kafka",
-      "ClickHouse",
-      "Kubernetes",
-    ],
-    teamMemberIds: ["1", "2", "4", "6"],
-    coverImage:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1080",
-    images: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
-    ],
-    links: {
-      demo: "https://analytics.example.com",
-      repo: "https://github.com/example/analytics",
-    },
-  },
-  {
-    id: "4",
-    title: "Mobile Banking App",
-    summary:
-      "Secure mobile banking application with biometric authentication",
-    description:
-      "A modern mobile banking application offering secure transactions, budget tracking, and personalized financial insights.",
-    goals: [
-      "Provide secure and convenient mobile banking",
-      "Implement biometric authentication",
-      "Offer personal finance management tools",
-      "Ensure compliance with banking regulations",
-    ],
-    responsibilities: [
-      "Mobile app development for iOS and Android",
-      "Security implementation and testing",
-      "Backend API development",
-      "Cloud infrastructure setup",
-      "User experience design and testing",
-    ],
-    outcomes: [
-      "200K+ downloads in first 3 months",
-      "Zero security breaches",
-      "4.8/5 star rating on app stores",
-      "Reduced customer service calls by 25%",
-    ],
-    tags: ["Mobile", "Finance", "Security"],
-    tech: [
-      "React Native",
-      "Node.js",
-      "PostgreSQL",
-      "AWS",
-      "Biometrics",
-      "Encryption",
-    ],
-    teamMemberIds: ["2", "3", "4", "6"],
-    coverImage:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1080",
-    images: [
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800",
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800",
     ],
   },
   {
@@ -667,11 +628,11 @@ export const projects: Project[] = [
       "Word",
       "PowerPoint",
     ],
-    teamMemberIds: ["1", "2", "3"],
+    teamMemberIds: ["3", "1", "2"],
     teamMemberRoles: {
-      "1": ["Business Analyst", "Project Coordinator"],
-      "2": ["System Analyst", "Documentation Specialist"],
-      "3": ["Process Analyst", "Quality Assurance"]
+      "3": ["Business Analyst", "IT-risikokonsulent"],
+      "1": ["Project Coordinator", "Team Lead"],
+      "2": ["System Analyst", "Documentation Specialist"]
     },
     coverImage:
       "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1080",
@@ -720,11 +681,11 @@ export const projects: Project[] = [
       "Design Thinking",
       "Usability Testing",
     ],
-    teamMemberIds: ["1", "2", "4"],
+    teamMemberIds: ["3", "1", "2"],
     teamMemberRoles: {
+      "3": ["Business Analyst", "QA Specialist"],
       "1": ["UX Designer", "Project Coordinator"],
-      "2": ["UI Designer", "Prototyping Specialist"],
-      "4": ["Developer", "Testing Coordinator"]
+      "2": ["UI Designer", "Prototyping Specialist"]
     },
     coverImage:
       "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1080",
