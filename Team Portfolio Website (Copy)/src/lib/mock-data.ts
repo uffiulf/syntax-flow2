@@ -138,7 +138,7 @@ export const teamMembers: TeamMember[] = [
       address: "Fredrikstad, Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "2", "3"],
+    projectIds: ["1", "2", "3", "5", "6"],
   },
 
   // TEAM MEMBER 2
@@ -189,9 +189,19 @@ export const teamMembers: TeamMember[] = [
         period: "2020 - 2025",
       },
       {
-        title: "Project Leader: UI-Design project",
-        company: "Oslo Konserthus",
-        period: "2018 - 2020",
+        title: "Project Leader: Trolljegern",
+        company: "Høgskolen i Østfold: UI-Design Project",
+        period: "2025",
+      },
+      {
+        title: "Web Developer: Daily Bugle - a digital news platform",
+        company: "Høgskolen i Østfold: Kommunikasjonsdesign",
+        period: "2024",
+      },
+      {
+        title: "Grafisk Designer: Laftemannen",
+        company: "Høgskolen i Østfold: Grafisk Design",
+        period: "2025",
       },
       {
         title: "Production Manager",
@@ -281,10 +291,10 @@ export const teamMembers: TeamMember[] = [
       },
     ],
     links: {
-      email: "linehenriksen0.com", // Replace with email
-      github: "https://github.com/Flowerafro", // Replace or remove
-      linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
-      website: "https://flowerafro.github.io/application-cv/", // Replace or remove
+      email: "linehenriksen0@gmail.com",
+      github: "https://github.com/Flowerafro",
+      linkedin: "https://www.linkedin.com/in/line-henriksen-542a44290/",
+      website: "https://flowerafro.github.io/application-cv/",
     },
     contactInfo: {
       phone: "+47 482 22 033", // Replace with phone number
@@ -292,31 +302,35 @@ export const teamMembers: TeamMember[] = [
       address: "Fredrikstad, Norway", // Replace with address/city
     },
     cvUrl: "/src/assets/ResumeLH.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "3", "4"],
+    projectIds: ["1", "3", "4", "5", "6"],
   },
 
   // TEAM MEMBER 3
   {
     id: "3",
-    name: "YOUR NAME HERE", // Replace with actual name
-    role: ["Project Manager"], // Replace with actual roles
-    location: "Trondheim, Norway", // Replace with location
-    bio: "PLACEHOLDER: Add your professional bio here. Describe your expertise, passion, and what you bring to the team.",
+    name: "André Moore", // Replace with actual name
+    role: ["Business Analyst", "Quality Assurance (QA)", "IT-risikokonsulent"], // Replace with actual roles
+    location: "Norway", // Replace with location
+    bio: "Min ekspertise ligger i systematisk feilsøking og analyse av komplekse tekniske problemer. Jeg brenner for å identifisere rotårsaker og utvikle robuste løsninger som sikrer stabil og sikker drift. Lidenskapen min er å omsette teknisk innsikt til praktiske og effektive løsninger som hjelper både teamet og sluttbrukeren.",
     skills: [
-      "Agile",
-      "Scrum",
-      "Jira",
-      "Stakeholder Management",
-      "Product Strategy",
-      "Risk Management",
-      "Team Leadership",
+      "Javascript",
+      "Figma",
+      "Cisco",
+      "Feilsøking",
+      "Front End",
+      "Kundebehandling",
+      "Systemanalyse",
+      "Prosesskartlegging",
+      "Quality Assurance",
+      "IT-risikokonsulent",
+      "Business Analysis",
     ],
     avatar:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400", // REPLACE with your profile image URL
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400", // REPLACE with your profile image URL
     highlights: [
-      "PLACEHOLDER: Add your first career highlight",
-      "PLACEHOLDER: Add your second career highlight",
-      "PLACEHOLDER: Add your third career highlight",
+      "Systematisk feilsøking og analyse av komplekse tekniske problemer",
+      "Identifisering av rotårsaker og utvikling av robuste løsninger",
+      "Omsetting av teknisk innsikt til praktiske og effektive løsninger",
     ],
     experience: [
       {
@@ -338,16 +352,17 @@ export const teamMembers: TeamMember[] = [
       },
     ],
     links: {
-      email: "your.email@example.com", // Replace with email
-      linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
+      email: "andre-moore@hotmail.com", // Replace with email
+      github: "https://github.com/AndreMooore", // Replace or remove
+      linkedin: "https://www.linkedin.com/in/andr%C3%A9-moore-670401389", // Replace or remove
     },
     contactInfo: {
-      phone: "+47 555 12 345", // Replace with phone number
-      email: "your.email@example.com", // Replace with email
-      address: "Trondheim, Norway", // Replace with address/city
+      phone: "+47 952 55 517", // Replace with phone number
+      email: "andre-moore@hotmail.com", // Replace with email
+      address: "Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "2", "4"],
+    projectIds: ["1", "2", "4", "5"],
   },
 
   // TEAM MEMBER 4
@@ -410,34 +425,34 @@ export const teamMembers: TeamMember[] = [
       address: "Oslo, Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "2", "3"],
+    projectIds: ["1", "2", "3", "6"],
   },
 
   // TEAM MEMBER 5
   {
     id: "5",
-    name: "YOUR NAME HERE", // Replace with actual name
-    role: ["UI/UX Designer", "Frontend Developer"], // Replace with actual roles
-    location: "Bergen, Norway", // Replace with location
-    bio: "PLACEHOLDER: Add your professional bio here. Describe your expertise, passion, and what you bring to the team.",
+    name: "Ludvig Valter Angell Uteng", // Replace with actual name
+    role: ["Utvikler", "Backend Developer", "Frontend Developer"], // Replace with actual roles
+    location: "Soul, Korea", // Replace with location
+    bio: "Erfaren utvikler med bred kompetanse innen både backend og frontend utvikling. Spesialisert i Java, JavaScript, React og moderne webteknologier. Har erfaring med fullstack-utvikling og brenner for å skape robuste og brukervennlige løsninger.",
     skills: [
-      "Figma",
-      "Adobe Creative Suite",
-      "React",
-      "CSS",
+      "Java",
       "JavaScript",
-      "User Research",
-      "Prototyping",
-      "Design Systems",
-      "Accessibility",
-      "Responsive Design",
+      "React",
+      "HTML",
+      "CSS",
+      "Kotlin",
+      "Backend Development",
+      "Frontend Development",
+      "Full Stack Development",
+      "Web Development",
     ],
     avatar:
       "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400", // REPLACE with your profile image URL
     highlights: [
-      "PLACEHOLDER: Add your first career highlight",
-      "PLACEHOLDER: Add your second career highlight",
-      "PLACEHOLDER: Add your third career highlight",
+      "Fullstack-utvikler med kompetanse innen både backend og frontend",
+      "Spesialisert i Java, JavaScript og React-utvikling",
+      "Erfaring med moderne webteknologier og utviklingsmetodikk",
     ],
     experience: [
       {
@@ -459,14 +474,14 @@ export const teamMembers: TeamMember[] = [
       },
     ],
     links: {
-      email: "your.email@example.com", // Replace with email
-      github: "https://github.com/yourusername", // Replace or remove
-      linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
+      email: "ludvig.uteng@example.com", // Replace with email
+      github: "https://github.com/Valtyr-Angel", // Replace or remove
+      linkedin: "https://linkedin.com/in/ludvig-valter-angell-uteng", // Replace or remove
     },
     contactInfo: {
-      phone: "+47 987 65 432", // Replace with phone number
-      email: "your.email@example.com", // Replace with email
-      address: "Bergen, Norway", // Replace with address/city
+      phone: "+82 10-0000-0000", // Replace with phone number
+      email: "ludvig.uteng@example.com", // Replace with email
+      address: "Soul, Korea", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
     projectIds: ["2", "3", "4"],
@@ -662,5 +677,109 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800",
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800",
     ],
+  },
+  {
+    id: "5",
+    title: "Power – Forretningssystemer (Høst 2024)",
+    summary:
+      "Et omfattende gruppeprosjekt i faget Forretningssystemer ved Høgskolen i Østfold som analyserte hvordan bedriften Power bruker ERP- og forretningssystemer for å skape verdi og effektivisere interne prosesser.",
+    description:
+      "Power – Forretningssystemer (Høst 2024) var et omfattende gruppeprosjekt i faget Forretningssystemer ved Høgskolen i Østfold. Oppgaven gikk ut på å analysere hvordan bedriften Power bruker ERP- og forretningssystemer for å skape verdi og effektivisere interne prosesser.",
+    goals: [
+      "Å forstå hvordan et forretningssystem støtter bedriftens strategiske mål",
+      "Kartlegge hvordan moduler som CRM, SCM og HR påvirker verdiløftet og forretningsmodellen",
+      "Analysere sammenhenger i Business Model Canvas",
+      "Dokumentere prosesser og deres effekt på forretningsverdien",
+    ],
+    responsibilities: [
+      "Bidro med analyse av ERP-moduler",
+      "Sammenhenger i Business Model Canvas",
+      "Dokumentasjon av prosesser",
+      "Gruppesamarbeid og koordinering",
+    ],
+    outcomes: [
+      "Prosjektet resulterte i en helhetlig modell som viser hvordan Power utnytter ERP-systemer for å styrke kundeverdi",
+      "Verdifull erfaring innen systemanalyse, forretningsforståelse og prosessforbedring",
+      "Forbedret effektivitet og bærekraft i Power's forretningsmodell",
+      "Dyb forståelse av hvordan forretningssystemer støtter strategiske mål",
+    ],
+    tags: ["Business Analysis", "ERP", "Process Improvement"],
+    tech: [
+      "Microsoft 365",
+      "Miro",
+      "Visual Paradigm",
+      "Excel",
+      "Word",
+      "PowerPoint",
+    ],
+    teamMemberIds: ["1", "2", "3"],
+    teamMemberRoles: {
+      "1": ["Business Analyst", "Project Coordinator"],
+      "2": ["System Analyst", "Documentation Specialist"],
+      "3": ["Process Analyst", "Quality Assurance"]
+    },
+    coverImage:
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1080",
+    images: [
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    ],
+  },
+  {
+    id: "6",
+    title: "Trolljegeren – UI-designprosjekt (Vår 2025)",
+    summary:
+      "Et omfattende UI-designprosjekt gjennomført ved Høgskolen i Østfold for å utvikle en digital løsning som øker engasjementet rundt Trollstien og Ormtjernhytta i Halden. Prosjektet resulterte i en fungerende prototype av en mobilapp som bruker gamification for å motivere barn til å utforske naturen.",
+    description:
+      "Trolljegeren – UI-designprosjekt (Vår 2025) var et omfattende UI-designprosjekt gjennomført ved Høgskolen i Østfold for å utvikle en digital løsning som øker engasjementet rundt Trollstien og Ormtjernhytta i Halden. Prosjektet resulterte i en fungerende prototype av en mobilapp som bruker gamification for å motivere barn til å utforske naturen.",
+    goals: [
+      "Å skape økt glede og aktivitet blant barn i alderen 8–11 år gjennom en spillifisert løsning",
+      "Kombinere natur, kultur og teknologi i en engasjerende opplevelse",
+      "Bygge bro mellom fysisk aktivitet og digital underholdning",
+      "Utvikle to spillmoduser: 'Jeger' og 'Utforsker'",
+    ],
+    responsibilities: [
+      "Deltok i innsiktsarbeid og idégenerering",
+      "Design av brukeropplevelse og testing",
+      "Bidro i utvikling av spillmekanikk og fargepalett",
+      "Prototyping i Figma og dokumentasjon",
+      "Usability testing og think-aloud-metode",
+    ],
+    outcomes: [
+      "Komplett prototype med to spillmoduser som begge ble testet og evaluert av målgruppen",
+      "Svært positive tilbakemeldinger fra målgruppen (barn 8-11 år)",
+      "Løsningen viser hvordan gamification kan brukes til å øke deltakelse og opplevelsesverdi",
+      "Verdifull erfaring innen UI/UX design og brukertesting",
+    ],
+    tags: ["UI/UX Design", "Gamification", "Mobile App"],
+    tech: [
+      "Figma",
+      "Miro",
+      "Trello",
+      "Canva",
+      "Google Docs",
+      "Google Forms",
+      "ChatGPT",
+      "Gemini",
+      "Sora",
+      "Design Thinking",
+      "Usability Testing",
+    ],
+    teamMemberIds: ["1", "2", "4"],
+    teamMemberRoles: {
+      "1": ["UX Designer", "Project Coordinator"],
+      "2": ["UI Designer", "Prototyping Specialist"],
+      "4": ["Developer", "Testing Coordinator"]
+    },
+    coverImage:
+      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1080",
+    images: [
+      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+    ],
+    links: {
+      demo: "https://flowerafro.github.io/Trolljegern/",
+      demoText: "Go to website",
+    },
   },
 ];

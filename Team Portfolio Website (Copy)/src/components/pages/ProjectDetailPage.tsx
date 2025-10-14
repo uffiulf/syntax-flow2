@@ -74,7 +74,7 @@ export const ProjectDetailPage: React.FC = () => {
               <Button asChild>
                 <a href={project.links.demo} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-4 w-4 mr-2" />
-                  {t.projects.viewDemo}
+                  {project.links.demoText || t.projects.viewDemo}
                 </a>
               </Button>
             )}

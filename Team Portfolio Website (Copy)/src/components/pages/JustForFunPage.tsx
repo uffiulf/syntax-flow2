@@ -78,8 +78,15 @@ export const JustForFunPage: React.FC = () => {
   const [boredActivity, setBoredActivity] = useState<BoredActivity | null>(null);
   const [activityLoading, setActivityLoading] = useState<boolean>(false);
   const [activityError, setActivityError] = useState<string>('');
+  
+  // Click counters
+  const [jokeClicks, setJokeClicks] = useState<number>(0);
+  const [catClicks, setCatClicks] = useState<number>(0);
+  const [userClicks, setUserClicks] = useState<number>(0);
+  const [activityClicks, setActivityClicks] = useState<number>(0);
 
   const fetchJoke = async () => {
+    setJokeClicks(prev => prev + 1);
     setLoading(true);
     setError('');
     try {
@@ -106,6 +113,7 @@ export const JustForFunPage: React.FC = () => {
   };
 
   const fetchRandomUser = async () => {
+    setUserClicks(prev => prev + 1);
     setUserLoading(true);
     setUserError('');
     try {
@@ -128,6 +136,7 @@ export const JustForFunPage: React.FC = () => {
   };
 
   const fetchBoredActivity = async () => {
+    setActivityClicks(prev => prev + 1);
     setActivityLoading(true);
     setActivityError('');
     try {
@@ -157,12 +166,14 @@ export const JustForFunPage: React.FC = () => {
   }, []);
 
   const handleRandomStatus = () => {
+    setCatClicks(prev => prev + 1);
     const randomIndex = Math.floor(Math.random() * HTTP_STATUS_CODES.length);
     setSelectedStatus(HTTP_STATUS_CODES[randomIndex].code);
     setCatImageLoading(true);
   };
 
   const handleStatusSelect = (code: number) => {
+    setCatClicks(prev => prev + 1);
     setSelectedStatus(code);
     setCatImageLoading(true);
   };
@@ -181,11 +192,17 @@ export const JustForFunPage: React.FC = () => {
           </p>
         </div>
 
+
         {/* Joke Card */}
         <Card className="mb-8">
           <CardHeader>
             <div className="flex items-center justify-between">
-              <h2 className="italic font-bold text-[20px]">Dad jokes</h2>
+              <div className="flex items-center gap-3">
+                <h2 className="italic font-bold text-[20px]">Dad jokes</h2>
+                <Badge variant="secondary" className="text-sm">
+                  {jokeClicks}
+                </Badge>
+              </div>
               <Button
                 variant="ghost"
                 size="icon"
@@ -224,7 +241,12 @@ export const JustForFunPage: React.FC = () => {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="italic font-bold text-[20px] mb-2">{t.fun.httpCats}</h2>
+                <div className="flex items-center gap-3 mb-2">
+                  <h2 className="italic font-bold text-[20px]">{t.fun.httpCats}</h2>
+                  <Badge variant="secondary" className="text-sm">
+                    {catClicks}
+                  </Badge>
+                </div>
                 <p className="text-sm text-muted-foreground">{t.fun.httpCatsSubtitle}</p>
               </div>
               <Button
@@ -281,7 +303,12 @@ export const JustForFunPage: React.FC = () => {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="italic font-bold text-[20px] mb-2">{t.fun.randomUser}</h2>
+                <div className="flex items-center gap-3 mb-2">
+                  <h2 className="italic font-bold text-[20px]">{t.fun.randomUser}</h2>
+                  <Badge variant="secondary" className="text-sm">
+                    {userClicks}
+                  </Badge>
+                </div>
                 <p className="text-sm text-muted-foreground">{t.fun.randomUserSubtitle}</p>
               </div>
               <Button
@@ -343,7 +370,12 @@ export const JustForFunPage: React.FC = () => {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="italic font-bold text-[20px] mb-2">{t.fun.boredActivity}</h2>
+                <div className="flex items-center gap-3 mb-2">
+                  <h2 className="italic font-bold text-[20px]">{t.fun.boredActivity}</h2>
+                  <Badge variant="secondary" className="text-sm">
+                    {activityClicks}
+                  </Badge>
+                </div>
                 <p className="text-sm text-muted-foreground">{t.fun.boredActivitySubtitle}</p>
               </div>
               <Button
@@ -385,6 +417,38 @@ export const JustForFunPage: React.FC = () => {
                 </div>
               </div>
             ) : null}
+          </CardContent>
+        </Card>
+
+        {/* Click Counter Section */}
+        <Card className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20">
+          <CardHeader>
+            <h2 className="text-2xl font-bold text-center">🎯 {t.fun.clickCounter}</h2>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                <div className="text-2xl font-bold text-primary">{jokeClicks}</div>
+                <div className="text-sm text-muted-foreground">{t.fun.jokes}</div>
+              </div>
+              <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                <div className="text-2xl font-bold text-primary">{catClicks}</div>
+                <div className="text-sm text-muted-foreground">{t.fun.cats}</div>
+              </div>
+              <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                <div className="text-2xl font-bold text-primary">{userClicks}</div>
+                <div className="text-sm text-muted-foreground">{t.fun.users}</div>
+              </div>
+              <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                <div className="text-2xl font-bold text-primary">{activityClicks}</div>
+                <div className="text-sm text-muted-foreground">{t.fun.activities}</div>
+              </div>
+            </div>
+            <div className="text-center mt-4">
+              <div className="text-lg font-semibold">
+ {t.fun.totalClicks}: <span className="text-primary">{jokeClicks + catClicks + userClicks + activityClicks}</span>
+              </div>
+            </div>
           </CardContent>
         </Card>
 

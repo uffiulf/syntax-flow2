@@ -208,6 +208,152 @@ export const ProjectsPage: React.FC = () => {
             })}
           </div>
         )}
+
+        {/* Side Projects Section */}
+        <div className="mt-24">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold mb-2">{t.projects.sideProjects}</h2>
+            <p className="text-muted-foreground">{t.projects.sideProjectsSubtitle}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Hjemmelab og nettverksinfrastruktur */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <h3 className="text-xl font-semibold">{t.projects.homeLabTitle}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {t.projects.homeLabDesc}
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-medium mb-2">{t.projects.goals}:</h4>
+                  <p className="text-sm text-muted-foreground">
+                    {t.projects.homeLabGoals}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2">{t.projects.tools}:</h4>
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="secondary" className="text-xs">pfSense</Badge>
+                    <Badge variant="secondary" className="text-xs">Proxmox</Badge>
+                    <Badge variant="secondary" className="text-xs">Docker</Badge>
+                    <Badge variant="secondary" className="text-xs">Portainer</Badge>
+                    <Badge variant="secondary" className="text-xs">Pi-hole</Badge>
+                    <Badge variant="secondary" className="text-xs">Omada Controller</Badge>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2">{t.projects.result}:</h4>
+                  <p className="text-sm text-muted-foreground">
+                    {t.projects.homeLabResult}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Proxmox virtualiseringsmiljø */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <h3 className="text-xl font-semibold">{t.projects.proxmoxTitle}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {t.projects.proxmoxDesc}
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-medium mb-2">{t.projects.goals}:</h4>
+                  <p className="text-sm text-muted-foreground">
+                    {t.projects.proxmoxGoals}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2">{t.projects.tools}:</h4>
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="secondary" className="text-xs">Proxmox VE</Badge>
+                    <Badge variant="secondary" className="text-xs">Debian</Badge>
+                    <Badge variant="secondary" className="text-xs">Ubuntu</Badge>
+                    <Badge variant="secondary" className="text-xs">Docker</Badge>
+                    <Badge variant="secondary" className="text-xs">MongoDB</Badge>
+                    <Badge variant="secondary" className="text-xs">Omada Controller</Badge>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2">{t.projects.result}:</h4>
+                  <p className="text-sm text-muted-foreground">
+                    {t.projects.proxmoxResult}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Lokal web- og tjenestehosting */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <h3 className="text-xl font-semibold">{t.projects.webHostingTitle}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {t.projects.webHostingDesc}
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-medium mb-2">{t.projects.goals}:</h4>
+                  <p className="text-sm text-muted-foreground">
+                    {t.projects.webHostingGoals}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2">{t.projects.tools}:</h4>
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="secondary" className="text-xs">Nginx Proxy Manager</Badge>
+                    <Badge variant="secondary" className="text-xs">Docker</Badge>
+                    <Badge variant="secondary" className="text-xs">Portainer</Badge>
+                    <Badge variant="secondary" className="text-xs">pfSense</Badge>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2">{t.projects.result}:</h4>
+                  <p className="text-sm text-muted-foreground">
+                    {t.projects.webHostingResult}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* AI- og bildegenerering */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <h3 className="text-xl font-semibold">{t.projects.aiTitle}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {t.projects.aiDesc}
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="font-medium mb-2">{t.projects.goals}:</h4>
+                  <p className="text-sm text-muted-foreground">
+                    {t.projects.aiGoals}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2">{t.projects.tools}:</h4>
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="secondary" className="text-xs">Stable Diffusion WebUI</Badge>
+                    <Badge variant="secondary" className="text-xs">SDXL Base 1.0</Badge>
+                    <Badge variant="secondary" className="text-xs">Anaconda</Badge>
+                    <Badge variant="secondary" className="text-xs">NVIDIA RTX 4080 Super</Badge>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2">{t.projects.result}:</h4>
+                  <p className="text-sm text-muted-foreground">
+                    {t.projects.aiResult}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </div>
     </div>
   );
