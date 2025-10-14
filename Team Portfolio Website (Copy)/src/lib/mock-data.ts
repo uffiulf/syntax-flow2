@@ -281,7 +281,7 @@ export const teamMembers: TeamMember[] = [
       "Business Analysis",
     ],
     avatar:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400", // REPLACE with your profile image URL
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400", // REPLACE with your profile image URL
     highlights: [
       "Systematisk feilsøking og analyse av komplekse tekniske problemer",
       "Identifisering av rotårsaker og utvikling av robuste løsninger",
