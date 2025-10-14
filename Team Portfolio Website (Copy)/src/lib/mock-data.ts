@@ -109,14 +109,14 @@ export const teamMembers: TeamMember[] = [
       },
     ],
     links: {
-      email: "your.email@example.com", // Replace with email
-      github: "https://github.com/yourusername", // Replace or remove
+      email: "olav.lilje@gmail.com", // Replace with email
+      github: "https://www.linkedin.com/in/olav-liljeberg-943306348/", // Replace or remove
       linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
     },
     contactInfo: {
-      phone: "+47 123 45 678", // Replace with phone number
-      email: "your.email@example.com", // Replace with email
-      address: "Oslo, Norway", // Replace with address/city
+      phone: "+47 944 86 477", // Replace with phone number
+      email: "olav.lilje@gmail.com", // Replace with email
+      address: "Fredrikstad, Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
     projectIds: ["1", "2", "3"],
