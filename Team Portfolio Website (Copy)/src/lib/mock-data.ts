@@ -138,7 +138,7 @@ export const teamMembers: TeamMember[] = [
       address: "Fredrikstad, Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "2", "3", "5", "6"],
+    projectIds: ["1", "5", "6", "7", "8"],
   },
 
   // TEAM MEMBER 2
@@ -302,7 +302,7 @@ export const teamMembers: TeamMember[] = [
       address: "Fredrikstad, Norway", // Replace with address/city
     },
     cvUrl: "/src/assets/ResumeLH.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "3", "4", "5", "6"],
+    projectIds: ["5", "6", "7"],
   },
 
   // TEAM MEMBER 3
@@ -362,7 +362,7 @@ export const teamMembers: TeamMember[] = [
       address: "Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "2", "4", "5"],
+    projectIds: ["5", "6", "7"],
   },
 
   // TEAM MEMBER 4
@@ -425,7 +425,7 @@ export const teamMembers: TeamMember[] = [
       address: "Oslo, Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "2", "3", "6"],
+    projectIds: ["7"],
   },
 
   // TEAM MEMBER 5
@@ -484,7 +484,102 @@ export const teamMembers: TeamMember[] = [
       address: "Soul, Korea", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["2", "3", "4"],
+    projectIds: ["1"    ],
+  },
+  {
+    id: "7",
+    title: "Oplero – Prosjektledelse (Høst 2025)",
+    summary:
+      "Et pågående prosjekt i faget Prosjektledelse ved Høgskolen i Østfold. Oplero er en digital plattform for forelesninger, sanntidssamarbeid og AI-drevne læringsverktøy.",
+    description:
+      "Oplero – Prosjektledelse (Høst 2025) er et pågående prosjekt i faget Prosjektledelse ved Høgskolen i Østfold. Oplero er en digital plattform for forelesninger, sanntidssamarbeid og AI-drevne læringsverktøy.",
+    goals: [
+      "Å utvikle en pilot for Høgskolen i Østfold som kombinerer forelesningsopptak, gruppefunksjoner og sanntidsinteraksjon mellom studenter og forelesere",
+      "Implementere gruppeinndeling og AI-assistent",
+      "Sikre GDPR-kompatibel databehandling",
+      "Levere en fungerende prototype",
+    ],
+    responsibilities: [
+      "Prosjektleder – ansvarlig for planlegging, koordinering og leveranse",
+      "Team Lead og koordinering",
+      "Scrum Master og prosjektmedarbeid",
+      "Design Lead og prosjektmedarbeid",
+      "Prosjektmedarbeid og DesignTeam",
+    ],
+    outcomes: [
+      "Prosjektet er i utvikling og skal resultere i en prototype med implementert gruppeinndeling",
+      "AI-assistent og GDPR-kompatibel databehandling",
+      "Digital plattform for forelesninger og sanntidssamarbeid",
+      "Pilot for Høgskolen i Østfold",
+    ],
+    tags: ["Project Management", "AI", "Education", "In Progress"],
+    tech: [
+      "Miro",
+      "Trello",
+      "Figma",
+      "Microsoft 365",
+      "ChatGPT",
+      "Gemini",
+      "Sora",
+    ],
+    teamMemberIds: ["1", "3", "2", "4"],
+    teamMemberRoles: {
+      "1": ["Team Lead"],
+      "3": ["Scrum Master", "Prosjektmedarbeider"],
+      "2": ["Design Lead", "Prosjektmedarbeider"],
+      "4": ["Prosjektmedarbeider", "DesignTeam"]
+    },
+    coverImage:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1080",
+    images: [
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800",
+    ],
+  },
+  {
+    id: "8",
+    title: "Treningsprogramsystem – Database og Systemdesign",
+    summary:
+      "Et database- og systemdesignprosjekt utviklet for å håndtere treningsplaner, øvelser og resultater mellom trenere og utøvere. Systemet legger til rette for individuell oppfølging, logging av resultater og visuell progresjonsanalyse.",
+    description:
+      "Treningsprogramsystem – Database og Systemdesign er et database- og systemdesignprosjekt utviklet for å håndtere treningsplaner, øvelser og resultater mellom trenere og utøvere. Systemet legger til rette for individuell oppfølging, logging av resultater og visuell progresjonsanalyse.",
+    goals: [
+      "Å utforme en relasjonsdatabase i MySQL som støtter opprettelse og administrasjon av treningsplaner",
+      "Implementere funksjoner for logging, progresjon og tilgangsstyring",
+      "Sikre dataintegritet med relasjoner og fremmednøkler",
+      "Støtte individuell oppfølging og visuell progresjonsanalyse",
+    ],
+    responsibilities: [
+      "Utvikler – ansvarlig for hele prosjektet",
+      "Kravspesifikasjon og systemutforming",
+      "Databaseutforming og ER-modellering",
+      "1NF–3NF normalisering",
+      "Testing og implementering",
+    ],
+    outcomes: [
+      "En fullstendig database i MySQL med tabeller for brukere, treningsplaner, øvelser og logger",
+      "Implementert med relasjoner og fremmednøkler for å sikre dataintegritet",
+      "Funksjoner for logging og progresjon",
+      "Tilgangsstyring mellom trenere og utøvere",
+    ],
+    tags: ["Database", "MySQL", "System Design", "Completed"],
+    tech: [
+      "MySQL Workbench",
+      "SQL",
+      "ER-modellering",
+      "1NF–3NF normalisering",
+      "Database Design",
+    ],
+    teamMemberIds: ["1"],
+    teamMemberRoles: {
+      "1": ["Utvikler"]
+    },
+    coverImage:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1080",
+    images: [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+    ],
   },
 ];
 
@@ -532,11 +627,10 @@ export const projects: Project[] = [
       "Trello",
       "Miro",
     ],
-    teamMemberIds: ["1", "2", "3"],
+    teamMemberIds: ["1", "5"],
     teamMemberRoles: {
       "1": ["Team Leader", "Project Manager", "System Architect"],
-      "2": ["DevOps Engineer", "Infrastructure Specialist"],
-      "3": ["Business Analyst", "Quality Assurance"]
+      "5": ["Backend Developer", "Full Stack Developer"]
     },
     coverImage:
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1080",
@@ -624,11 +718,11 @@ export const projects: Project[] = [
       "Word",
       "PowerPoint",
     ],
-    teamMemberIds: ["1", "2", "3"],
+    teamMemberIds: ["3", "1", "2"],
     teamMemberRoles: {
-      "1": ["Business Analyst", "Project Coordinator"],
-      "2": ["System Analyst", "Documentation Specialist"],
-      "3": ["Process Analyst", "Quality Assurance"]
+      "3": ["Business Analyst", "IT-risikokonsulent"],
+      "1": ["Project Coordinator", "Team Lead"],
+      "2": ["System Analyst", "Documentation Specialist"]
     },
     coverImage:
       "",
