@@ -13,44 +13,99 @@ export const teamMembers: TeamMember[] = [
   // TEAM MEMBER 1
   {
     id: "1",
-    name: "YOUR NAME HERE", // Replace with actual name
-    role: ["Developer", "Designer"], // Replace with actual roles
+    name: "Olav Liljeberg", // Replace with actual name
+    role: ["Project Manager", "Business Analyst", "Team Lead"], // Replace with actual roles
     location: "Oslo, Norway", // Replace with location
-    bio: "PLACEHOLDER: Add your professional bio here. Describe your expertise, passion, and what you bring to the team.",
+    bio: "Engasjert IT-student med omfattende kompetanse innen prosjektledelse, forretningssystemer og teknologi. Jeg har en helhetlig forståelse av hvordan teknologi kan optimalisere prosesser, støtte strategiske mål og skape verdi for virksomheter. Med erfaring fra prosjektplanlegging, systemanalyse, nettverksinfrastruktur og UI/UX-design bidrar jeg med struktur, teknisk dybde og et sterkt fokus på kvalitet i alle prosjekter.",
     skills: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "PostgreSQL",
-      "Figma",
+      "Projektledelse",
+      "Agile/Scrum",
+      "Waterfall",
+      "Risikovurdering",
+      "Kravspesifikasjon",
+      "ERP-systemer",
+      "CRM-systemer",
+      "Business Model Canvas",
+      "Prosesskartlegging",
+      "Systemanalyse",
+      "Datamodellering",
+      "Nettverk (pfSense, VLAN, DNS)",
+      "VPN & Cisco",
+      "Proxmox",
+      "Docker",
+      "Portainer",
+      "Java",
+      "Python",
+      "SQL",
+      "MySQL",
+      "MongoDB",
       "UI/UX Design",
-      "Next.js",
-      "Tailwind CSS",
+      "Figma",
+      "IntelliJ IDEA",
+      "VS Code",
+      "GitHub",
+      "Trello",
+      "Miro",
     ],
     avatar:
       "https://images.unsplash.com/photo-1622475444932-f1b0bf96ecff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXZlbG9wZXIlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NTk0NDU2NzZ8MA&ixlib=rb-4.1.0&q=80&w=400", // REPLACE with your profile image URL
     highlights: [
-      "PLACEHOLDER: Add your first career highlight",
-      "PLACEHOLDER: Add your second career highlight",
-      "PLACEHOLDER: Add your third career highlight",
+      "Omfattende kompetanse innen prosjektledelse med Agile/Scrum og Waterfall-metodikk",
+      "Ekspertise i forretningssystemer, ERP/CRM og prosesskartlegging",
+      "Teknisk kompetanse innen nettverksinfrastruktur, virtualisering og programmering",
     ],
     experience: [
       {
-        title: "Senior Full-Stack Developer", // Replace with your job title
-        company: "Tech Solutions AS", // Replace with company name
-        period: "2021 - Present", // Replace with period
+        title: "Selger",
+        company: "Skousen Hvitevarer",
+        period: "Jun 2018 - Des 2019",
       },
       {
-        title: "Frontend Developer",
-        company: "Digital Agency",
-        period: "2019 - 2021",
+        title: "Spesialist på brannvern",
+        company: "Firesafe AS",
+        period: "Sep 2017 - Jan 2018",
+      },
+      {
+        title: "Selger",
+        company: "Elkjøp Nordic AS",
+        period: "Okt 2016 - Sep 2017",
+      },
+      {
+        title: "Leder av salgsteam",
+        company: "Telesalg AS",
+        period: "Jan 2016 - Apr 2016",
+      },
+      {
+        title: "IT-konsulent",
+        company: "Fredrikstad kommune",
+        period: "Mai 2014 - Des 2015",
+      },
+      {
+        title: "Salgskonsulent",
+        company: "Graviton DA",
+        period: "Aug 2010 - Des 2013",
+      },
+      {
+        title: "Industrimekaniker",
+        company: "NLI AS",
+        period: "Sep 2008 - Sep 2010",
       },
     ],
     education: [
       {
-        degree: "M.Sc. Computer Science", // Replace with your degree
-        institution: "University of Oslo", // Replace with institution
-        year: "2019", // Replace with graduation year
+        degree: "Bachelor i informasjonssystemer",
+        institution: "Høgskolen i Østfold (HiØ)",
+        year: "2023 - 2026",
+      },
+      {
+        degree: "Årsstudium i filosofi",
+        institution: "Universitetet i Agder (UiA)",
+        year: "2021 - 2022",
+      },
+      {
+        degree: "Forkurs for ingeniør (matematikk og fysikk)",
+        institution: "Høgskolen i Østfold",
+        year: "2020",
       },
     ],
     links: {
@@ -184,49 +239,59 @@ export const teamMembers: TeamMember[] = [
 export const projects: Project[] = [
   {
     id: "1",
-    title: "Effektivisering av kundesupport: En case studie av POWER",
+    title: "CareConnect – Software Engineering-prosjekt (Høst 2024)",
     summary:
-      "Modern e-commerce solution with real-time inventory management",
+      "Tverrfaglig utviklingsprosjekt som kobler helsepersonell og pasienter gjennom integrert system for hjemmetjenester og helsesensorer",
     description:
-      "A comprehensive e-commerce platform built for a leading Nordic retailer, featuring real-time inventory tracking, multi-currency support, and advanced analytics.",
+      "CareConnect er et tverrfaglig utviklingsprosjekt gjennomført ved Høgskolen i Østfold. Målet var å designe og implementere en digital løsning som kobler helsepersonell og pasienter gjennom et integrert system for hjemmetjenester og helsesensorer.",
     goals: [
-      "Create a scalable platform to handle 100K+ concurrent users",
-      "Implement real-time inventory synchronization across 50+ stores",
-      "Provide comprehensive analytics and reporting tools",
-      "Ensure GDPR compliance and data security",
+      "Utvikle et skalerbart og modulært system ved hjelp av heksagonal arkitektur",
+      "Muliggjøre sikker datautveksling mellom IoT-enheter, database og brukergrensesnitt",
+      "Fokusere på brukervennlighet og personvern",
+      "Designe løsning for reell bruk i helsesektoren",
     ],
     responsibilities: [
-      "Full-stack development using React and Node.js",
-      "Database design and optimization",
-      "API development and integration with third-party services",
-      "DevOps setup with AWS and Docker",
-      "UI/UX design and user testing",
+      "Teamleder og koordinator med ansvar for struktur, planlegging og dokumentasjon",
+      "Design av arkitektur og systemintegrasjon",
+      "Testing av API-endepunkter og integrasjon mellom moduler",
+      "Kommunikasjon mellom delprosjekter og leveranseoppfølging",
+      "Deltakelse i systemutvikling og prosjektstyring",
     ],
     outcomes: [
-      "40% increase in online sales within first quarter",
-      "99.9% uptime achieved",
-      "Average page load time under 1.5 seconds",
-      "Successfully processed 1M+ transactions in first year",
+      "Fungerende prototype og fullstendig dokumentert arkitektur",
+      "Erfaring med systemutvikling og prosjektstyring",
+      "Innsikt i teamledelse og komplekse systemdesign",
+      "Forståelse for hvordan systemer kan designes for helsesektoren",
     ],
-    tags: ["E-commerce", "Web", "Enterprise"],
+    tags: ["Healthcare", "IoT", "Software Engineering"],
     tech: [
-      "React",
-      "Node.js",
-      "PostgreSQL",
-      "AWS",
+      "Java",
+      "Spring Boot",
+      "Maven",
+      "REST API",
+      "MongoDB",
       "Docker",
-      "Redis",
+      "Postman",
+      "IntelliJ IDEA",
+      "GitHub",
+      "Figma",
+      "PlantUML",
+      "Visual Paradigm",
+      "Trello",
+      "Miro",
     ],
-    teamMemberIds: ["1", "2", "3", "5"],
-    coverImage:
-      "https://images.unsplash.com/photo-1676792519027-7c42006d7b4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWIlMjBkZXNpZ258ZW58MXx8fHwxNzU5NTA3MDIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    images: [
-      "https://images.unsplash.com/photo-1676792519027-7c42006d7b4a?w=800",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
-    ],
-    links: {
-      demo: "https://demo.example.com",
+    teamMemberIds: ["1", "2", "3"],
+    teamMemberRoles: {
+      "1": ["Team Leader", "Project Manager", "System Architect"],
+      "2": ["DevOps Engineer", "Infrastructure Specialist"],
+      "3": ["Business Analyst", "Quality Assurance"]
     },
+    coverImage:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1080",
+    images: [
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800",
+      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800",
+    ],
   },
   {
     id: "2",

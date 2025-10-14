@@ -213,6 +213,47 @@ export const ProfilePage: React.FC = () => {
           </CardContent>
         </Card>
 
+        {/* Related Projects */}
+        {relatedProjects.length > 0 && (
+          <Card className="mb-8">
+            <CardHeader>
+              <h2>{t.profile.relatedProjects}</h2>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {relatedProjects.map((project) => (
+                  <Card
+                    key={project.id}
+                    className="cursor-pointer hover:shadow-lg transition-shadow"
+                    onClick={() => handleViewProject(project.id)}
+                  >
+                    <div className="relative h-32 overflow-hidden rounded-t-lg">
+                      <ImageWithFallback
+                        src={project.coverImage}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <CardContent className="p-4">
+                      <h4>{project.title}</h4>
+                      <p className="text-sm text-muted-foreground line-clamp-2">
+                        {project.summary}
+                      </p>
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {project.tags.slice(0, 2).map((tag) => (
+                          <Badge key={tag} variant="outline" className="text-xs">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Experience */}
         {member.experience && member.experience.length > 0 && (
           <Card className="mb-8">
@@ -259,46 +300,6 @@ export const ProfilePage: React.FC = () => {
           </Card>
         )}
 
-        {/* Related Projects */}
-        {relatedProjects.length > 0 && (
-          <Card>
-            <CardHeader>
-              <h2>{t.profile.relatedProjects}</h2>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {relatedProjects.map((project) => (
-                  <Card
-                    key={project.id}
-                    className="cursor-pointer hover:shadow-lg transition-shadow"
-                    onClick={() => handleViewProject(project.id)}
-                  >
-                    <div className="relative h-32 overflow-hidden rounded-t-lg">
-                      <ImageWithFallback
-                        src={project.coverImage}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <CardContent className="p-4">
-                      <h4>{project.title}</h4>
-                      <p className="text-sm text-muted-foreground line-clamp-2">
-                        {project.summary}
-                      </p>
-                      <div className="flex flex-wrap gap-1 mt-2">
-                        {project.tags.slice(0, 2).map((tag) => (
-                          <Badge key={tag} variant="outline" className="text-xs">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
       </div>
     </div>
   );

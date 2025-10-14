@@ -43,6 +43,7 @@ export interface Project {
   tags: string[];
   tech: string[];
   teamMemberIds: string[];
+  teamMemberRoles?: { [memberId: string]: string[] }; // Project-specific roles for each team member
   coverImage: string;
   images: string[];
   links?: {

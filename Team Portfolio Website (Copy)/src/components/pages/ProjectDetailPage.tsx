@@ -208,7 +208,7 @@ export const ProjectDetailPage: React.FC = () => {
                     <div className="flex-1">
                       <h4>{member.name}</h4>
                       <div className="flex flex-wrap gap-1 mt-1">
-                        {member.role.map((role) => (
+                        {(project.teamMemberRoles?.[member.id] || member.role).map((role) => (
                           <Badge key={role} variant="secondary" className="text-xs">
                             {role}
                           </Badge>
