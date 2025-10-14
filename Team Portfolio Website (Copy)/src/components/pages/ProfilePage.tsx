@@ -97,7 +97,7 @@ export const ProfilePage: React.FC = () => {
                     </Button>
                   )}
                   {member.links.website && (
-                    <Button variant="outline" size="sm" asChild>
+                    <Button variant="outline" className="website-btn" size="sm" asChild>
                       <a href={member.links.website} target="_blank" rel="noopener noreferrer">
                         <Globe className="h-4 w-4 mr-2" />
                         Website

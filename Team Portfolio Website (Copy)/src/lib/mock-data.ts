@@ -148,19 +148,74 @@ export const teamMembers: TeamMember[] = [
       "./src/assets/Line.jpg", // REPLACE with your profile image URL
     highlights: [
       "PLACEHOLDER: Add your first career highlight",
-      "PLACEHOLDER: Add your second career highlight",
-      "PLACEHOLDER: Add your third career highlight",
+      "Helped digitalize the booking system for Bakcstage M&P",
+      "Developed a organized ",
     ],
     experience: [
       {
-        title: "Senior DevOps Engineer", // Replace with job title
-        company: "Cloud Systems", // Replace with company name
-        period: "2020 - Present", // Replace with period
+        title: "Metro Driver", // Replace with job title
+        company: "Sporveien AS", // Replace with company name
+        period: "2020 - 2025", // Replace with period
       },
       {
-        title: "Systems Administrator",
-        company: "IT Services",
+        title: "Production Manager",
+        company: "Parkteatret Scene AS",
+        period: "2013 - 2020",
+      },
+      {
+        title: "Office and Booking Agent",
+        company: "Backstage Management & Production",
+        period: "2017 - 2019",
+      },
+      {
+        title: "Arena Producer",
+        company: "Ultima Festival",
+        period: "2019",
+      },
+      {
+        title: "Volunteer Coordinator",
+        company: "Tons of Rock Festival",
+        period: "2019",
+      },
+      {
+        title: "Merch sales",
+        company: "Desertfest: London",
+        period: "2019 - 2022",
+      },
+      {
+        title: "Production Manager",
+        company: "Høstsabbat Festival",
         period: "2017 - 2020",
+      },
+      {
+        title: "Artist Transport and Accommodation",
+        company: "Findings Festival",
+        period: "2017 - 2018",
+      },
+      {
+        title: "Bar and Inventory Driver",
+        company: "Slottsfjell Festival",
+        period: "2017",
+      },
+      {
+        title: "Production Crew and Host",
+        company: "Konsertforeningen: Blårollinger",
+        period: "2014 - 2018",
+      },
+      {
+        title: "Assistant Manager and Cafe Staff",
+        company: "Cafe Fresko",
+        period: "2014 - 2016",
+      },
+      {
+        title: "Bartender and Waitress",
+        company: "Cafe Stolen",
+        period: "2011 - 2013",
+      },
+      {
+        title: "Restaurant worker",
+        company: "IKEA FOOD Slependen",
+        period: "2009 - 2011",
       },
     ],
     education: [
@@ -175,6 +230,7 @@ export const teamMembers: TeamMember[] = [
       email: "linehenriksen0.com", // Replace with email
       github: "https://github.com/Flowerafro", // Replace or remove
       linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
+      website: "https://flowerafro.github.io/application-cv/", // Replace or remove
     },
     contactInfo: {
       phone: "+47 482 22 033", // Replace with phone number

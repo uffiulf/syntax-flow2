@@ -78,6 +78,7 @@
     --color-violet-600: oklch(.541 .281 293.009);
     --color-violet-700: oklch(.491 .27 292.581);
     --color-gray-100: oklch(.967 .003 264.542);
+    --color-yellow: #E7AC08;
     --color-white: #fff;
     --spacing: .25rem;
     --container-2xl: 42rem;
@@ -125,6 +126,16 @@
     --default-mono-font-feature-settings: var(--font-mono--font-feature-settings);
     --default-mono-font-variation-settings: var(--font-mono--font-variation-settings);
   }
+}
+
+.website-btn {
+  background-color: var(--color-yellow);
+  text-color: black;
+}
+
+.website-btn:hover {
+  background-color: var(--color-violet-600); /* Darker shade of yellow for hover effect */
+  text-color: black;
 }
 
 @layer base {
