@@ -293,6 +293,7 @@ export const teamMembers: TeamMember[] = [
       email: "your.email@example.com", // Replace with email
       github: "https://github.com/yourusername", // Replace or remove
       linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
+      website: "https://khalid-portfolio.example.com", // Personal website
     },
     contactInfo: {
       phone: "+47 123 45 678", // Replace with phone number
