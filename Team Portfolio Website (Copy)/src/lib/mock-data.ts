@@ -145,7 +145,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: "2",
     name: "Line Henriksen", // Replace with actual name
-    role: ["Web Developer", "Project Manager"], // Replace with actual roles
+    role: ["Utvikler", "Designer UX/UI", "Frontend Developer"], // Replace with actual roles
     location: "Fredrikstad, Norway", // Replace with location
     bio: "My expertise lies at the intersection of technology, project management, and design – a place where I can create, develop, optimize, and deliver user-friendly solutions.",
     skills: [
@@ -266,10 +266,9 @@ export const teamMembers: TeamMember[] = [
     ],
     education: [
       {
-        degree: "Bachelor i Informasjonssystemer",
-        institution:
-          "Høgskolen i Østfold",
-        year: "2026",
+        degree: "Bachelor i informasjonssystemer",
+        institution: "Høgskolen i Østfold (HiØ)",
+        year: "2023 - 2026",
       },
       {
         degree: "Diploma i Prosjektledelse",
@@ -310,7 +309,7 @@ export const teamMembers: TeamMember[] = [
     id: "3",
     name: "André Moore", // Replace with actual name
     role: ["Business Analyst", "Quality Assurance (QA)", "IT-risikokonsulent"], // Replace with actual roles
-    location: "Norway", // Replace with location
+    location: "Halden, Norway", // Replace with location
     bio: "Min ekspertise ligger i systematisk feilsøking og analyse av komplekse tekniske problemer. Jeg brenner for å identifisere rotårsaker og utvikle robuste løsninger som sikrer stabil og sikker drift. Lidenskapen min er å omsette teknisk innsikt til praktiske og effektive løsninger som hjelper både teamet og sluttbrukeren.",
     skills: [
       "Javascript",
@@ -346,9 +345,9 @@ export const teamMembers: TeamMember[] = [
     ],
     education: [
       {
-        degree: "M.B.A.", // Replace with degree
-        institution: "BI Norwegian Business School", // Replace with institution
-        year: "2016", // Replace with year
+        degree: "Bachelor i informasjonssystemer", // Replace with degree
+        institution: "Høgskolen i Østfold (HiØ)", // Replace with institution
+        year: "2023 - 2026", // Replace with year
       },
     ],
     links: {
@@ -359,7 +358,7 @@ export const teamMembers: TeamMember[] = [
     contactInfo: {
       phone: "+47 952 55 517", // Replace with phone number
       email: "andre-moore@hotmail.com", // Replace with email
-      address: "Norway", // Replace with address/city
+      address: "Halden, Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
     projectIds: ["5", "6", "7"],
@@ -368,8 +367,8 @@ export const teamMembers: TeamMember[] = [
   // TEAM MEMBER 4
   {
     id: "4",
-    name: "Khalid", // Replace with actual name
-    role: ["Developer", "Problem Solver"], // Replace with actual roles
+    name: "Khalid Hassan Osman", // Replace with actual name
+    role: ["Utvikler", "Lowcode"], // Replace with actual roles
     location: "Kolbotn, Norway", // Replace with location
     bio: "Jeg er lidenskapelig opptatt av kodeutvikling og problemløsning. Jeg liker å bygge prosjekter fra idé til ferdig løsning, og å lære nye teknologier underveis. Som lagspiller er jeg lett å samarbeide med, holder god kommunikasjon, sier ifra når det trengs, og er fleksibel i arbeidsmåten min.",
     skills: [
@@ -409,19 +408,19 @@ export const teamMembers: TeamMember[] = [
     ],
     education: [
       {
-        degree: "Bachelor i Informatikk", // Replace with degree
-        institution: "Høgskolen i Østfold", // Replace with institution
-        year: "2021", // Replace with year
+        degree: "Bachelor i informasjonssystemer", // Replace with degree
+        institution: "Høgskolen i Østfold (HiØ)", // Replace with institution
+        year: "2023 - 2026", // Replace with year
       },
     ],
     links: {
-      email: "your.email@example.com", // Replace with email
+      email: "khalid.h.osman@hiof.no", // Replace with email
       github: "https://github.com/Khosman23", // Replace or remove
       linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
     },
     contactInfo: {
-      phone: "+47 123 45 678", // Replace with phone number
-      email: "your.email@example.com", // Replace with email
+      phone: "N/A", // Replace with phone number
+      email: "khalid.h.osman@hiof.no", // Replace with email
       address: "Oslo, Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
@@ -468,19 +467,19 @@ export const teamMembers: TeamMember[] = [
     ],
     education: [
       {
-        degree: "Master i Interaksjonsdesign", // Replace with degree
-        institution: "Universitetet i Bergen", // Replace with institution
-        year: "2018", // Replace with year
+        degree: "Bachelor i informatikk", // Replace with degree
+        institution: "Høgskolen i Østfold (HiØ)", // Replace with institution
+        year: "2023 - 2026", // Replace with year
       },
     ],
     links: {
-      email: "ludvig.uteng@example.com", // Replace with email
+      email: "ludvig.v.uteng@hiof.no", // Replace with email
       github: "https://github.com/Valtyr-Angel", // Replace or remove
       linkedin: "https://linkedin.com/in/ludvig-valter-angell-uteng", // Replace or remove
     },
     contactInfo: {
-      phone: "+82 10-0000-0000", // Replace with phone number
-      email: "ludvig.uteng@example.com", // Replace with email
+      phone: "N/A", // Replace with phone number
+      email: "ludvig.v.uteng@hiof.no", // Replace with email
       address: "Soul, Korea", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
@@ -631,7 +630,7 @@ export const projects: Project[] = [
       "2": ["System Analyst", "Documentation Specialist"]
     },
     coverImage:
-      "",
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1080",
     images: [
       "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800",
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
