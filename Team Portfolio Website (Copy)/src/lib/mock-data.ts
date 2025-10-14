@@ -125,22 +125,27 @@ export const teamMembers: TeamMember[] = [
   // TEAM MEMBER 2
   {
     id: "2",
-    name: "YOUR NAME HERE", // Replace with actual name
-    role: ["DevOps"], // Replace with actual roles
-    location: "Bergen, Norway", // Replace with location
-    bio: "PLACEHOLDER: Add your professional bio here. Describe your expertise, passion, and what you bring to the team.",
+    name: "Line Henriksen", // Replace with actual name
+    role: ["Web Developer", "Project Manager"], // Replace with actual roles
+    location: "Fredrikstad, Norway", // Replace with location
+    bio: "My expertise lies at the intersection of technology, project management, and design – a place where I can create, develop, optimize, and deliver user-friendly solutions.",
     skills: [
-      "AWS",
-      "Docker",
-      "Kubernetes",
-      "Terraform",
-      "CI/CD",
-      "Linux",
-      "Python",
-      "Monitoring",
+      "Project Management",
+      "Frontend Development",
+      "CSS and Web Design",
+      "Responsive Design",
+      "UI/UX",
+      "Figma",
+      "SEO Optimization",
+      "Team Collaboration",
+      "Communication",
+      "Problem-solving",
+      "Flexibility",
+      "Time Management",
+      "Git/GitHub",
     ],
     avatar:
-      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400", // REPLACE with your profile image URL
+      "./src/assets/Line.jpg", // REPLACE with your profile image URL
     highlights: [
       "PLACEHOLDER: Add your first career highlight",
       "PLACEHOLDER: Add your second career highlight",
