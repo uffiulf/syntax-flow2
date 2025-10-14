@@ -138,7 +138,7 @@ export const teamMembers: TeamMember[] = [
       address: "Fredrikstad, Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "2", "3"],
+    projectIds: ["1", "2", "3", "5", "6"],
   },
 
   // TEAM MEMBER 2
@@ -257,7 +257,7 @@ export const teamMembers: TeamMember[] = [
       address: "Fredrikstad, Norway", // Replace with address/city
     },
     cvUrl: "/src/assets/ResumeLH.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "3", "4"],
+    projectIds: ["1", "3", "4", "5", "6"],
   },
 
   // TEAM MEMBER 3
@@ -312,7 +312,7 @@ export const teamMembers: TeamMember[] = [
       address: "Trondheim, Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "2", "4"],
+    projectIds: ["1", "2", "4", "5"],
   },
 
   // TEAM MEMBER 4
@@ -375,7 +375,7 @@ export const teamMembers: TeamMember[] = [
       address: "Oslo, Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1", "2", "3"],
+    projectIds: ["1", "2", "3", "6"],
   },
 
   // TEAM MEMBER 5
@@ -626,6 +626,106 @@ export const projects: Project[] = [
     images: [
       "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800",
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800",
+    ],
+  },
+  {
+    id: "5",
+    title: "Power – Forretningssystemer (Høst 2024)",
+    summary:
+      "Et omfattende gruppeprosjekt i faget Forretningssystemer ved Høgskolen i Østfold som analyserte hvordan bedriften Power bruker ERP- og forretningssystemer for å skape verdi og effektivisere interne prosesser.",
+    description:
+      "Power – Forretningssystemer (Høst 2024) var et omfattende gruppeprosjekt i faget Forretningssystemer ved Høgskolen i Østfold. Oppgaven gikk ut på å analysere hvordan bedriften Power bruker ERP- og forretningssystemer for å skape verdi og effektivisere interne prosesser.",
+    goals: [
+      "Å forstå hvordan et forretningssystem støtter bedriftens strategiske mål",
+      "Kartlegge hvordan moduler som CRM, SCM og HR påvirker verdiløftet og forretningsmodellen",
+      "Analysere sammenhenger i Business Model Canvas",
+      "Dokumentere prosesser og deres effekt på forretningsverdien",
+    ],
+    responsibilities: [
+      "Bidro med analyse av ERP-moduler",
+      "Sammenhenger i Business Model Canvas",
+      "Dokumentasjon av prosesser",
+      "Gruppesamarbeid og koordinering",
+    ],
+    outcomes: [
+      "Prosjektet resulterte i en helhetlig modell som viser hvordan Power utnytter ERP-systemer for å styrke kundeverdi",
+      "Verdifull erfaring innen systemanalyse, forretningsforståelse og prosessforbedring",
+      "Forbedret effektivitet og bærekraft i Power's forretningsmodell",
+      "Dyb forståelse av hvordan forretningssystemer støtter strategiske mål",
+    ],
+    tags: ["Business Analysis", "ERP", "Process Improvement"],
+    tech: [
+      "Microsoft 365",
+      "Miro",
+      "Visual Paradigm",
+      "Excel",
+      "Word",
+      "PowerPoint",
+    ],
+    teamMemberIds: ["1", "2", "3"],
+    teamMemberRoles: {
+      "1": ["Business Analyst", "Project Coordinator"],
+      "2": ["System Analyst", "Documentation Specialist"],
+      "3": ["Process Analyst", "Quality Assurance"]
+    },
+    coverImage:
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1080",
+    images: [
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    ],
+  },
+  {
+    id: "6",
+    title: "Trolljegeren – UI-designprosjekt (Vår 2025)",
+    summary:
+      "Et omfattende UI-designprosjekt gjennomført ved Høgskolen i Østfold for å utvikle en digital løsning som øker engasjementet rundt Trollstien og Ormtjernhytta i Halden. Prosjektet resulterte i en fungerende prototype av en mobilapp som bruker gamification for å motivere barn til å utforske naturen.",
+    description:
+      "Trolljegeren – UI-designprosjekt (Vår 2025) var et omfattende UI-designprosjekt gjennomført ved Høgskolen i Østfold for å utvikle en digital løsning som øker engasjementet rundt Trollstien og Ormtjernhytta i Halden. Prosjektet resulterte i en fungerende prototype av en mobilapp som bruker gamification for å motivere barn til å utforske naturen.",
+    goals: [
+      "Å skape økt glede og aktivitet blant barn i alderen 8–11 år gjennom en spillifisert løsning",
+      "Kombinere natur, kultur og teknologi i en engasjerende opplevelse",
+      "Bygge bro mellom fysisk aktivitet og digital underholdning",
+      "Utvikle to spillmoduser: 'Jeger' og 'Utforsker'",
+    ],
+    responsibilities: [
+      "Deltok i innsiktsarbeid og idégenerering",
+      "Design av brukeropplevelse og testing",
+      "Bidro i utvikling av spillmekanikk og fargepalett",
+      "Prototyping i Figma og dokumentasjon",
+      "Usability testing og think-aloud-metode",
+    ],
+    outcomes: [
+      "Komplett prototype med to spillmoduser som begge ble testet og evaluert av målgruppen",
+      "Svært positive tilbakemeldinger fra målgruppen (barn 8-11 år)",
+      "Løsningen viser hvordan gamification kan brukes til å øke deltakelse og opplevelsesverdi",
+      "Verdifull erfaring innen UI/UX design og brukertesting",
+    ],
+    tags: ["UI/UX Design", "Gamification", "Mobile App"],
+    tech: [
+      "Figma",
+      "Miro",
+      "Trello",
+      "Canva",
+      "Google Docs",
+      "Google Forms",
+      "ChatGPT",
+      "Gemini",
+      "Sora",
+      "Design Thinking",
+      "Usability Testing",
+    ],
+    teamMemberIds: ["1", "2", "4"],
+    teamMemberRoles: {
+      "1": ["UX Designer", "Project Coordinator"],
+      "2": ["UI Designer", "Prototyping Specialist"],
+      "4": ["Developer", "Testing Coordinator"]
+    },
+    coverImage:
+      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1080",
+    images: [
+      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
     ],
   },
 ];
