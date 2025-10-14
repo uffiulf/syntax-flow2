@@ -291,7 +291,7 @@ export const teamMembers: TeamMember[] = [
     ],
     links: {
       email: "your.email@example.com", // Replace with email
-      github: "https://github.com/yourusername", // Replace or remove
+      github: "https://github.com/Khosman23", // Replace or remove
       linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
     },
     contactInfo: {
