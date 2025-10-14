@@ -299,6 +299,9 @@ export const ProfilePage: React.FC = () => {
                       <h3>{exp.title}</h3>
                       <p className="text-muted-foreground">{exp.company}</p>
                       <p className="text-sm text-muted-foreground">{exp.period}</p>
+                      {exp.description && (
+                        <p className="text-sm text-muted-foreground mt-2">{exp.description}</p>
+                      )}
                     </div>
                   </div>
                 ))}

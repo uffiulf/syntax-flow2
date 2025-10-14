@@ -11,6 +11,7 @@ export interface TeamMember {
     title: string;
     company: string;
     period: string;
+    description?: string;
   }[];
   education?: {
     degree: string;

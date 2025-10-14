@@ -56,39 +56,58 @@ export const teamMembers: TeamMember[] = [
     ],
     experience: [
       {
-        title: "Selger",
-        company: "Skousen Hvitevarer",
-        period: "Jun 2018 - Des 2019",
+        title: "Teamleder – Project Management",
+        company: "HiØ",
+        period: "Høst 2025",
+        description: "Leder et team på 7 studenter i et tverrfaglig prosjektarbeid med fokus på planlegging, risikohåndtering og leveranse etter Agile og Waterfall-prinsipper."
       },
       {
-        title: "Spesialist på brannvern",
-        company: "Firesafe AS",
-        period: "Sep 2017 - Jan 2018",
+        title: "Teamleder – Digital markedsføring",
+        company: "HiØ",
+        period: "Høst 2025",
+        description: "Leder et team på 3 personer i utvikling av digital kampanje og markedsstrategi for et fiktivt produkt."
       },
       {
-        title: "Selger",
-        company: "Elkjøp Nordic AS",
-        period: "Okt 2016 - Sep 2017",
+        title: "Teamleder – Kommunikasjonsdesign",
+        company: "HiØ",
+        period: "Høst 2025",
+        description: "Leder et team på 4 personer i design og produksjon av en digital kommunikasjonsløsning med fokus på struktur, idéutvikling og samarbeid."
       },
       {
-        title: "Leder av salgsteam",
-        company: "Telesalg AS",
-        period: "Jan 2016 - Apr 2016",
+        title: "Teamleder – Informasjonssikkerhet",
+        company: "HiØ",
+        period: "Høst 2025",
+        description: "Leder et team på 3 personer i et fagprosjekt med fokus på sikkerhetsanalyse, sårbarhetsvurdering og tiltak for bedre informasjonssikkerhet."
       },
       {
-        title: "IT-konsulent",
-        company: "Fredrikstad kommune",
-        period: "Mai 2014 - Des 2015",
+        title: "Deltaker – Forretningssystemer",
+        company: "HiØ",
+        period: "Vår 2025",
+        description: "Deltok i et team på 5 studenter som analyserte Powers servicehåndteringsprosess for garantisaker. Brukte BPMN-modellering og Business Model Canvas for prosessforbedring."
       },
       {
-        title: "Salgskonsulent",
-        company: "Graviton DA",
-        period: "Aug 2010 - Des 2013",
+        title: "Deltaker – UI Designprosjekt",
+        company: "HiØ",
+        period: "Vår 2025",
+        description: "Utviklet brukergrensesnitt for en fiktiv applikasjon. Fokus på brukervennlighet, prototyping og visuell kommunikasjon."
       },
       {
-        title: "Industrimekaniker",
-        company: "NLI AS",
-        period: "Sep 2008 - Sep 2010",
+        title: "Deltaker – Databasesystemer",
+        company: "HiØ",
+        period: "Vår 2024",
+        description: "Utviklet relasjonsdatabaser med SQL og ER-modellering. Knyttet databaser til applikasjoner i praksis."
+      },
+      {
+        title: "Deltaker – Software Engineering og Testing",
+        company: "HiØ",
+        period: "Høst 2024",
+        description: "Utviklet og testet programvareløsning i team på 5. Erfaring med systemarkitektur (MVC og hexagonal design), kravspesifikasjon og CI/CD-prosesser i tverrfaglig utviklingsmiljø."
+      },
+      {
+        title: "Deltaker – Innføring i design av digitale produkter",
+        company: "HiØ",
+        period: "Høst 2023",
+        description: "Arbeidet i gruppe på 3 med Design Thinking og idéutvikling for digitale konsepter. Fokus på brukerinvolvering og iterativ designprosess."
       },
     ],
     education: [
