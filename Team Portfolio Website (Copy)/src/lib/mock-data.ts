@@ -48,7 +48,7 @@ export const teamMembers: TeamMember[] = [
       "Miro",
     ],
     avatar:
-      "https://images.unsplash.com/photo-1622475444932-f1b0bf96ecff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXZlbG9wZXIlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NTk0NDU2NzZ8MA&ixlib=rb-4.1.0&q=80&w=400", // REPLACE with your profile image URL
+      "./src/assets/olav.jpg", // REPLACE with your profile image URL
     highlights: [
       "Omfattende kompetanse innen prosjektledelse med Agile/Scrum og Waterfall-metodikk",
       "Ekspertise i forretningssystemer, ERP/CRM og prosesskartlegging",
@@ -264,7 +264,7 @@ export const teamMembers: TeamMember[] = [
       "Datasikkerhet",
     ],
     avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400", // REPLACE with your profile image URL
+      "./src/assets/khalid.jpg", // REPLACE with your profile image URL
     highlights: [
       "Ekspertise innen kodeutvikling og problemløsning",
       "Lidenskap for å bygge prosjekter fra idé til ferdig løsning",
