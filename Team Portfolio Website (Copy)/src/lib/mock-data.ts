@@ -263,25 +263,29 @@ export const teamMembers: TeamMember[] = [
   // TEAM MEMBER 3
   {
     id: "3",
-    name: "YOUR NAME HERE", // Replace with actual name
-    role: ["Project Manager"], // Replace with actual roles
-    location: "Trondheim, Norway", // Replace with location
-    bio: "PLACEHOLDER: Add your professional bio here. Describe your expertise, passion, and what you bring to the team.",
+    name: "André Moore", // Replace with actual name
+    role: ["Business Analyst", "Quality Assurance (QA)", "IT-risikokonsulent"], // Replace with actual roles
+    location: "Norway", // Replace with location
+    bio: "Min ekspertise ligger i systematisk feilsøking og analyse av komplekse tekniske problemer. Jeg brenner for å identifisere rotårsaker og utvikle robuste løsninger som sikrer stabil og sikker drift. Lidenskapen min er å omsette teknisk innsikt til praktiske og effektive løsninger som hjelper både teamet og sluttbrukeren.",
     skills: [
-      "Agile",
-      "Scrum",
-      "Jira",
-      "Stakeholder Management",
-      "Product Strategy",
-      "Risk Management",
-      "Team Leadership",
+      "Javascript",
+      "Figma",
+      "Cisco",
+      "Feilsøking",
+      "Front End",
+      "Kundebehandling",
+      "Systemanalyse",
+      "Prosesskartlegging",
+      "Quality Assurance",
+      "IT-risikokonsulent",
+      "Business Analysis",
     ],
     avatar:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400", // REPLACE with your profile image URL
     highlights: [
-      "PLACEHOLDER: Add your first career highlight",
-      "PLACEHOLDER: Add your second career highlight",
-      "PLACEHOLDER: Add your third career highlight",
+      "Systematisk feilsøking og analyse av komplekse tekniske problemer",
+      "Identifisering av rotårsaker og utvikling av robuste løsninger",
+      "Omsetting av teknisk innsikt til praktiske og effektive løsninger",
     ],
     experience: [
       {
@@ -303,13 +307,14 @@ export const teamMembers: TeamMember[] = [
       },
     ],
     links: {
-      email: "your.email@example.com", // Replace with email
-      linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
+      email: "andre-moore@hotmail.com", // Replace with email
+      github: "https://github.com/AndreMooore", // Replace or remove
+      linkedin: "https://www.linkedin.com/in/andr%C3%A9-moore-670401389", // Replace or remove
     },
     contactInfo: {
-      phone: "+47 555 12 345", // Replace with phone number
-      email: "your.email@example.com", // Replace with email
-      address: "Trondheim, Norway", // Replace with address/city
+      phone: "+47 952 55 517", // Replace with phone number
+      email: "andre-moore@hotmail.com", // Replace with email
+      address: "Norway", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
     projectIds: ["1", "2", "4", "5"],
