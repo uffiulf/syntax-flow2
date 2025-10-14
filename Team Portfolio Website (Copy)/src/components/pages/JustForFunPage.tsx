@@ -423,30 +423,30 @@ export const JustForFunPage: React.FC = () => {
         {/* Click Counter Section */}
         <Card className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20">
           <CardHeader>
-            <h2 className="text-2xl font-bold text-center">🎯 Click Counter</h2>
+            <h2 className="text-2xl font-bold text-center">🎯 {t.fun.clickCounter}</h2>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
                 <div className="text-2xl font-bold text-primary">{jokeClicks}</div>
-                <div className="text-sm text-muted-foreground">Jokes</div>
+                <div className="text-sm text-muted-foreground">{t.fun.jokes}</div>
               </div>
               <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
                 <div className="text-2xl font-bold text-primary">{catClicks}</div>
-                <div className="text-sm text-muted-foreground">Cat Images</div>
+                <div className="text-sm text-muted-foreground">{t.fun.cats}</div>
               </div>
               <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
                 <div className="text-2xl font-bold text-primary">{userClicks}</div>
-                <div className="text-sm text-muted-foreground">Random Users</div>
+                <div className="text-sm text-muted-foreground">{t.fun.users}</div>
               </div>
               <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
                 <div className="text-2xl font-bold text-primary">{activityClicks}</div>
-                <div className="text-sm text-muted-foreground">Activities</div>
+                <div className="text-sm text-muted-foreground">{t.fun.activities}</div>
               </div>
             </div>
             <div className="text-center mt-4">
               <div className="text-lg font-semibold">
-                Total Clicks: <span className="text-primary">{jokeClicks + catClicks + userClicks + activityClicks}</span>
+ {t.fun.totalClicks}: <span className="text-primary">{jokeClicks + catClicks + userClicks + activityClicks}</span>
               </div>
             </div>
           </CardContent>

@@ -727,5 +727,9 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800",
       "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
     ],
+    links: {
+      demo: "https://flowerafro.github.io/Trolljegern/",
+      demoText: "Go to website",
+    },
   },
 ];

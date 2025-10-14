@@ -50,6 +50,7 @@ export interface Project {
   links?: {
     demo?: string;
     repo?: string;
+    demoText?: string;
   };
 }
 
