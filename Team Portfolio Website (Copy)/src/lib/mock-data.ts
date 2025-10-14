@@ -234,6 +234,128 @@ export const teamMembers: TeamMember[] = [
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
     projectIds: ["1", "2", "4"],
   },
+
+  // TEAM MEMBER 4
+  {
+    id: "4",
+    name: "Khalid", // Replace with actual name
+    role: ["Developer", "Problem Solver"], // Replace with actual roles
+    location: "Kolbotn, Norway", // Replace with location
+    bio: "Jeg er lidenskapelig opptatt av kodeutvikling og problemløsning. Jeg liker å bygge prosjekter fra idé til ferdig løsning, og å lære nye teknologier underveis. Som lagspiller er jeg lett å samarbeide med, holder god kommunikasjon, sier ifra når det trengs, og er fleksibel i arbeidsmåten min.",
+    skills: [
+      "Python",
+      "Java",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "HTML",
+      "CSS",
+      "SQL",
+      "Miro",
+      "Trello",
+      "Microsoft Power BI",
+      "PowerApps",
+      "Linux",
+      "Datasikkerhet",
+    ],
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400", // REPLACE with your profile image URL
+    highlights: [
+      "Ekspertise innen kodeutvikling og problemløsning",
+      "Lidenskap for å bygge prosjekter fra idé til ferdig løsning",
+      "Sterk lagspiller med god kommunikasjon og fleksibilitet",
+    ],
+    experience: [
+      {
+        title: "Software Developer", // Replace with job title
+        company: "Tech Solutions", // Replace with company name
+        period: "2022 - Present", // Replace with period
+      },
+      {
+        title: "Junior Developer",
+        company: "Startup Company",
+        period: "2021 - 2022",
+      },
+    ],
+    education: [
+      {
+        degree: "Bachelor i Informatikk", // Replace with degree
+        institution: "Høgskolen i Østfold", // Replace with institution
+        year: "2021", // Replace with year
+      },
+    ],
+    links: {
+      email: "your.email@example.com", // Replace with email
+      github: "https://github.com/yourusername", // Replace or remove
+      linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
+    },
+    contactInfo: {
+      phone: "+47 123 45 678", // Replace with phone number
+      email: "your.email@example.com", // Replace with email
+      address: "Oslo, Norway", // Replace with address/city
+    },
+    cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
+    projectIds: ["1", "2", "3"],
+  },
+
+  // TEAM MEMBER 5
+  {
+    id: "5",
+    name: "YOUR NAME HERE", // Replace with actual name
+    role: ["UI/UX Designer", "Frontend Developer"], // Replace with actual roles
+    location: "Bergen, Norway", // Replace with location
+    bio: "PLACEHOLDER: Add your professional bio here. Describe your expertise, passion, and what you bring to the team.",
+    skills: [
+      "Figma",
+      "Adobe Creative Suite",
+      "React",
+      "CSS",
+      "JavaScript",
+      "User Research",
+      "Prototyping",
+      "Design Systems",
+      "Accessibility",
+      "Responsive Design",
+    ],
+    avatar:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400", // REPLACE with your profile image URL
+    highlights: [
+      "PLACEHOLDER: Add your first career highlight",
+      "PLACEHOLDER: Add your second career highlight",
+      "PLACEHOLDER: Add your third career highlight",
+    ],
+    experience: [
+      {
+        title: "Senior UI/UX Designer", // Replace with job title
+        company: "Design Studio", // Replace with company name
+        period: "2020 - Present", // Replace with period
+      },
+      {
+        title: "Frontend Developer",
+        company: "Web Agency",
+        period: "2018 - 2020",
+      },
+    ],
+    education: [
+      {
+        degree: "Master i Interaksjonsdesign", // Replace with degree
+        institution: "Universitetet i Bergen", // Replace with institution
+        year: "2018", // Replace with year
+      },
+    ],
+    links: {
+      email: "your.email@example.com", // Replace with email
+      github: "https://github.com/yourusername", // Replace or remove
+      linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
+    },
+    contactInfo: {
+      phone: "+47 987 65 432", // Replace with phone number
+      email: "your.email@example.com", // Replace with email
+      address: "Bergen, Norway", // Replace with address/city
+    },
+    cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
+    projectIds: ["2", "3", "4"],
+  },
 ];
 
 export const projects: Project[] = [
