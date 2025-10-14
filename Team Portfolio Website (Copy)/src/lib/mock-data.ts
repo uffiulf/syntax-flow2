@@ -547,139 +547,51 @@ export const projects: Project[] = [
   },
   {
     id: "2",
-    title: "Healthcare Portal",
+    title: "Project Management: Oplero (Ongoing)",
     summary:
-      "Patient management system with secure data handling",
+      "Oplero er en smart læringsplattform som transformerer undervisning ved å gjøre den inkluderende og effektiv. Den fjerner administrativ byrde for forelesere gjennom automatisert gruppeinndeling, samtidig som den sikrer lik tilgang til læringsinnhold for alle studenter via GDPR-kompatible opptak, teksting og AI-verktøy.",
     description:
-      "A secure healthcare portal enabling patients to access medical records, book appointments, and communicate with healthcare providers.",
+      "Oplero er en GDPR-kompatibel digital læringsplattform utviklet for å adressere kritiske utfordringer i høyere utdanning, spesielt mangelen på fleksibilitet, tilgjengelighet og ineffektiv administrativ praksis. Prosjektets kjernefokus er å bygge en robust løsning som ivaretar både studenters læringsbehov og foreleseres administrative byrde.",
     goals: [
-      "Provide secure access to medical records",
-      "Streamline appointment booking process",
-      "Enable secure patient-doctor communication",
-      "Ensure HIPAA and GDPR compliance",
+      "Tilgjengelighet og Inkludering",
+      "Automatisert Effektivitet",
+      "Engasjement og Innsikt",
+      "Sikre overholdelse GDPR",
     ],
     responsibilities: [
-      "Frontend development with focus on accessibility",
-      "Secure API development",
-      "Integration with existing healthcare systems",
-      "Security auditing and compliance",
-      "User research and UX design",
+      "Utvikling av Kjernefunksjonalitet	Utvikle AI-motor for sanntidsteksting og transkripsjon. Kode algoritmen for preferansebasert auto-gruppeinndeling. Bygge modul for anonym spørsmålschat",
+      "Sikre Compliance og Sikkerhet	Implementere kryptering av lagrede data. Etablere prosedyrer for Feide/2FA autentisering. Utføre juridisk gjennomgang for full GDPR-kompatibilitet",
+      "Design og Brukeropplevelse	Utvikle rollebasert UI (Analytisk for foreleser, Forenklet for student). Sikre Universell Utforming i hele plattformen.",
+      "Infrastruktur og Ytelse	Sette opp skylagring og database (SQL/NoSQL). Teste ytelsen mot 200 samtidige brukere."
     ],
     outcomes: [
-      "50K+ active users in first 6 months",
-      "Reduced appointment no-shows by 30%",
-      "Achieved full HIPAA compliance",
-      "95% user satisfaction rating",
+      "Økt Effektivitet for Foreleser:	Reduksjon av administrativ tid brukt på gruppeinndeling (Timer spart). Økt tilfredshet med arbeidshverdagen (Stressfri gruppesamarbeid).",
+      "Bedre Læringsutbytte:	Økning i studentenes gjennomføringsgrad og redusert frafall/stryk. Høyere score på læringsutbyttemålinger.",
+      "Forbedret Tilgjengelighet:	100% av innholdet er tilgjengelig for studenter uavhengig av fravær eller språkbarriere (Fleksibel og tilpasset læring)",
+      "Strategisk Verdi for Institusjonen:	Forsterket omdømme som en digital og studentvennlig institusjon. Redusert juridisk risiko knyttet til håndtering av videoopptak og personvern.",
+      "Pedagogisk Kvalitet:	Økt studentengasjement målt gjennom bruksdata i Oplero Engage. Forbedret formidlingsevne hos foreleser (kvalitativt mål).",
     ],
-    tags: ["Healthcare", "Web", "Security"],
+    tags: ["Education", "GDPR", "Availability", "AI", "Automation", "Efficiency", "Engagement"],
     tech: [
       "React",
       "TypeScript",
-      "Node.js",
-      "MongoDB",
-      "AWS",
-      "Encryption",
+      "MySQL",
+      "Cloud storage",
+      "AI speech-to-text",
+      "Desktop & Mobile App (IOS/Android)",
+      "2FA/Feide Authentication",
+      "Hendelsesloggging",
     ],
-    teamMemberIds: ["1", "3", "4", "5"],
+    teamMemberIds: ["1", "2", "3", "4"],
     coverImage:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1080",
+      "https://cdn.pixabay.com/photo/2020/10/17/15/14/girl-5662435_1280.jpg",
     images: [
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800",
-      "https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=800",
+      "https://cdn.pixabay.com/photo/2023/01/02/21/11/conference-7693055_1280.jpg",
+      "https://cdn.pixabay.com/photo/2017/07/31/11/21/people-2557399_1280.jpg",
     ],
   },
   {
     id: "3",
-    title: "Analytics Dashboard",
-    summary:
-      "Real-time data visualization platform for business intelligence",
-    description:
-      "A powerful analytics dashboard providing real-time insights into business metrics with customizable widgets and reports.",
-    goals: [
-      "Create intuitive data visualization tools",
-      "Support real-time data streaming",
-      "Enable custom report generation",
-      "Provide role-based access control",
-    ],
-    responsibilities: [
-      "Frontend development with complex visualizations",
-      "Real-time data pipeline setup",
-      "Database optimization for analytics queries",
-      "Infrastructure scaling and monitoring",
-      "Dashboard UI/UX design",
-    ],
-    outcomes: [
-      "Processing 1M+ data points per minute",
-      "Reduced report generation time from hours to seconds",
-      "Adopted by 100+ teams across organization",
-      "Winner of internal innovation award",
-    ],
-    tags: ["Analytics", "Dashboard", "Data"],
-    tech: [
-      "React",
-      "D3.js",
-      "Python",
-      "Kafka",
-      "ClickHouse",
-      "Kubernetes",
-    ],
-    teamMemberIds: ["1", "2", "4", "6"],
-    coverImage:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1080",
-    images: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
-    ],
-    links: {
-      demo: "https://analytics.example.com",
-      repo: "https://github.com/example/analytics",
-    },
-  },
-  {
-    id: "4",
-    title: "Mobile Banking App",
-    summary:
-      "Secure mobile banking application with biometric authentication",
-    description:
-      "A modern mobile banking application offering secure transactions, budget tracking, and personalized financial insights.",
-    goals: [
-      "Provide secure and convenient mobile banking",
-      "Implement biometric authentication",
-      "Offer personal finance management tools",
-      "Ensure compliance with banking regulations",
-    ],
-    responsibilities: [
-      "Mobile app development for iOS and Android",
-      "Security implementation and testing",
-      "Backend API development",
-      "Cloud infrastructure setup",
-      "User experience design and testing",
-    ],
-    outcomes: [
-      "200K+ downloads in first 3 months",
-      "Zero security breaches",
-      "4.8/5 star rating on app stores",
-      "Reduced customer service calls by 25%",
-    ],
-    tags: ["Mobile", "Finance", "Security"],
-    tech: [
-      "React Native",
-      "Node.js",
-      "PostgreSQL",
-      "AWS",
-      "Biometrics",
-      "Encryption",
-    ],
-    teamMemberIds: ["2", "3", "4", "6"],
-    coverImage:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1080",
-    images: [
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800",
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800",
-    ],
-  },
-  {
-    id: "5",
     title: "Power – Forretningssystemer (Høst 2024)",
     summary:
       "Et omfattende gruppeprosjekt i faget Forretningssystemer ved Høgskolen i Østfold som analyserte hvordan bedriften Power bruker ERP- og forretningssystemer for å skape verdi og effektivisere interne prosesser.",
@@ -719,14 +631,14 @@ export const projects: Project[] = [
       "3": ["Process Analyst", "Quality Assurance"]
     },
     coverImage:
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1080",
+      "",
     images: [
       "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800",
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
     ],
   },
   {
-    id: "6",
+    id: "4",
     title: "Trolljegeren – UI-designprosjekt (Vår 2025)",
     summary:
       "Et omfattende UI-designprosjekt gjennomført ved Høgskolen i Østfold for å utvikle en digital løsning som øker engasjementet rundt Trollstien og Ormtjernhytta i Halden. Prosjektet resulterte i en fungerende prototype av en mobilapp som bruker gamification for å motivere barn til å utforske naturen.",
@@ -751,7 +663,7 @@ export const projects: Project[] = [
       "Løsningen viser hvordan gamification kan brukes til å øke deltakelse og opplevelsesverdi",
       "Verdifull erfaring innen UI/UX design og brukertesting",
     ],
-    tags: ["UI/UX Design", "Gamification", "Mobile App"],
+    tags: ["UI/UX Design", "Gamification", "Prototyping", "Mobile App"],
     tech: [
       "Figma",
       "Miro",
@@ -765,21 +677,21 @@ export const projects: Project[] = [
       "Design Thinking",
       "Usability Testing",
     ],
-    teamMemberIds: ["1", "2", "4"],
+    teamMemberIds: ["1", "2", "3"],
     teamMemberRoles: {
-      "1": ["UX Designer", "Project Coordinator"],
-      "2": ["UI Designer", "Prototyping Specialist"],
-      "4": ["Developer", "Testing Coordinator"]
+      "1": ["UX Designer", "Game Mechanic Specialist"],
+      "2": ["Project Manager", "UI Designer", "Prototyping Specialist"],
+      "3": ["Developer", "Testing Coordinator"]
     },
     coverImage:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1080",
+      "/syntax-flow2/images/logoUbg.png",
     images: [
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800",
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+      "/syntax-flow2/images/explorer.png",
+      "/syntax-flow2/images/hunter.png",
     ],
     links: {
       demo: "https://flowerafro.github.io/Trolljegern/",
-      demoText: "Go to website",
+      demoText: "Trolljegeren Teaser",
     },
   },
 ];
