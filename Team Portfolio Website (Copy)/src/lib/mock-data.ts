@@ -150,6 +150,10 @@ export const teamMembers: TeamMember[] = [
     bio: "My expertise lies at the intersection of technology, project management, and design – a place where I can create, develop, optimize, and deliver user-friendly solutions.",
     skills: [
       "Project Management",
+      "Coordination",
+      "Event Production",
+      "Logistics",
+      "Design Thinking",
       "Frontend Development",
       "CSS and Web Design",
       "Responsive Design",
@@ -162,19 +166,32 @@ export const teamMembers: TeamMember[] = [
       "Flexibility",
       "Time Management",
       "Git/GitHub",
+      "API Integration",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "HTML",
+      "Digital Marketing",
+      "Sanity CMS",
+      "MYSQL",
+      "Cloudflare",
     ],
     avatar:
-      "/syntax-flow2/images/Line.jpg", // REPLACE with your profile image URL
+      "/syntax-flow2/images/Line.jpg",
     highlights: [
-      "PLACEHOLDER: Add your first career highlight",
-      "Helped digitalize the booking system for Bakcstage M&P",
-      "Developed a organized ",
+      "Etablerte standardiserte digitale systemer for kjøre- og fremdriftsplaner (via Google Docs/Excel) for å effektivisere informasjonsflyt og sikre umiddelbar tilgjengelighet for alle team.",
+      "Initierte og ledet overgangen til bookingsystemet ABOSS, inkludert dataoverføring og Change Management-opplæring av teamet, for å digitalisere kontrakt- og bookinghåndtering",
     ],
     experience: [
       {
-        title: "Metro Driver", // Replace with job title
-        company: "Sporveien AS", // Replace with company name
-        period: "2020 - 2025", // Replace with period
+        title: "Metro Driver",
+        company: "Sporveien AS",
+        period: "2020 - 2025",
+      },
+      {
+        title: "Project Leader: UI-Design project",
+        company: "Oslo Konserthus",
+        period: "2018 - 2020",
       },
       {
         title: "Production Manager",
@@ -239,10 +256,28 @@ export const teamMembers: TeamMember[] = [
     ],
     education: [
       {
-        degree: "B.Sc. Information Technology", // Replace with degree
+        degree: "Bachelor i Informasjonssystemer",
         institution:
-          "Norwegian University of Science and Technology", // Replace with institution
-        year: "2017", // Replace with year
+          "Høgskolen i Østfold",
+        year: "2026",
+      },
+      {
+        degree: "Diploma i Prosjektledelse",
+        institution:
+          "Nordic Institute for Stage and Studio (NISS)",
+        year: "2013",
+      },
+      {
+        degree: "Year Study in Nutrition Science",
+        institution:
+          "Bjørknes Høyskole",
+        year: "2016",
+      },
+      {
+        degree: "Year Study in Social Nutrition Studies",
+        institution:
+          "Høgskolen i Oslo & Akershus (HiOA)",
+        year: "2017",
       },
     ],
     links: {
