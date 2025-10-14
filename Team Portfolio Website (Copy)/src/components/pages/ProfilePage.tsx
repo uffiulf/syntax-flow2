@@ -178,6 +178,36 @@ export const ProfilePage: React.FC = () => {
           </Card>
         </div>
 
+        {/* Min nettside - Special section for Khalid */}
+        {member.id === "4" && member.links.website && (
+          <Card className="mb-8 overflow-hidden">
+            <CardContent className="p-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                <div className="p-8 flex flex-col justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-950/20 dark:to-indigo-950/20">
+                  <h2 className="text-2xl font-bold mb-4">Min nettside</h2>
+                  <p className="text-muted-foreground mb-6">
+                    Besøk min personlige nettside for å se mine prosjekter, erfaringer og mer om min reise som utvikler.
+                  </p>
+                  <Button asChild className="w-fit">
+                    <a href={member.links.website} target="_blank" rel="noopener noreferrer">
+                      <Globe className="h-4 w-4 mr-2" />
+                      Besøk nettsiden
+                    </a>
+                  </Button>
+                </div>
+                <div className="relative h-64 lg:h-full min-h-[300px]">
+                  <ImageWithFallback
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+                    alt="Khalid's Website Preview"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Highlights */}
         {member.highlights && member.highlights.length > 0 && (
           <Card className="mb-8">
