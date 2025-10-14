@@ -147,9 +147,8 @@ export const teamMembers: TeamMember[] = [
     avatar:
       "./src/assets/Line.jpg", // REPLACE with your profile image URL
     highlights: [
-      "PLACEHOLDER: Add your first career highlight",
-      "Helped digitalize the booking system for Bakcstage M&P",
-      "Developed a organized ",
+      "Etablerte standardiserte digitale systemer for kjøre- og fremdriftsplaner (via Google Docs/Excel) for å effektivisere informasjonsflyt og sikre umiddelbar tilgjengelighet for alle team.",
+      "Initierte og ledet overgangen til bookingsystemet ABOSS, inkludert dataoverføring og Change Management-opplæring av teamet, for å digitalisere kontrakt- og bookinghåndtering",
     ],
     experience: [
       {
