@@ -386,28 +386,28 @@ export const teamMembers: TeamMember[] = [
   // TEAM MEMBER 5
   {
     id: "5",
-    name: "YOUR NAME HERE", // Replace with actual name
-    role: ["UI/UX Designer", "Frontend Developer"], // Replace with actual roles
-    location: "Bergen, Norway", // Replace with location
-    bio: "PLACEHOLDER: Add your professional bio here. Describe your expertise, passion, and what you bring to the team.",
+    name: "Ludvig Valter Angell Uteng", // Replace with actual name
+    role: ["Utvikler", "Backend Developer", "Frontend Developer"], // Replace with actual roles
+    location: "Soul, Korea", // Replace with location
+    bio: "Erfaren utvikler med bred kompetanse innen både backend og frontend utvikling. Spesialisert i Java, JavaScript, React og moderne webteknologier. Har erfaring med fullstack-utvikling og brenner for å skape robuste og brukervennlige løsninger.",
     skills: [
-      "Figma",
-      "Adobe Creative Suite",
-      "React",
-      "CSS",
+      "Java",
       "JavaScript",
-      "User Research",
-      "Prototyping",
-      "Design Systems",
-      "Accessibility",
-      "Responsive Design",
+      "React",
+      "HTML",
+      "CSS",
+      "Kotlin",
+      "Backend Development",
+      "Frontend Development",
+      "Full Stack Development",
+      "Web Development",
     ],
     avatar:
       "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400", // REPLACE with your profile image URL
     highlights: [
-      "PLACEHOLDER: Add your first career highlight",
-      "PLACEHOLDER: Add your second career highlight",
-      "PLACEHOLDER: Add your third career highlight",
+      "Fullstack-utvikler med kompetanse innen både backend og frontend",
+      "Spesialisert i Java, JavaScript og React-utvikling",
+      "Erfaring med moderne webteknologier og utviklingsmetodikk",
     ],
     experience: [
       {
@@ -429,14 +429,14 @@ export const teamMembers: TeamMember[] = [
       },
     ],
     links: {
-      email: "your.email@example.com", // Replace with email
-      github: "https://github.com/yourusername", // Replace or remove
-      linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
+      email: "ludvig.uteng@example.com", // Replace with email
+      github: "https://github.com/Valtyr-Angel", // Replace or remove
+      linkedin: "https://linkedin.com/in/ludvig-valter-angell-uteng", // Replace or remove
     },
     contactInfo: {
-      phone: "+47 987 65 432", // Replace with phone number
-      email: "your.email@example.com", // Replace with email
-      address: "Bergen, Norway", // Replace with address/city
+      phone: "+82 10-0000-0000", // Replace with phone number
+      email: "ludvig.uteng@example.com", // Replace with email
+      address: "Soul, Korea", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
     projectIds: ["2", "3", "4"],
