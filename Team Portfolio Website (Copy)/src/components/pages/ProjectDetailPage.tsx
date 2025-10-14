@@ -202,7 +202,7 @@ export const ProjectDetailPage: React.FC = () => {
                     <Avatar className="w-16 h-16">
                       <AvatarImage src={member.avatar} alt={member.name} />
                       <AvatarFallback>
-                        {member.name.split(' ').map((n) => n[0]).join('')}
+                        {member.name ? member.name.split(' ').map((n) => n[0]).join('') : '??'}
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex-1">

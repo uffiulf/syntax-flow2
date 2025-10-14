@@ -185,7 +185,7 @@ export const ProjectsPage: React.FC = () => {
                           <Avatar key={member.id} className="w-8 h-8 border-2 border-background">
                             <AvatarImage src={member.avatar} alt={member.name} />
                             <AvatarFallback className="text-xs">
-                              {member.name.split(' ').map((n) => n[0]).join('')}
+                              {member.name ? member.name.split(' ').map((n) => n[0]).join('') : '??'}
                             </AvatarFallback>
                           </Avatar>
                         ))}

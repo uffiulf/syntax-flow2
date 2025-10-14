@@ -55,14 +55,14 @@ export const ProfilePage: React.FC = () => {
               <Avatar className="w-32 h-32 ring-4 ring-primary/20">
                 <AvatarImage src={member.avatar} alt={member.name} />
                 <AvatarFallback className="text-2xl">
-                  {member.name.split(' ').map((n) => n[0]).join('')}
+                  {member.name ? member.name.split(' ').map((n) => n[0]).join('') : '??'}
                 </AvatarFallback>
               </Avatar>
 
               <div className="flex-1">
                 <h1 className="text-3xl sm:text-4xl mb-2">{member.name}</h1>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {member.role.map((role) => (
+                  {member.role && member.role.map((role) => (
                     <Badge key={role}>{role}</Badge>
                   ))}
                 </div>
@@ -234,7 +234,7 @@ export const ProfilePage: React.FC = () => {
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">
-              {member.skills.map((skill) => (
+              {member.skills && member.skills.map((skill) => (
                 <Badge key={skill} variant="secondary">
                   {skill}
                 </Badge>

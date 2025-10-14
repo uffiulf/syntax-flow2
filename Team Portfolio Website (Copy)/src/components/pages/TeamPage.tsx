@@ -39,7 +39,7 @@ export const TeamPage: React.FC = () => {
     if (searchQuery) {
       filtered = filtered.filter(member =>
         member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        member.skills.some(skill => skill.toLowerCase().includes(searchQuery.toLowerCase()))
+        member.skills && member.skills.some(skill => skill.toLowerCase().includes(searchQuery.toLowerCase()))
       );
     }
 
@@ -135,13 +135,13 @@ export const TeamPage: React.FC = () => {
                     <Avatar className="w-24 h-24 ring-4 ring-background group-hover:ring-primary transition-all">
                       <AvatarImage src={member.avatar} alt={member.name} />
                       <AvatarFallback>
-                        {member.name.split(' ').map((n) => n[0]).join('')}
+                        {member.name ? member.name.split(' ').map((n) => n[0]).join('') : '??'}
                       </AvatarFallback>
                     </Avatar>
                   </div>
                   <h3>{member.name}</h3>
                   <div className="flex flex-wrap gap-1 justify-center mt-2">
-                    {member.role.map((role) => (
+                    {member.role && member.role.map((role) => (
                       <Badge key={role} variant="secondary" className="text-xs">
                         {role}
                       </Badge>
@@ -154,12 +154,12 @@ export const TeamPage: React.FC = () => {
                     {member.bio}
                   </p>
                   <div className="flex flex-wrap gap-1 justify-center">
-                    {member.skills.slice(0, 4).map((skill) => (
+                    {member.skills && member.skills.slice(0, 4).map((skill) => (
                       <Badge key={skill} variant="outline" className="text-xs">
                         {skill}
                       </Badge>
                     ))}
-                    {member.skills.length > 4 && (
+                    {member.skills && member.skills.length > 4 && (
                       <Badge variant="outline" className="text-xs">
                         +{member.skills.length - 4}
                       </Badge>

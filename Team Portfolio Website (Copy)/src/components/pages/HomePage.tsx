@@ -43,7 +43,7 @@ export const HomePage: React.FC = () => {
   const roles = ['Developer', 'DevOps', 'Project Manager', 'Designer'];
 
   useEffect(() => {
-    const timers: NodeJS.Timeout[] = [];
+    const timers: ReturnType<typeof setTimeout>[] = [];
     
     // "From idea" / "Fra idé" appears immediately
     timers.push(setTimeout(() => setVisibleWords(1), 0));
@@ -289,13 +289,13 @@ export const HomePage: React.FC = () => {
                     <Avatar className="w-24 h-24 ring-4 ring-background group-hover:ring-primary transition-all">
                       <AvatarImage src={member.avatar} alt={member.name} />
                       <AvatarFallback>
-                        {member.name.split(' ').map((n) => n[0]).join('')}
+                        {member.name ? member.name.split(' ').map((n) => n[0]).join('') : '??'}
                       </AvatarFallback>
                     </Avatar>
                   </div>
                   <h3>{member.name}</h3>
                   <div className="flex flex-wrap gap-1 justify-center mt-2">
-                    {member.role.map((role) => (
+                    {member.role && member.role.map((role) => (
                       <Badge key={role} variant="secondary" className="text-xs">
                         {role}
                       </Badge>
@@ -304,7 +304,7 @@ export const HomePage: React.FC = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-1 justify-center">
-                    {member.skills.slice(0, 3).map((skill) => (
+                    {member.skills && member.skills.slice(0, 3).map((skill) => (
                       <Badge key={skill} variant="outline" className="text-xs">
                         {skill}
                       </Badge>

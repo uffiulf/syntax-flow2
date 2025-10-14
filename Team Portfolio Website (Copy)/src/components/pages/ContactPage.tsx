@@ -185,13 +185,13 @@ export const ContactPage: React.FC = () => {
                     <Avatar className="w-20 h-20 ring-4 ring-background group-hover:ring-primary transition-all">
                       <AvatarImage src={member.avatar} alt={member.name} />
                       <AvatarFallback>
-                        {member.name.split(' ').map((n) => n[0]).join('')}
+                        {member.name ? member.name.split(' ').map((n) => n[0]).join('') : '??'}
                       </AvatarFallback>
                     </Avatar>
                   </div>
                   <h3 className="mb-2">{member.name}</h3>
                   <div className="flex flex-wrap gap-1 justify-center">
-                    {member.role.map((role) => (
+                    {member.role && member.role.map((role) => (
                       <Badge key={role} variant="secondary" className="text-xs">
                         {role}
                       </Badge>
