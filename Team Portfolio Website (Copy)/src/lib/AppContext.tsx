@@ -111,7 +111,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     };
 
     // Handle mouse button 4 (back button)
-    const handleMouseDown = (event: MouseEvent) => {
+    const handleMouseUp = (event: MouseEvent) => {
       if (event.button === 3) { // Mouse button 4 (back button)
         event.preventDefault();
         goBack();
@@ -125,14 +125,14 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
     // Add event listeners
     window.addEventListener('popstate', handlePopState);
-    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseup', handleMouseUp);
 
     // Update URL when currentPage changes
     updateUrl(currentPage);
 
     return () => {
       window.removeEventListener('popstate', handlePopState);
-      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mouseup', handleMouseUp);
     };
   }, [currentPage]);
 

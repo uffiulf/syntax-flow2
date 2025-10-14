@@ -640,7 +640,52 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "5",
+    id: "2",
+    title: "Project Management: Oplero (Ongoing)",
+    summary:
+      "Oplero er en smart læringsplattform som transformerer undervisning ved å gjøre den inkluderende og effektiv. Den fjerner administrativ byrde for forelesere gjennom automatisert gruppeinndeling, samtidig som den sikrer lik tilgang til læringsinnhold for alle studenter via GDPR-kompatible opptak, teksting og AI-verktøy.",
+    description:
+      "Oplero er en GDPR-kompatibel digital læringsplattform utviklet for å adressere kritiske utfordringer i høyere utdanning, spesielt mangelen på fleksibilitet, tilgjengelighet og ineffektiv administrativ praksis. Prosjektets kjernefokus er å bygge en robust løsning som ivaretar både studenters læringsbehov og foreleseres administrative byrde.",
+    goals: [
+      "Tilgjengelighet og Inkludering",
+      "Automatisert Effektivitet",
+      "Engasjement og Innsikt",
+      "Sikre overholdelse GDPR",
+    ],
+    responsibilities: [
+      "Utvikling av Kjernefunksjonalitet	Utvikle AI-motor for sanntidsteksting og transkripsjon. Kode algoritmen for preferansebasert auto-gruppeinndeling. Bygge modul for anonym spørsmålschat",
+      "Sikre Compliance og Sikkerhet	Implementere kryptering av lagrede data. Etablere prosedyrer for Feide/2FA autentisering. Utføre juridisk gjennomgang for full GDPR-kompatibilitet",
+      "Design og Brukeropplevelse	Utvikle rollebasert UI (Analytisk for foreleser, Forenklet for student). Sikre Universell Utforming i hele plattformen.",
+      "Infrastruktur og Ytelse	Sette opp skylagring og database (SQL/NoSQL). Teste ytelsen mot 200 samtidige brukere."
+    ],
+    outcomes: [
+      "Økt Effektivitet for Foreleser:	Reduksjon av administrativ tid brukt på gruppeinndeling (Timer spart). Økt tilfredshet med arbeidshverdagen (Stressfri gruppesamarbeid).",
+      "Bedre Læringsutbytte:	Økning i studentenes gjennomføringsgrad og redusert frafall/stryk. Høyere score på læringsutbyttemålinger.",
+      "Forbedret Tilgjengelighet:	100% av innholdet er tilgjengelig for studenter uavhengig av fravær eller språkbarriere (Fleksibel og tilpasset læring)",
+      "Strategisk Verdi for Institusjonen:	Forsterket omdømme som en digital og studentvennlig institusjon. Redusert juridisk risiko knyttet til håndtering av videoopptak og personvern.",
+      "Pedagogisk Kvalitet:	Økt studentengasjement målt gjennom bruksdata i Oplero Engage. Forbedret formidlingsevne hos foreleser (kvalitativt mål).",
+    ],
+    tags: ["Education", "GDPR", "Availability", "AI", "Automation", "Efficiency", "Engagement"],
+    tech: [
+      "React",
+      "TypeScript",
+      "MySQL",
+      "Cloud storage",
+      "AI speech-to-text",
+      "Desktop & Mobile App (IOS/Android)",
+      "2FA/Feide Authentication",
+      "Hendelsesloggging",
+    ],
+    teamMemberIds: ["1", "2", "3", "4"],
+    coverImage:
+      "https://cdn.pixabay.com/photo/2020/10/17/15/14/girl-5662435_1280.jpg",
+    images: [
+      "https://cdn.pixabay.com/photo/2023/01/02/21/11/conference-7693055_1280.jpg",
+      "https://cdn.pixabay.com/photo/2017/07/31/11/21/people-2557399_1280.jpg",
+    ],
+  },
+  {
+    id: "3",
     title: "Power – Forretningssystemer (Høst 2024)",
     summary:
       "Et omfattende gruppeprosjekt i faget Forretningssystemer ved Høgskolen i Østfold som analyserte hvordan bedriften Power bruker ERP- og forretningssystemer for å skape verdi og effektivisere interne prosesser.",
@@ -680,14 +725,14 @@ export const projects: Project[] = [
       "2": ["System Analyst", "Documentation Specialist"]
     },
     coverImage:
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1080",
+      "",
     images: [
       "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800",
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
     ],
   },
   {
-    id: "6",
+    id: "4",
     title: "Trolljegeren – UI-designprosjekt (Vår 2025)",
     summary:
       "Et omfattende UI-designprosjekt gjennomført ved Høgskolen i Østfold for å utvikle en digital løsning som øker engasjementet rundt Trollstien og Ormtjernhytta i Halden. Prosjektet resulterte i en fungerende prototype av en mobilapp som bruker gamification for å motivere barn til å utforske naturen.",
@@ -712,7 +757,7 @@ export const projects: Project[] = [
       "Løsningen viser hvordan gamification kan brukes til å øke deltakelse og opplevelsesverdi",
       "Verdifull erfaring innen UI/UX design og brukertesting",
     ],
-    tags: ["UI/UX Design", "Gamification", "Mobile App"],
+    tags: ["UI/UX Design", "Gamification", "Prototyping", "Mobile App"],
     tech: [
       "Figma",
       "Miro",
@@ -726,21 +771,21 @@ export const projects: Project[] = [
       "Design Thinking",
       "Usability Testing",
     ],
-    teamMemberIds: ["3", "1", "2"],
+    teamMemberIds: ["1", "2", "3"],
     teamMemberRoles: {
-      "3": ["Business Analyst", "QA Specialist"],
-      "1": ["UX Designer", "Project Coordinator"],
-      "2": ["UI Designer", "Prototyping Specialist"]
+      "1": ["UX Designer", "Game Mechanic Specialist"],
+      "2": ["Project Manager", "UI Designer", "Prototyping Specialist"],
+      "3": ["Developer", "Testing Coordinator"]
     },
     coverImage:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1080",
+      "/syntax-flow2/images/logoUbg.png",
     images: [
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800",
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+      "/syntax-flow2/images/explorer.png",
+      "/syntax-flow2/images/hunter.png",
     ],
     links: {
       demo: "https://flowerafro.github.io/Trolljegern/",
-      demoText: "Go to website",
+      demoText: "Trolljegeren Teaser",
     },
   },
 ];
