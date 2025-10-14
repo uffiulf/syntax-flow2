@@ -48,7 +48,7 @@ export const teamMembers: TeamMember[] = [
       "Miro",
     ],
     avatar:
-      "./src/assets/olav.jpg", // REPLACE with your profile image URL
+      "/src/assets/olav.jpg", // REPLACE with your profile image URL
     highlights: [
       "Omfattende kompetanse innen prosjektledelse med Agile/Scrum og Waterfall-metodikk",
       "Ekspertise i forretningssystemer, ERP/CRM og prosesskartlegging",
@@ -145,7 +145,7 @@ export const teamMembers: TeamMember[] = [
       "Git/GitHub",
     ],
     avatar:
-      "./src/assets/Line.jpg", // REPLACE with your profile image URL
+      "/src/assets/Line.jpg", // REPLACE with your profile image URL
     highlights: [
       "PLACEHOLDER: Add your first career highlight",
       "PLACEHOLDER: Add your second career highlight",
@@ -264,7 +264,7 @@ export const teamMembers: TeamMember[] = [
       "Datasikkerhet",
     ],
     avatar:
-      "./src/assets/khalid.jpg", // REPLACE with your profile image URL
+      "/src/assets/khalid.jpg", // REPLACE with your profile image URL
     highlights: [
       "Ekspertise innen kodeutvikling og problemløsning",
       "Lidenskap for å bygge prosjekter fra idé til ferdig løsning",
