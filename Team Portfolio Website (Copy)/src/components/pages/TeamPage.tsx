@@ -151,7 +151,10 @@ export const TeamPage: React.FC = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground text-center mb-4 line-clamp-2">
-                    {member.bio}
+                    {typeof member.bio === 'string' 
+                      ? member.bio 
+                      : member.bio[language]
+                    }
                   </p>
                   <div className="flex flex-wrap gap-1 justify-center">
                     {member.skills && member.skills.slice(0, 4).map((skill) => (

@@ -48,8 +48,14 @@ export const ProjectsPage: React.FC = () => {
     if (searchQuery) {
       filtered = filtered.filter(project =>
         project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.description.toLowerCase().includes(searchQuery.toLowerCase())
+        (typeof project.summary === 'string' 
+          ? project.summary.toLowerCase().includes(searchQuery.toLowerCase())
+          : project.summary[language].toLowerCase().includes(searchQuery.toLowerCase())
+        ) ||
+        (typeof project.description === 'string' 
+          ? project.description.toLowerCase().includes(searchQuery.toLowerCase())
+          : project.description[language].toLowerCase().includes(searchQuery.toLowerCase())
+        )
       );
     }
 
@@ -160,7 +166,10 @@ export const ProjectsPage: React.FC = () => {
                   <CardHeader>
                     <h3>{project.title}</h3>
                     <p className="text-sm text-muted-foreground line-clamp-2">
-                      {project.summary}
+                      {typeof project.summary === 'string' 
+                        ? project.summary 
+                        : project.summary[language]
+                      }
                     </p>
                   </CardHeader>
 

@@ -63,7 +63,12 @@ export const ProjectDetailPage: React.FC = () => {
               ))}
             </div>
             <h1 className="text-4xl sm:text-5xl mb-4">{project.title}</h1>
-            <p className="text-lg text-muted-foreground">{project.summary}</p>
+            <p className="text-lg text-muted-foreground">
+              {typeof project.summary === 'string' 
+                ? project.summary 
+                : project.summary[language]
+              }
+            </p>
           </div>
         </div>
 
@@ -92,7 +97,12 @@ export const ProjectDetailPage: React.FC = () => {
         {/* Description */}
         <Card className="mb-8">
           <CardContent className="p-6">
-            <p className="text-muted-foreground">{project.description}</p>
+            <p className="text-muted-foreground">
+              {typeof project.description === 'string' 
+                ? project.description 
+                : project.description[language]
+              }
+            </p>
           </CardContent>
         </Card>
 
@@ -119,7 +129,10 @@ export const ProjectDetailPage: React.FC = () => {
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
-              {project.goals.map((goal, idx) => (
+              {(Array.isArray(project.goals) 
+                ? project.goals 
+                : project.goals[language]
+              ).map((goal, idx) => (
                 <li key={idx} className="flex items-start">
                   <div className="w-2 h-2 rounded-full bg-primary mt-2 mr-3 flex-shrink-0" />
                   <span className="text-muted-foreground">{goal}</span>
@@ -136,7 +149,10 @@ export const ProjectDetailPage: React.FC = () => {
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
-              {project.responsibilities.map((resp, idx) => (
+              {(Array.isArray(project.responsibilities) 
+                ? project.responsibilities 
+                : project.responsibilities[language]
+              ).map((resp, idx) => (
                 <li key={idx} className="flex items-start">
                   <div className="w-2 h-2 rounded-full bg-primary mt-2 mr-3 flex-shrink-0" />
                   <span className="text-muted-foreground">{resp}</span>
@@ -153,7 +169,10 @@ export const ProjectDetailPage: React.FC = () => {
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
-              {project.outcomes.map((outcome, idx) => (
+              {(Array.isArray(project.outcomes) 
+                ? project.outcomes 
+                : project.outcomes[language]
+              ).map((outcome, idx) => (
                 <li key={idx} className="flex items-start">
                   <div className="w-2 h-2 rounded-full bg-primary mt-2 mr-3 flex-shrink-0" />
                   <span className="text-muted-foreground">{outcome}</span>

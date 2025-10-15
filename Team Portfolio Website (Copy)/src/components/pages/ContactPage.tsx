@@ -201,7 +201,10 @@ export const ContactPage: React.FC = () => {
 
                 <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground text-center line-clamp-2">
-                    {member.bio}
+                    {typeof member.bio === 'string' 
+                      ? member.bio 
+                      : member.bio[language]
+                    }
                   </p>
 
                   <div className="space-y-2 pt-2 border-t">

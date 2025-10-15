@@ -3,7 +3,7 @@ export interface TeamMember {
   name: string;
   role: string[];
   location: string;
-  bio: string;
+  bio: string | { no: string; en: string };
   skills: string[];
   avatar: string;
   highlights: string[];
@@ -11,7 +11,7 @@ export interface TeamMember {
     title: string;
     company: string;
     period: string;
-    description?: string;
+    description?: string | { no: string; en: string };
   }[];
   education?: {
     degree: string;
@@ -36,11 +36,11 @@ export interface TeamMember {
 export interface Project {
   id: string;
   title: string;
-  summary: string;
-  description: string;
-  goals: string[];
-  responsibilities: string[];
-  outcomes: string[];
+  summary: string | { no: string; en: string };
+  description: string | { no: string; en: string };
+  goals: string[] | { no: string[]; en: string[] };
+  responsibilities: string[] | { no: string[]; en: string[] };
+  outcomes: string[] | { no: string[]; en: string[] };
   tags: string[];
   tech: string[];
   teamMemberIds: string[];

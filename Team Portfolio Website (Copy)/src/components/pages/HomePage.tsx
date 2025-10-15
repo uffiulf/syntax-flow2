@@ -250,7 +250,12 @@ export const HomePage: React.FC = () => {
               </div>
               <CardHeader>
                 <h3>{project.title}</h3>
-                <p className="text-muted-foreground">{project.summary}</p>
+                <p className="text-muted-foreground">
+                  {typeof project.summary === 'string' 
+                    ? project.summary 
+                    : project.summary[language]
+                  }
+                </p>
               </CardHeader>
               <CardFooter className="flex flex-wrap gap-2">
                 {project.tech.slice(0, 3).map((tech) => (

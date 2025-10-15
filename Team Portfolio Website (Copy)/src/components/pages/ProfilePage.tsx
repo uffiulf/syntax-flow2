@@ -136,7 +136,12 @@ export const ProfilePage: React.FC = () => {
               <h2>{t.profile.bio}</h2>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">{member.bio}</p>
+              <p className="text-muted-foreground">
+                {typeof member.bio === 'string' 
+                  ? member.bio 
+                  : member.bio[language]
+                }
+              </p>
             </CardContent>
           </Card>
 
@@ -267,7 +272,10 @@ export const ProfilePage: React.FC = () => {
                     <CardContent className="p-4">
                       <h4>{project.title}</h4>
                       <p className="text-sm text-muted-foreground line-clamp-2">
-                        {project.summary}
+                        {typeof project.summary === 'string' 
+                          ? project.summary 
+                          : project.summary[language]
+                        }
                       </p>
                       <div className="flex flex-wrap gap-1 mt-2">
                         {project.tags.slice(0, 2).map((tag) => (
@@ -300,7 +308,12 @@ export const ProfilePage: React.FC = () => {
                       <p className="text-muted-foreground">{exp.company}</p>
                       <p className="text-sm text-muted-foreground">{exp.period}</p>
                       {exp.description && (
-                        <p className="text-sm text-muted-foreground mt-2">{exp.description}</p>
+                        <p className="text-sm text-muted-foreground mt-2">
+                          {typeof exp.description === 'string' 
+                            ? exp.description 
+                            : exp.description[language]
+                          }
+                        </p>
                       )}
                     </div>
                   </div>
