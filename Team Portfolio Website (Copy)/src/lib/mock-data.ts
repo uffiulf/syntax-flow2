@@ -132,8 +132,8 @@ export const teamMembers: TeamMember[] = [
     ],
     links: {
       email: "olav.lilje@gmail.com", // Replace with email
-      github: "https://www.linkedin.com/in/olav-liljeberg-943306348/", // Replace or remove
-      linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
+      github: "https://github.com/uffiulf", // Replace or remove
+      linkedin: "https://www.linkedin.com/in/olav-liljeberg-943306348/", // Replace or remove
     },
     contactInfo: {
       phone: "+47 944 86 477", // Replace with phone number
