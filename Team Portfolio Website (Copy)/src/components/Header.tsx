@@ -24,7 +24,6 @@ export const Header: React.FC = () => {
     { key: 'team', label: t.nav.team, page: 'team' as const },
     { key: 'projects', label: t.nav.projects, page: 'projects' as const },
     { key: 'fun', label: t.nav.fun, page: 'fun' as const },
-    { key: 'contact', label: t.nav.contact, page: 'contact' as const },
   ];
 
   const handleNavClick = (page: typeof currentPage) => {
