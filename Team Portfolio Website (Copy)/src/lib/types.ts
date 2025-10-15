@@ -55,4 +55,4 @@ export interface Project {
 }
 
 export type Language = 'en' | 'no';
-export type Page = 'home' | 'team' | 'projects' | 'profile' | 'project-detail' | 'fun';
+export type Page = 'home' | 'team' | 'projects' | 'contact' | 'profile' | 'project-detail' | 'fun';

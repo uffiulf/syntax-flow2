@@ -116,6 +116,17 @@ export const Footer: React.FC = () => {
                   {t.nav.projects}
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={() => {
+                    setCurrentPage('contact');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {t.nav.contact}
+                </button>
+              </li>
             </ul>
           </div>
 

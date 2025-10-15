@@ -159,6 +159,13 @@ export const HomePage: React.FC = () => {
             >
               {t.home.viewAllProjects}
             </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => setCurrentPage('contact')}
+            >
+              {t.home.contactUs}
+            </Button>
           </div>
         </div>
       </section>

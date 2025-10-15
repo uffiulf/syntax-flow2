@@ -7,6 +7,7 @@ import { TeamPage } from "./components/pages/TeamPage";
 import { ProfilePage } from "./components/pages/ProfilePage";
 import { ProjectsPage } from "./components/pages/ProjectsPage";
 import { ProjectDetailPage } from "./components/pages/ProjectDetailPage";
+import { ContactPage } from "./components/pages/ContactPage";
 import { JustForFunPage } from "./components/pages/JustForFunPage";
 import { Toaster } from "./components/ui/sonner";
 
@@ -32,6 +33,8 @@ const AppContent: React.FC = () => {
         return <ProjectDetailPage />;
       case "fun":
         return <JustForFunPage />;
+      case "contact":
+        return <ContactPage />;
       default:
         return <HomePage />;
     }
