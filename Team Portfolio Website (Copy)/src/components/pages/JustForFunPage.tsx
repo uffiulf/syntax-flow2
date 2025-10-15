@@ -158,11 +158,80 @@ export const JustForFunPage: React.FC = () => {
     }
   };
 
-  // Fetch initial data on component mount
+  // Fetch initial data on component mount (without incrementing counters)
   useEffect(() => {
-    fetchJoke();
-    fetchRandomUser();
-    fetchBoredActivity();
+    // Fetch joke without incrementing counter
+    setLoading(true);
+    setError('');
+    fetch('https://icanhazdadjoke.com/', {
+      headers: {
+        'Accept': 'application/json',
+      },
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch joke');
+      }
+      return response.json();
+    })
+    .then((data: DadJoke) => {
+      setJoke(data.joke);
+    })
+    .catch(err => {
+      setError(language === 'en' 
+        ? 'Failed to load joke. Please try again.' 
+        : 'Kunne ikke laste vits. Vennligst prøv igjen.');
+      console.error('Error fetching joke:', err);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+
+    // Fetch random user without incrementing counter
+    setUserLoading(true);
+    setUserError('');
+    fetch('https://randomuser.me/api/')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch user');
+      }
+      return response.json();
+    })
+    .then(data => {
+      setRandomUser(data.results[0]);
+    })
+    .catch(err => {
+      setUserError(language === 'en' 
+        ? 'Failed to load user. Please try again.' 
+        : 'Kunne ikke laste bruker. Vennligst prøv igjen.');
+      console.error('Error fetching user:', err);
+    })
+    .finally(() => {
+      setUserLoading(false);
+    });
+
+    // Fetch bored activity without incrementing counter
+    setActivityLoading(true);
+    setActivityError('');
+    fetch('https://apis.scrimba.com/bored/api/activity')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch activity');
+      }
+      return response.json();
+    })
+    .then((data: BoredActivity) => {
+      setBoredActivity(data);
+    })
+    .catch(err => {
+      setActivityError(language === 'en' 
+        ? 'Failed to load activity. Please try again.' 
+        : 'Kunne ikke laste aktivitet. Vennligst prøv igjen.');
+      console.error('Error fetching activity:', err);
+    })
+    .finally(() => {
+      setActivityLoading(false);
+    });
   }, []);
 
   const handleRandomStatus = () => {
