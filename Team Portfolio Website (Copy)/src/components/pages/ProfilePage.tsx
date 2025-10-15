@@ -115,14 +115,6 @@ export const ProfilePage: React.FC = () => {
                       </a>
                     </Button>
                   )}
-                  {member.contactInfo.email && (
-                    <Button variant="outline" asChild>
-                      <a href={`mailto:${member.contactInfo.email}`}>
-                        <Mail className="h-4 w-4 mr-2" />
-                        {t.profile.contact}
-                      </a>
-                    </Button>
-                  )}
                 </div>
               </div>
             </div>
