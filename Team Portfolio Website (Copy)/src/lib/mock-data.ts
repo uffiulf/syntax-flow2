@@ -148,7 +148,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: "2",
     name: "Line Henriksen", // Replace with actual name
-    role: ["Utvikler", "Designer UX/UI", "Frontend Developer"], // Replace with actual roles
+    role: ["Project Manager", "Business Analyst"], // Replace with actual roles
     location: "Fredrikstad, Norway", // Replace with location
     bio: {
       no: "En resultatorientert og løsningsfokusert fagperson med sterk evne til å kombinere teknologi, prosjektledelse og design. Kjent for høy effektivitet, struktur og enestående gjennomføringsevne. Har bred erfaring innen prosjektkoordinering, design thinking, frontendutvikling og digital markedsføring. Kommunikasjon og dokumentasjon er blant de største styrkene, noe som sikrer klare prosesser og solide leveranser i alle prosjektfaser. En drivende kraft i teamarbeid som bidrar til å skape fremdrift, kvalitet og målbare resultater.",
