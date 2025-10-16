@@ -32,10 +32,47 @@ export const ContactPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // In a real application, this would send the form data to a server
-    console.log('Form submitted:', formData);
+    // Get recipient email
+    let recipientEmail = '';
+    let recipientName = '';
     
-    toast.success(language === 'en' ? 'Message sent successfully!' : 'Melding sendt!');
+    if (formData.recipient === 'any') {
+      // Send to general team email or first available team member
+      recipientEmail = teamMembers[0]?.contactInfo?.email || '';
+      recipientName = 'Team';
+    } else {
+      // Send to specific team member
+      const selectedMember = teamMembers.find(member => member.id === formData.recipient);
+      recipientEmail = selectedMember?.contactInfo?.email || '';
+      recipientName = selectedMember?.name || '';
+    }
+    
+    if (!recipientEmail) {
+      toast.error(language === 'en' ? 'No email address found for selected recipient' : 'Ingen e-postadresse funnet for valgt mottaker');
+      return;
+    }
+    
+    // Create email subject and body
+    const subject = encodeURIComponent(`Message from ${formData.name} - Portfolio Contact Form`);
+    const body = encodeURIComponent(
+      `From: ${formData.name} (${formData.email})\n\n` +
+      `Message:\n${formData.message}\n\n` +
+      `---\n` +
+      `Sent via Portfolio Contact Form`
+    );
+    
+    // Open default email client
+    const mailtoLink = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+    window.open(mailtoLink, '_blank');
+    
+    console.log('Form submitted:', formData);
+    console.log('Email opened for:', recipientName, recipientEmail);
+    
+    toast.success(
+      language === 'en' 
+        ? `Email opened for ${recipientName}! Please send from your email client.` 
+        : `E-post åpnet for ${recipientName}! Vennligst send fra din e-postklient.`
+    );
     
     // Reset form
     setFormData({
@@ -147,11 +184,18 @@ export const ContactPage: React.FC = () => {
 
                 <div className="space-y-4">
                   <Button type="submit" size="lg" className="w-full">
-                    <Send className="h-4 w-4 mr-2" />
-                    {t.contact.send}
+                    <Mail className="h-4 w-4 mr-2" />
+                    {language === 'en' ? 'Open Email Client' : 'Åpne E-postklient'}
                   </Button>
                   
                   <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground flex items-center">
+                      <span className="w-2 h-2 rounded-full bg-blue-500 mr-2" />
+                      {language === 'en' 
+                        ? 'This will open your default email client with a pre-filled message' 
+                        : 'Dette åpner din standard e-postklient med en forutfylt melding'
+                      }
+                    </p>
                     <p className="text-sm text-muted-foreground flex items-center">
                       <span className="w-2 h-2 rounded-full bg-green-500 mr-2" />
                       {t.contact.responseTime}
