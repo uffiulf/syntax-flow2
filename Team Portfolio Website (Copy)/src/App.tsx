@@ -9,10 +9,11 @@ import { ProjectsPage } from "./components/pages/ProjectsPage";
 import { ProjectDetailPage } from "./components/pages/ProjectDetailPage";
 import { ContactPage } from "./components/pages/ContactPage";
 import { JustForFunPage } from "./components/pages/JustForFunPage";
+import { ConsentBanner } from "./components/ConsentBanner";
 import { Toaster } from "./components/ui/sonner";
 
 const AppContent: React.FC = () => {
-  const { currentPage } = useApp();
+  const { currentPage, language } = useApp();
 
   // Scroll to top on page change
   useEffect(() => {
@@ -54,6 +55,7 @@ const AppContent: React.FC = () => {
         {renderPage()}
       </main>
       <Footer />
+      <ConsentBanner language={language} />
       <Toaster />
     </div>
   );
