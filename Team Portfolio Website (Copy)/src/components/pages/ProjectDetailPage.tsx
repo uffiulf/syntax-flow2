@@ -38,7 +38,6 @@ export const ProjectDetailPage: React.FC = () => {
   return (
     <div id="main-content" className="min-h-screen py-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back Button */}
         <Button
           variant="ghost"
           onClick={() => setCurrentPage('projects')}
@@ -48,7 +47,6 @@ export const ProjectDetailPage: React.FC = () => {
           Back to Projects
         </Button>
 
-        {/* Hero Image */}
         <div className="relative h-96 rounded-xl overflow-hidden mb-8">
           <ImageWithFallback
             src={project.coverImage}
@@ -72,7 +70,6 @@ export const ProjectDetailPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Action Buttons */}
         {project.links && (
           <div className="flex flex-wrap gap-2 mb-8">
             {project.links.demo && (
@@ -94,7 +91,6 @@ export const ProjectDetailPage: React.FC = () => {
           </div>
         )}
 
-        {/* Description */}
         <Card className="mb-8">
           <CardContent className="p-6">
             <p className="text-muted-foreground">
@@ -106,7 +102,6 @@ export const ProjectDetailPage: React.FC = () => {
           </CardContent>
         </Card>
 
-        {/* Technologies */}
         <Card className="mb-8">
           <CardHeader>
             <h2>Technologies</h2>
@@ -122,7 +117,6 @@ export const ProjectDetailPage: React.FC = () => {
           </CardContent>
         </Card>
 
-        {/* Goals */}
         <Card className="mb-8">
           <CardHeader>
             <h2>{t.projects.goals}</h2>
@@ -142,7 +136,7 @@ export const ProjectDetailPage: React.FC = () => {
           </CardContent>
         </Card>
 
-        {/* Responsibilities */}
+
         <Card className="mb-8">
           <CardHeader>
             <h2>{t.projects.responsibilities}</h2>
@@ -162,7 +156,7 @@ export const ProjectDetailPage: React.FC = () => {
           </CardContent>
         </Card>
 
-        {/* Outcomes */}
+  
         <Card className="mb-8">
           <CardHeader>
             <h2>{t.projects.outcomes}</h2>
@@ -182,7 +176,7 @@ export const ProjectDetailPage: React.FC = () => {
           </CardContent>
         </Card>
 
-        {/* Image Gallery */}
+
         {project.images && project.images.length > 0 && (
           <Card className="mb-8">
             <CardHeader>
@@ -204,7 +198,7 @@ export const ProjectDetailPage: React.FC = () => {
           </Card>
         )}
 
-        {/* Team Members */}
+    
         <Card>
           <CardHeader>
             <h2>Team Members</h2>

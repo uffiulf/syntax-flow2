@@ -131,27 +131,27 @@ export const teamMembers: TeamMember[] = [
       },
     ],
     links: {
-      email: "olav.lilje@gmail.com", // Replace with email
-      github: "https://github.com/uffiulf", // Replace or remove
-      linkedin: "https://www.linkedin.com/in/olav-liljeberg-943306348/", // Replace or remove
+      email: "olav.lilje@gmail.com",
+      github: "https://github.com/uffiulf",
+      linkedin: "https://www.linkedin.com/in/olav-liljeberg-943306348/",
     },
     contactInfo: {
-      phone: "+47 944 86 477", // Replace with phone number
-      email: "olav.lilje@gmail.com", // Replace with email
-      address: "Fredrikstad, Norway", // Replace with address/city
+      phone: "+47 944 86 477",
+      email: "olav.lilje@gmail.com",
+      address: "Fredrikstad, Norway",
     },
-    cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
+    cvUrl: "/path/to/your-cv.pdf",
     projectIds: ["1", "5", "6", "7", "8"],
   },
 
   // TEAM MEMBER 2
   {
     id: "2",
-    name: "Line Henriksen", // Replace with actual name
-    role: ["Project Manager", "Business Analyst", "Utvikler", "Designer UX/UI", "Frontend Developer"], // Replace with actual roles
-    location: "Fredrikstad, Norway", // Replace with location
+    name: "Line Henriksen",
+    role: ["Project Manager", "Business Analyst", "Utvikler", "Designer UX/UI", "Frontend Developer"],
+    location: "Fredrikstad, Norway",
     bio: {
-      no: "En resultatorientert og løsningsfokusert fagperson med sterk evne til å kombinere teknologi, prosjektledelse og design. Kjent for høy effektivitet, struktur og enestående gjennomføringsevne. Har bred erfaring innen prosjektkoordinering, design thinking, frontendutvikling og digital markedsføring. Kommunikasjon og dokumentasjon er blant de største styrkene, noe som sikrer klare prosesser og solide leveranser i alle prosjektfaser. En drivende kraft i teamarbeid som bidrar til å skape fremdrift, kvalitet og målbare resultater.",
+      no: "En resultatorientert og løsningsfokusert person med sterk evne til å kombinere teknologi, prosjektledelse og design. Kjent for høy effektivitet, struktur og enestående gjennomføringsevne. Har bred erfaring innen prosjektkoordinering, design thinking, frontendutvikling og digital markedsføring. Kommunikasjon og dokumentasjon er blant de største styrkene, noe som sikrer klare prosesser og solide leveranser i alle prosjektfaser. En drivende kraft i teamarbeid som bidrar til å skape fremdrift, kvalitet og målbare resultater.",
       en: "A results-oriented and solution-focused professional with strong ability to combine technology, project management and design. Known for high efficiency, structure and outstanding execution capability. Has broad experience in project coordination, design thinking, frontend development and digital marketing. Communication and documentation are among the greatest strengths, ensuring clear processes and solid deliveries in all project phases. A driving force in teamwork that contributes to creating progress, quality and measurable results."
     },
     skills: [
@@ -302,20 +302,20 @@ export const teamMembers: TeamMember[] = [
       website: "https://flowerafro.github.io/application-cv/",
     },
     contactInfo: {
-      phone: "+47 482 22 033", // Replace with phone number
-      email: "linehenriksen0@gmail.com", // Replace with email
-      address: "Fredrikstad, Norway", // Replace with address/city
+      phone: "+47 482 22 033",
+      email: "linehenriksen0@gmail.com",
+      address: "Fredrikstad, Norway",
     },
-    cvUrl: "/src/assets/ResumeLH.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["5", "6", "7"],
+    cvUrl: "/src/assets/ResumeLH.pdf",
+    projectIds: ["2", "3", "4"],
   },
 
   // TEAM MEMBER 3
   {
     id: "3",
-    name: "André Moore", // Replace with actual name
-    role: ["Business Analyst", "Quality Assurance (QA)", "IT-risikokonsulent"], // Replace with actual roles
-    location: "Halden, Norway", // Replace with location
+    name: "André Moore",
+    role: ["Business Analyst", "Quality Assurance (QA)", "IT-risikokonsulent"],
+    location: "Halden, Norway",
     bio: {
       no: "Min ekspertise ligger i systematisk feilsøking og analyse av komplekse tekniske problemer. Jeg brenner for å identifisere rotårsaker og utvikle robuste løsninger som sikrer stabil og sikker drift. Lidenskapen min er å omsette teknisk innsikt til praktiske og effektive løsninger som hjelper både teamet og sluttbrukeren.",
       en: "My expertise lies in systematic troubleshooting and analysis of complex technical problems. I am passionate about identifying root causes and developing robust solutions that ensure stable and secure operations. My passion is to translate technical insight into practical and effective solutions that help both the team and end users."
@@ -334,7 +334,7 @@ export const teamMembers: TeamMember[] = [
       "Business Analysis",
     ],
     avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400", // REPLACE with your profile image URL
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
     highlights: [
       "Systematisk feilsøking og analyse av komplekse tekniske problemer",
       "Identifisering av rotårsaker og utvikling av robuste løsninger",
@@ -342,9 +342,9 @@ export const teamMembers: TeamMember[] = [
     ],
     experience: [
       {
-        title: "Senior Project Manager", // Replace with job title
-        company: "Innovation Lab", // Replace with company name
-        period: "2019 - Present", // Replace with period
+        title: "Senior Project Manager",
+        company: "Innovation Lab",
+        period: "2019 - Present",
       },
       {
         title: "Product Owner",
@@ -354,31 +354,31 @@ export const teamMembers: TeamMember[] = [
     ],
     education: [
       {
-        degree: "Bachelor i informasjonssystemer", // Replace with degree
-        institution: "Høgskolen i Østfold (HiØ)", // Replace with institution
-        year: "2023 - 2026", // Replace with year
+        degree: "Bachelor i informasjonssystemer",
+        institution: "Høgskolen i Østfold (HiØ)",
+        year: "2023 - 2026",
       },
     ],
     links: {
-      email: "andre-moore@hotmail.com", // Replace with email
-      github: "https://github.com/AndreMooore", // Replace or remove
-      linkedin: "https://www.linkedin.com/in/andr%C3%A9-moore-670401389", // Replace or remove
+      email: "andre-moore@hotmail.com",
+      github: "https://github.com/AndreMooore",
+      linkedin: "https://www.linkedin.com/in/andr%C3%A9-moore-670401389",
     },
     contactInfo: {
-      phone: "+47 952 55 517", // Replace with phone number
-      email: "andre-moore@hotmail.com", // Replace with email
-      address: "Halden, Norway", // Replace with address/city
+      phone: "+47 952 55 517",
+      email: "andre-moore@hotmail.com",
+      address: "Halden, Norway",
     },
-    cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
+    cvUrl: "/path/to/your-cv.pdf",
     projectIds: ["5", "6", "7"],
   },
 
   // TEAM MEMBER 4
   {
     id: "4",
-    name: "Khalid Hassan Osman", // Replace with actual name
-    role: ["Utvikler", "Lowcode"], // Replace with actual roles
-    location: "Kolbotn, Norway", // Replace with location
+    name: "Khalid Hassan Osman",
+    role: ["Utvikler", "Lowcode"],
+    location: "Kolbotn, Norway",
     bio: {
       no: "Jeg er lidenskapelig opptatt av kodeutvikling og problemløsning. Jeg liker å bygge prosjekter fra idé til ferdig løsning, og å lære nye teknologier underveis. Som lagspiller er jeg lett å samarbeide med, holder god kommunikasjon, sier ifra når det trengs, og er fleksibel i arbeidsmåten min.",
       en: "I am passionate about code development and problem solving. I enjoy building projects from idea to finished solution, and learning new technologies along the way. As a team player, I am easy to collaborate with, maintain good communication, speak up when needed, and am flexible in my working methods."
@@ -400,7 +400,7 @@ export const teamMembers: TeamMember[] = [
       "Datasikkerhet",
     ],
     avatar:
-      "/syntax-flow2/images/khalid.jpg", // REPLACE with your profile image URL
+      "/syntax-flow2/images/khalid.jpg",
     highlights: [
       "Ekspertise innen kodeutvikling og problemløsning",
       "Lidenskap for å bygge prosjekter fra idé til ferdig løsning",
@@ -408,9 +408,9 @@ export const teamMembers: TeamMember[] = [
     ],
     experience: [
       {
-        title: "Software Developer", // Replace with job title
-        company: "Tech Solutions", // Replace with company name
-        period: "2022 - Present", // Replace with period
+        title: "Software Developer",
+        company: "Tech Solutions",
+        period: "2022 - Present",
       },
       {
         title: "Junior Developer",
@@ -420,18 +420,18 @@ export const teamMembers: TeamMember[] = [
     ],
     education: [
       {
-        degree: "Bachelor i informasjonssystemer", // Replace with degree
-        institution: "Høgskolen i Østfold (HiØ)", // Replace with institution
-        year: "2023 - 2026", // Replace with year
+        degree: "Bachelor i informasjonssystemer",
+        institution: "Høgskolen i Østfold (HiØ)",
+        year: "2023 - 2026",
       },
     ],
     links: {
-      email: "khalid.h.osman@hiof.no", // Replace with email
-      github: "https://github.com/Khosman23", // Replace or remove
-      linkedin: "https://linkedin.com/in/yourprofile", // Replace or remove
+      email: "khalid.h.osman@hiof.no",
+      github: "https://github.com/Khosman23",
+      linkedin: "https://linkedin.com/in/yourprofile",
     },
     contactInfo: {
-      phone: "N/A", // Replace with phone number
+      phone: "N/A",
       email: "khalid.h.osman@hiof.no", // Replace with email
       address: "Oslo, Norway", // Replace with address/city
     },
@@ -498,9 +498,9 @@ export const teamMembers: TeamMember[] = [
       address: "Soul, Korea", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
-    projectIds: ["1"    ],
+    projectIds: ["1"],
   },
- 
+
 ];
 
 export const projects: Project[] = [
@@ -590,7 +590,7 @@ export const projects: Project[] = [
   },
   {
     id: "2",
-    title: "Project Management: Oplero (Ongoing)",
+    title: "Project Management: Oplero",
     summary: {
       no: "Oplero er en smart læringsplattform som transformerer undervisning ved å gjøre den inkluderende og effektiv. Den fjerner administrativ byrde for forelesere gjennom automatisert gruppeinndeling, samtidig som den sikrer lik tilgang til læringsinnhold for alle studenter via GDPR-kompatible opptak, teksting og AI-verktøy.",
       en: "Oplero is a smart learning platform that transforms teaching by making it inclusive and effective. It removes administrative burden from lecturers through automated group allocation, while ensuring equal access to learning content for all students via GDPR-compliant recordings, transcription and AI tools."
@@ -804,7 +804,7 @@ export const projects: Project[] = [
     links: {
       demo: "https://flowerafro.github.io/Trolljegern/",
       demoText: "Trolljegeren Teaser",
-    },
+    }
   },
   {
     id: "7",
