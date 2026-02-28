@@ -595,20 +595,23 @@ export const JustForFunPage: React.FC = () => {
                 </div>
               </div>
             ) : pokemonError ? (
-              <div className="text-center h-[150px] flex flex-col justify-center items-center">
+              <div className="text-center flex flex-col justify-center items-center" style={{ minHeight: '150px' }}>
                 <p className="text-destructive mb-4">{pokemonError}</p>
                 <Button onClick={fetchPokemon} className="hover:bg-primary hover:text-primary-foreground transition-colors">
                   {t.fun.tryAgain}
                 </Button>
               </div>
             ) : pokemon ? (
-              <div className="relative rounded-lg overflow-hidden grass-bg h-[200px] border-4 border-green-800 flex items-center shadow-inner cursor-pointer" onClick={() => {
-                if (pokemon.cries?.latest) {
-                  const audio = new Audio(pokemon.cries.latest);
-                  audio.volume = 0.2;
-                  audio.play().catch(e => console.log(e));
-                }
-              }}>
+              <div
+                className="relative rounded-lg overflow-hidden grass-bg border-4 border-green-800 flex items-center shadow-inner cursor-pointer"
+                style={{ minHeight: '200px' }}
+                onClick={() => {
+                  if (pokemon.cries?.latest) {
+                    const audio = new Audio(pokemon.cries.latest);
+                    audio.volume = 0.2;
+                    audio.play().catch(e => console.log(e));
+                  }
+                }}>
                 {/* Information Badge */}
                 <div className="absolute top-3 left-3 bg-white/90 dark:bg-black/80 backdrop-blur-sm p-3 rounded-lg border border-border shadow-md z-10 w-fit">
                   <h3 className="capitalize font-bold text-lg mb-1">{pokemon.name}</h3>
@@ -631,7 +634,11 @@ export const JustForFunPage: React.FC = () => {
                 </div>
               </div>
             ) : (
-              <div className="text-center h-[150px] flex flex-col justify-center items-center grass-bg rounded-lg border-4 border-green-800 opacity-90 cursor-pointer shadow-inner relative overflow-hidden group" onClick={fetchPokemon}>
+              <div
+                className="text-center flex flex-col justify-center items-center grass-bg rounded-lg border-4 border-green-800 opacity-90 cursor-pointer shadow-inner relative overflow-hidden group"
+                style={{ minHeight: '150px' }}
+                onClick={fetchPokemon}
+              >
                 <p className="mb-4 text-white font-bold drop-shadow-md text-lg z-10">{(t.fun as any).catchPokemon || 'Search Grass'}</p>
                 <Button variant="secondary" className="bg-white text-black hover:bg-gray-100 z-10">{(t.fun as any).catchPokemon || 'Search Grass'}</Button>
                 {/* decorative grass blades */}
