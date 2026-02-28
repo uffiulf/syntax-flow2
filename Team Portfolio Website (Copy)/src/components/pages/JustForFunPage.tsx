@@ -129,6 +129,8 @@ export const JustForFunPage: React.FC = () => {
     }
   });
   const [isCurrentlyCaught, setIsCurrentlyCaught] = useState<boolean>(false);
+  const [hasFled, setHasFled] = useState<boolean>(false);
+  const [throwAttempts, setThrowAttempts] = useState<number>(0);
   const [pokemonGuess, setPokemonGuess] = useState<string>('');
   const [catchMessage, setCatchMessage] = useState<{ text: string, type: 'success' | 'error' } | null>(null);
   const [correctGuesses, setCorrectGuesses] = useState<number>(() => {
@@ -230,6 +232,8 @@ export const JustForFunPage: React.FC = () => {
     setPokemonLoading(true);
     setPokemonError('');
     setIsCurrentlyCaught(false);
+    setHasFled(false);
+    setThrowAttempts(0);
     setPokemonGuess('');
     setCatchMessage(null);
     try {
@@ -277,36 +281,53 @@ export const JustForFunPage: React.FC = () => {
   };
 
   const handleCatchAction = (isGrassClick = false) => {
-    if (!pokemon || isCurrentlyCaught) return;
+    if (!pokemon || isCurrentlyCaught || hasFled) return;
 
-    const isCorrectGuess = !isGrassClick && pokemonGuess.trim() !== '' && pokemonGuess.toLowerCase().trim() === pokemon.name.toLowerCase();
+    const isGuessEntry = !isGrassClick && pokemonGuess.trim() !== '';
+    const isCorrectGuess = isGuessEntry && pokemonGuess.toLowerCase().trim() === pokemon.name.toLowerCase();
 
-    if (isCorrectGuess) {
-      // Free catch on correct guess
-      const newCorrect = correctGuesses + 1;
-      let msg = (t.fun as any).correctGuess || 'Correct! Caught without using a Pokéball!';
+    if (isGuessEntry) {
+      if (isCorrectGuess) {
+        // Free catch on correct guess
+        const newCorrect = correctGuesses + 1;
+        let msg = (t.fun as any).correctGuess || 'Correct! Caught without using a Pokéball!';
 
-      // Bonus every 10 guesses
-      if (newCorrect > 0 && newCorrect % 10 === 0) {
-        setPokeBalls(prev => prev + 1);
-        msg = `Correct! +1 Bonus Pokéball for reaching ${newCorrect} correct guesses! 🎉`;
-      }
-
-      setCorrectGuesses(newCorrect);
-      setCatchMessage({ text: msg, type: 'success' });
-      finalizeCatch();
-    } else {
-      // Incorrect guess or throwing a ball blindly
-      if (pokeBalls > 0) {
-        setPokeBalls(prev => prev - 1);
-
-        // Reset streak only if it was an active incorrect guess (not a silent grass click with empty field)
-        if (!isGrassClick && pokemonGuess.trim() !== '') {
-          setCorrectGuesses(0);
+        // Bonus every 10 guesses
+        if (newCorrect > 0 && newCorrect % 10 === 0) {
+          setPokeBalls(prev => prev + 1);
+          msg = `Correct! +1 Bonus Pokéball for reaching ${newCorrect} correct guesses! 🎉`;
         }
 
-        setCatchMessage({ text: (t.fun as any).gotcha || 'Gotcha! Pokémon caught.', type: 'success' });
+        setCorrectGuesses(newCorrect);
+        setCatchMessage({ text: msg, type: 'success' });
         finalizeCatch();
+      } else {
+        // Wrong Guess -> Flee!
+        setCorrectGuesses(0);
+        setHasFled(true);
+        setCatchMessage({ text: (t.fun as any).fledWrongName || 'Wrong! The Pokémon fled!', type: 'error' });
+      }
+    } else {
+      // Throw Pokeball Logic
+      if (pokeBalls > 0) {
+        setPokeBalls(prev => prev - 1);
+        const currentAttempt = throwAttempts + 1;
+        setThrowAttempts(currentAttempt);
+
+        // Let's formulate a 70% chance to catch
+        const catchSuccess = Math.random() < 0.70;
+
+        if (catchSuccess) {
+          setCatchMessage({ text: (t.fun as any).gotcha || 'Gotcha! Pokémon caught.', type: 'success' });
+          finalizeCatch();
+        } else {
+          if (currentAttempt >= 3) {
+            setHasFled(true);
+            setCatchMessage({ text: (t.fun as any).fledMaxThrows || 'Oh no! The Pokémon broke free and ran away!', type: 'error' });
+          } else {
+            setCatchMessage({ text: `${(t.fun as any).brokeFree || 'Darn! The Pokémon broke free!'} (${currentAttempt}/3)`, type: 'error' });
+          }
+        }
       } else {
         setCatchMessage({ text: (t.fun as any).outOfBalls || 'Out of Pokéballs! You must guess the name.', type: 'error' });
       }
@@ -711,28 +732,28 @@ export const JustForFunPage: React.FC = () => {
                 >
                   {/* Clickable Overlay */}
                   <div
-                    className={`absolute inset-0 z-40 ${isCurrentlyCaught ? 'cursor-default' : 'cursor-pointer hover:bg-white/10 group'}`}
+                    className={`absolute inset-0 z-40 ${isCurrentlyCaught || hasFled ? 'cursor-default' : 'cursor-pointer hover:bg-white/10 group'}`}
                     onClick={() => {
-                      if (!isCurrentlyCaught) {
+                      if (!isCurrentlyCaught && !hasFled) {
                         handleCatchAction(true);
-                      } else if (pokemon.cries?.latest) {
+                      } else if (isCurrentlyCaught && pokemon.cries?.latest) {
                         const audio = new Audio(pokemon.cries.latest);
                         audio.volume = 0.2;
                         audio.play().catch(e => console.log(e));
                       }
                     }}
-                    title={!isCurrentlyCaught ? ((t.fun as any).throwBall || "Throw Pokéball") : "Play Cry"}
+                    title={!isCurrentlyCaught && !hasFled ? ((t.fun as any).throwBall || "Throw Pokéball") : (isCurrentlyCaught ? "Play Cry" : "")}
                   />
 
                   {/* Catch overlay text (visible on group hover from the overlay) */}
-                  {!isCurrentlyCaught && (
+                  {!isCurrentlyCaught && !hasFled && (
                     <div className="absolute inset-0 z-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                       <span className="bg-yellow-400 text-black font-black px-4 py-2 rounded-full transform -translate-y-4 shadow-xl">THROW POKÉBALL</span>
                     </div>
                   )}
                   {/* Information Badge */}
                   <div className="absolute top-3 left-3 bg-white/90 dark:bg-black/80 backdrop-blur-sm p-3 rounded-lg border border-border shadow-md z-10 w-fit">
-                    <h3 className="capitalize font-bold text-lg mb-1">{isCurrentlyCaught ? pokemon.name : '???'}</h3>
+                    <h3 className="capitalize font-bold text-lg mb-1">{isCurrentlyCaught || hasFled ? pokemon.name : '???'}</h3>
                     <div className="flex gap-1">
                       {pokemon.types.map(t => (
                         <Badge key={t.type.name} variant="outline" className="text-xs">{t.type.name}</Badge>
@@ -742,7 +763,7 @@ export const JustForFunPage: React.FC = () => {
 
                   {/* Walking/Caught Sprite */}
                   <div
-                    className={`pokemon-walking absolute bottom-2 h-[100px] w-auto pointer-events-none z-20 ${isCurrentlyCaught ? 'grayscale opacity-80' : ''}`}
+                    className={`pokemon-walking absolute bottom-2 h-[100px] w-auto pointer-events-none z-20 transition-all duration-1000 ${isCurrentlyCaught ? 'grayscale opacity-80' : ''} ${hasFled ? 'translate-x-[400px] opacity-0' : ''}`}
                     style={isCurrentlyCaught ? { animationPlayState: 'paused' } : undefined}
                   >
                     <img
@@ -764,12 +785,12 @@ export const JustForFunPage: React.FC = () => {
                     onKeyDown={(e) => {
                       if (e.key === 'Enter') handleCatchAction(false);
                     }}
-                    disabled={isCurrentlyCaught}
+                    disabled={isCurrentlyCaught || hasFled}
                     className="w-full sm:flex-1 h-12 border-2 border-primary/20 focus-visible:border-primary font-bold text-center sm:text-left text-lg px-4"
                   />
                   <Button
                     onClick={() => handleCatchAction(false)}
-                    disabled={isCurrentlyCaught}
+                    disabled={isCurrentlyCaught || hasFled}
                     className="w-full sm:w-auto min-w-[200px] font-bold h-11"
                     variant={pokeBalls > 0 ? "default" : "destructive"}
                   >
