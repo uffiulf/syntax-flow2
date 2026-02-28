@@ -15,6 +15,14 @@ interface DadJoke {
   status: number;
 }
 
+const FALLBACK_USER: RandomUser = {
+  name: { first: 'John', last: 'Doe', title: 'Mr' },
+  email: 'john.doe@example.com',
+  location: { street: { number: 123, name: 'Main St' }, city: 'Anytown', state: 'State', country: 'Norway' },
+  picture: { large: 'https://randomuser.me/api/portraits/men/32.jpg', medium: '', thumbnail: '' },
+  phone: '555-0198'
+};
+
 interface RandomUser {
   name: {
     first: string;
@@ -78,7 +86,7 @@ export const JustForFunPage: React.FC = () => {
   const [boredActivity, setBoredActivity] = useState<BoredActivity | null>(null);
   const [activityLoading, setActivityLoading] = useState<boolean>(false);
   const [activityError, setActivityError] = useState<string>('');
-  
+
   // Click counters
   const [jokeClicks, setJokeClicks] = useState<number>(0);
   const [catClicks, setCatClicks] = useState<number>(0);
@@ -95,16 +103,16 @@ export const JustForFunPage: React.FC = () => {
           'Accept': 'application/json',
         },
       });
-      
+
       if (!response.ok) {
         throw new Error('Failed to fetch joke');
       }
-      
+
       const data: DadJoke = await response.json();
       setJoke(data.joke);
     } catch (err) {
-      setError(language === 'en' 
-        ? 'Failed to load joke. Please try again.' 
+      setError(language === 'en'
+        ? 'Failed to load joke. Please try again.'
         : 'Kunne ikke laste vits. Vennligst prøv igjen.');
       console.error('Error fetching joke:', err);
     } finally {
@@ -118,16 +126,21 @@ export const JustForFunPage: React.FC = () => {
     setUserError('');
     try {
       const response = await fetch('https://randomuser.me/api/');
-      
+
       if (!response.ok) {
         throw new Error('Failed to fetch user');
       }
-      
+
       const data = await response.json();
-      setRandomUser(data.results[0]);
+      if (!data.results || data.results.length === 0) {
+        console.warn('RandomUser API returned empty results. Using fallback data.');
+        setRandomUser(FALLBACK_USER);
+      } else {
+        setRandomUser(data.results[0]);
+      }
     } catch (err) {
-      setUserError(language === 'en' 
-        ? 'Failed to load user. Please try again.' 
+      setUserError(language === 'en'
+        ? 'Failed to load user. Please try again.'
         : 'Kunne ikke laste bruker. Vennligst prøv igjen.');
       console.error('Error fetching user:', err);
     } finally {
@@ -141,16 +154,16 @@ export const JustForFunPage: React.FC = () => {
     setActivityError('');
     try {
       const response = await fetch('https://apis.scrimba.com/bored/api/activity');
-      
+
       if (!response.ok) {
         throw new Error('Failed to fetch activity');
       }
-      
+
       const data: BoredActivity = await response.json();
       setBoredActivity(data);
     } catch (err) {
-      setActivityError(language === 'en' 
-        ? 'Failed to load activity. Please try again.' 
+      setActivityError(language === 'en'
+        ? 'Failed to load activity. Please try again.'
         : 'Kunne ikke laste aktivitet. Vennligst prøv igjen.');
       console.error('Error fetching activity:', err);
     } finally {
@@ -168,70 +181,75 @@ export const JustForFunPage: React.FC = () => {
         'Accept': 'application/json',
       },
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to fetch joke');
-      }
-      return response.json();
-    })
-    .then((data: DadJoke) => {
-      setJoke(data.joke);
-    })
-    .catch(err => {
-      setError(language === 'en' 
-        ? 'Failed to load joke. Please try again.' 
-        : 'Kunne ikke laste vits. Vennligst prøv igjen.');
-      console.error('Error fetching joke:', err);
-    })
-    .finally(() => {
-      setLoading(false);
-    });
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch joke');
+        }
+        return response.json();
+      })
+      .then((data: DadJoke) => {
+        setJoke(data.joke);
+      })
+      .catch(err => {
+        setError(language === 'en'
+          ? 'Failed to load joke. Please try again.'
+          : 'Kunne ikke laste vits. Vennligst prøv igjen.');
+        console.error('Error fetching joke:', err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
 
     // Fetch random user without incrementing counter
     setUserLoading(true);
     setUserError('');
     fetch('https://randomuser.me/api/')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to fetch user');
-      }
-      return response.json();
-    })
-    .then(data => {
-      setRandomUser(data.results[0]);
-    })
-    .catch(err => {
-      setUserError(language === 'en' 
-        ? 'Failed to load user. Please try again.' 
-        : 'Kunne ikke laste bruker. Vennligst prøv igjen.');
-      console.error('Error fetching user:', err);
-    })
-    .finally(() => {
-      setUserLoading(false);
-    });
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch user');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (!data.results || data.results.length === 0) {
+          console.warn('RandomUser API returned empty results in useEffect. Using fallback data.');
+          setRandomUser(FALLBACK_USER);
+        } else {
+          setRandomUser(data.results[0]);
+        }
+      })
+      .catch(err => {
+        setUserError(language === 'en'
+          ? 'Failed to load user. Please try again.'
+          : 'Kunne ikke laste bruker. Vennligst prøv igjen.');
+        console.error('Error fetching user:', err);
+      })
+      .finally(() => {
+        setUserLoading(false);
+      });
 
     // Fetch bored activity without incrementing counter
     setActivityLoading(true);
     setActivityError('');
     fetch('https://apis.scrimba.com/bored/api/activity')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to fetch activity');
-      }
-      return response.json();
-    })
-    .then((data: BoredActivity) => {
-      setBoredActivity(data);
-    })
-    .catch(err => {
-      setActivityError(language === 'en' 
-        ? 'Failed to load activity. Please try again.' 
-        : 'Kunne ikke laste aktivitet. Vennligst prøv igjen.');
-      console.error('Error fetching activity:', err);
-    })
-    .finally(() => {
-      setActivityLoading(false);
-    });
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch activity');
+        }
+        return response.json();
+      })
+      .then((data: BoredActivity) => {
+        setBoredActivity(data);
+      })
+      .catch(err => {
+        setActivityError(language === 'en'
+          ? 'Failed to load activity. Please try again.'
+          : 'Kunne ikke laste aktivitet. Vennligst prøv igjen.');
+        console.error('Error fetching activity:', err);
+      })
+      .finally(() => {
+        setActivityLoading(false);
+      });
   }, []);
 
   const handleRandomStatus = () => {
@@ -515,7 +533,7 @@ export const JustForFunPage: React.FC = () => {
             </div>
             <div className="text-center mt-4">
               <div className="text-lg font-semibold">
- {t.fun.totalClicks}: <span className="text-primary">{jokeClicks + catClicks + userClicks + activityClicks}</span>
+                {t.fun.totalClicks}: <span className="text-primary">{jokeClicks + catClicks + userClicks + activityClicks}</span>
               </div>
             </div>
           </CardContent>
