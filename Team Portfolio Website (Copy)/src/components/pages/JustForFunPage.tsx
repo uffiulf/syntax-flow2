@@ -6,8 +6,9 @@ import { Card, CardContent, CardHeader } from '../ui/card';
 import { Skeleton } from '../ui/skeleton';
 import { Badge } from '../ui/badge';
 import { Avatar, AvatarImage, AvatarFallback } from '../ui/avatar';
-import { Laugh, RefreshCw, Cat, User, Lightbulb, Gamepad2 } from 'lucide-react';
+import { Laugh, RefreshCw, Cat, User, Lightbulb, Gamepad2, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
+import { Input } from '../ui/input';
 
 interface DadJoke {
   id: string;
@@ -119,7 +120,17 @@ export const JustForFunPage: React.FC = () => {
       return [];
     }
   });
+  const [pokeBalls, setPokeBalls] = useState<number>(() => {
+    try {
+      const saved = localStorage.getItem('pokeBalls');
+      return saved !== null ? parseInt(saved, 10) : 10;
+    } catch {
+      return 10;
+    }
+  });
   const [isCurrentlyCaught, setIsCurrentlyCaught] = useState<boolean>(false);
+  const [pokemonGuess, setPokemonGuess] = useState<string>('');
+  const [catchMessage, setCatchMessage] = useState<{ text: string, type: 'success' | 'error' } | null>(null);
 
   // Click counters
   const [jokeClicks, setJokeClicks] = useState<number>(0);
@@ -211,6 +222,8 @@ export const JustForFunPage: React.FC = () => {
     setPokemonLoading(true);
     setPokemonError('');
     setIsCurrentlyCaught(false);
+    setPokemonGuess('');
+    setCatchMessage(null);
     try {
       const randomId = Math.floor(Math.random() * 649) + 1; // Gen 1-5 have best animated sprites
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
@@ -238,21 +251,40 @@ export const JustForFunPage: React.FC = () => {
     }
   };
 
-  const handleCatchPokemon = () => {
-    if (pokemon && !isCurrentlyCaught) {
-      setIsCurrentlyCaught(true);
-      setCaughtPokemon(prev => {
-        // Prevent duplicate captures
-        if (!prev.some(p => p.id === pokemon.id)) {
-          return [...prev, pokemon];
-        }
-        return prev;
-      });
-      // Play cry if available
-      if (pokemon.cries?.latest) {
-        const audio = new Audio(pokemon.cries.latest);
-        audio.volume = 0.2;
-        audio.play().catch(e => console.log('Audio playback prevented by browser:', e));
+  const finalizeCatch = () => {
+    setIsCurrentlyCaught(true);
+    setCaughtPokemon(prev => {
+      // Prevent duplicate captures
+      if (!prev.some(p => p.id === pokemon?.id)) {
+        return [...prev, pokemon!];
+      }
+      return prev;
+    });
+    // Play cry if available
+    if (pokemon?.cries?.latest) {
+      const audio = new Audio(pokemon.cries.latest);
+      audio.volume = 0.2;
+      audio.play().catch(e => console.log('Audio playback prevented by browser:', e));
+    }
+  };
+
+  const handleCatchAction = () => {
+    if (!pokemon || isCurrentlyCaught) return;
+
+    const isCorrectGuess = pokemonGuess.toLowerCase().trim() === pokemon.name.toLowerCase();
+
+    if (pokemonGuess.trim() !== '' && isCorrectGuess) {
+      // Free catch on correct guess
+      setCatchMessage({ text: (t.fun as any).correctGuess || 'Correct! Caught without using a Pokéball!', type: 'success' });
+      finalizeCatch();
+    } else {
+      // Incorrect guess or just throwing a ball blindly
+      if (pokeBalls > 0) {
+        setPokeBalls(prev => prev - 1);
+        setCatchMessage({ text: (t.fun as any).gotcha || 'Gotcha! Pokémon caught.', type: 'success' });
+        finalizeCatch();
+      } else {
+        setCatchMessage({ text: (t.fun as any).outOfBalls || 'Out of Pokéballs! You must guess the name.', type: 'error' });
       }
     }
   };
@@ -261,6 +293,11 @@ export const JustForFunPage: React.FC = () => {
   useEffect(() => {
     localStorage.setItem('caughtPokemon', JSON.stringify(caughtPokemon));
   }, [caughtPokemon]);
+
+  // Sync pokeballs
+  useEffect(() => {
+    localStorage.setItem('pokeBalls', pokeBalls.toString());
+  }, [pokeBalls]);
 
   // Fetch initial data on component mount (without incrementing counters)
   useEffect(() => {
@@ -638,52 +675,94 @@ export const JustForFunPage: React.FC = () => {
                 </Button>
               </div>
             ) : pokemon ? (
-              <div
-                className="relative rounded-lg overflow-hidden grass-bg border-4 border-green-800 flex items-center shadow-inner"
-                style={{ minHeight: '200px' }}
-              >
-                {/* Clickable Overlay */}
+              <div className="flex flex-col w-full">
                 <div
-                  className={`absolute inset-0 z-40 ${isCurrentlyCaught ? 'cursor-default' : 'cursor-pointer hover:bg-white/10 group'}`}
-                  onClick={() => {
-                    if (!isCurrentlyCaught) {
-                      handleCatchPokemon();
-                    } else if (pokemon.cries?.latest) {
-                      const audio = new Audio(pokemon.cries.latest);
-                      audio.volume = 0.2;
-                      audio.play().catch(e => console.log(e));
-                    }
-                  }}
-                  title={!isCurrentlyCaught ? "Catch Pokémon!" : "Play Cry"}
-                />
+                  className="relative rounded-lg overflow-hidden grass-bg border-4 border-green-800 flex items-center shadow-inner"
+                  style={{ minHeight: '200px' }}
+                >
+                  {/* Clickable Overlay */}
+                  <div
+                    className={`absolute inset-0 z-40 ${isCurrentlyCaught ? 'cursor-default' : 'cursor-pointer hover:bg-white/10 group'}`}
+                    onClick={() => {
+                      if (!isCurrentlyCaught) {
+                        handleCatchAction();
+                      } else if (pokemon.cries?.latest) {
+                        const audio = new Audio(pokemon.cries.latest);
+                        audio.volume = 0.2;
+                        audio.play().catch(e => console.log(e));
+                      }
+                    }}
+                    title={!isCurrentlyCaught ? ((t.fun as any).throwBall || "Throw Pokéball") : "Play Cry"}
+                  />
 
-                {/* Catch overlay text (visible on group hover from the overlay) */}
-                {!isCurrentlyCaught && (
-                  <div className="absolute inset-0 z-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <span className="bg-yellow-400 text-black font-black px-4 py-2 rounded-full transform -translate-y-4 shadow-xl">POKÉBALL GO!</span>
+                  {/* Catch overlay text (visible on group hover from the overlay) */}
+                  {!isCurrentlyCaught && (
+                    <div className="absolute inset-0 z-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                      <span className="bg-yellow-400 text-black font-black px-4 py-2 rounded-full transform -translate-y-4 shadow-xl">THROW POKÉBALL</span>
+                    </div>
+                  )}
+                  {/* Information Badge */}
+                  <div className="absolute top-3 left-3 bg-white/90 dark:bg-black/80 backdrop-blur-sm p-3 rounded-lg border border-border shadow-md z-10 w-fit">
+                    <h3 className="capitalize font-bold text-lg mb-1">{isCurrentlyCaught ? pokemon.name : '???'}</h3>
+                    <div className="flex gap-1">
+                      {pokemon.types.map(t => (
+                        <Badge key={t.type.name} variant="outline" className="text-xs">{t.type.name}</Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Walking/Caught Sprite */}
+                  <div
+                    className={`pokemon-walking absolute bottom-2 h-[100px] w-auto pointer-events-none z-20 ${isCurrentlyCaught ? 'grayscale opacity-80' : ''}`}
+                    style={isCurrentlyCaught ? { animationPlayState: 'paused' } : undefined}
+                  >
+                    <img
+                      src={pokemon.sprites.versions?.['generation-v']?.['black-white']?.animated?.front_default || pokemon.sprites.front_default}
+                      alt={pokemon.name}
+                      className="h-full object-contain filter drop-shadow-xl"
+                    />
+                  </div>
+                </div>
+
+                {/* Catch Game Controls */}
+                <div className="mt-4 flex flex-col sm:flex-row gap-3 items-center w-full">
+                  <div className="flex-grow flex items-center w-full">
+                    <Input
+                      type="text"
+                      placeholder={(t.fun as any).guessName || "Guess Pokémon name"}
+                      value={pokemonGuess}
+                      onChange={(e) => setPokemonGuess(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') handleCatchAction();
+                      }}
+                      disabled={isCurrentlyCaught}
+                      className="w-full text-center sm:text-left h-11 border-2 border-primary/20 focus-visible:border-primary font-semibold"
+                    />
+                  </div>
+                  <Button
+                    onClick={handleCatchAction}
+                    disabled={isCurrentlyCaught}
+                    className="w-full sm:w-auto min-w-[200px] font-bold h-11"
+                    variant={pokeBalls > 0 ? "default" : "destructive"}
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-current bg-red-500 overflow-hidden relative shadow-inner">
+                        <div className="absolute bottom-0 w-full h-1/2 bg-white"></div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full border border-black z-10"></div>
+                        <div className="absolute top-1/2 w-full h-px bg-black transform -translate-y-1/2"></div>
+                      </div>
+                      {(t.fun as any).throwBall || "Throw Ball"} ({pokeBalls})
+                    </div>
+                  </Button>
+                </div>
+
+                {/* Catch Messages */}
+                {catchMessage && (
+                  <div className={`mt-3 p-3 rounded-md text-sm font-bold flex items-center justify-center gap-2 shadow-sm border ${catchMessage.type === 'success' ? 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-800/50' : 'bg-red-100 text-red-800 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800/50'}`}>
+                    {catchMessage.type === 'success' ? <CheckCircle2 className="w-5 h-5" /> : <AlertCircle className="w-5 h-5" />}
+                    {catchMessage.text}
                   </div>
                 )}
-                {/* Information Badge */}
-                <div className="absolute top-3 left-3 bg-white/90 dark:bg-black/80 backdrop-blur-sm p-3 rounded-lg border border-border shadow-md z-10 w-fit">
-                  <h3 className="capitalize font-bold text-lg mb-1">{pokemon.name}</h3>
-                  <div className="flex gap-1">
-                    {pokemon.types.map(t => (
-                      <Badge key={t.type.name} variant="outline" className="text-xs">{t.type.name}</Badge>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Walking/Caught Sprite */}
-                <div
-                  className={`pokemon-walking absolute bottom-2 h-[100px] w-auto pointer-events-none z-20 ${isCurrentlyCaught ? 'grayscale opacity-80' : ''}`}
-                  style={isCurrentlyCaught ? { animationPlayState: 'paused' } : undefined}
-                >
-                  <img
-                    src={pokemon.sprites.versions?.['generation-v']?.['black-white']?.animated?.front_default || pokemon.sprites.front_default}
-                    alt={pokemon.name}
-                    className="h-full object-contain filter drop-shadow-xl"
-                  />
-                </div>
               </div>
             ) : (
               <div
@@ -780,6 +859,6 @@ export const JustForFunPage: React.FC = () => {
           <p>Pokémon powered by PokéAPI</p>
         </div>
       </div>
-    </div>
+    </div >
   );
 };

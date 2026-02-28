@@ -160,7 +160,13 @@ export const translations = {
       catchPokemon: 'Search Grass',
       caught: 'Caught!',
       pokedex: 'My Pokédex',
-      emptyPokedex: 'No Pokémon caught yet. Search the grass and click a wild Pokémon to catch it!'
+      emptyPokedex: 'No Pokémon caught yet. Search the grass and click a wild Pokémon to catch it!',
+      pokeballs: 'Pokéballs',
+      guessName: 'Guess the Pokémon',
+      throwBall: 'Throw Pokéball',
+      outOfBalls: 'Out of Pokéballs! You must guess the name.',
+      correctGuess: 'Correct! Caught without using a Pokéball!',
+      gotcha: 'Gotcha! Pokémon caught.',
     },
   },
   no: {
@@ -324,7 +330,14 @@ export const translations = {
       catchPokemon: 'Gå i Gresset',
       caught: 'Fanget!',
       pokedex: 'Min Pokédex',
-      emptyPokedex: 'Du har ikke fanget noen Pokémon ennå. Gå i gresset og klikk på en vill Pokémon for å fange den!'
+      emptyPokedex: 'Du har ikke fanget noen Pokémon ennå. Gå i gresset og klikk på en vill Pokémon for å fange den!',
+      pokeballs: 'Pokéballer',
+      guessName: 'Gjett Pokémon',
+      throwBall: 'Kast Pokéball',
+      outOfBalls: 'Tom for Pokéballer! Du må gjette navnet for å fange i gresset.',
+      correctGuess: 'Riktig! Fanget uten å bruke en Pokéball!',
+      gotcha: 'Gotcha! Pokémon fanget.',
     },
   },
 };
+
