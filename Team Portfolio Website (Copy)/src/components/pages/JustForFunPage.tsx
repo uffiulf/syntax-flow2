@@ -110,6 +110,17 @@ export const JustForFunPage: React.FC = () => {
   const [pokemonLoading, setPokemonLoading] = useState<boolean>(false);
   const [pokemonError, setPokemonError] = useState<string>('');
 
+  // Pokedex states
+  const [caughtPokemon, setCaughtPokemon] = useState<PokemonData[]>(() => {
+    try {
+      const saved = localStorage.getItem('caughtPokemon');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [isCurrentlyCaught, setIsCurrentlyCaught] = useState<boolean>(false);
+
   // Click counters
   const [jokeClicks, setJokeClicks] = useState<number>(0);
   const [catClicks, setCatClicks] = useState<number>(0);
@@ -199,6 +210,7 @@ export const JustForFunPage: React.FC = () => {
     setPokemonClicks(prev => prev + 1);
     setPokemonLoading(true);
     setPokemonError('');
+    setIsCurrentlyCaught(false);
     try {
       const randomId = Math.floor(Math.random() * 649) + 1; // Gen 1-5 have best animated sprites
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
@@ -225,6 +237,30 @@ export const JustForFunPage: React.FC = () => {
       setPokemonLoading(false);
     }
   };
+
+  const handleCatchPokemon = () => {
+    if (pokemon && !isCurrentlyCaught) {
+      setIsCurrentlyCaught(true);
+      setCaughtPokemon(prev => {
+        // Prevent duplicate captures
+        if (!prev.some(p => p.id === pokemon.id)) {
+          return [...prev, pokemon];
+        }
+        return prev;
+      });
+      // Play cry if available
+      if (pokemon.cries?.latest) {
+        const audio = new Audio(pokemon.cries.latest);
+        audio.volume = 0.2;
+        audio.play().catch(e => console.log('Audio playback prevented by browser:', e));
+      }
+    }
+  };
+
+  // Sync caught pokemon to local storage
+  useEffect(() => {
+    localStorage.setItem('caughtPokemon', JSON.stringify(caughtPokemon));
+  }, [caughtPokemon]);
 
   // Fetch initial data on component mount (without incrementing counters)
   useEffect(() => {
@@ -643,6 +679,41 @@ export const JustForFunPage: React.FC = () => {
                 <Button variant="secondary" className="bg-white text-black hover:bg-gray-100 z-10">{(t.fun as any).catchPokemon || 'Search Grass'}</Button>
                 {/* decorative grass blades */}
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Pokedex Section */}
+        <Card className="mb-8">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <h2 className="text-xl font-bold">{(t.fun as any).pokedex || 'My Pokédex'}</h2>
+              <Badge>{caughtPokemon.length}</Badge>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {caughtPokemon.length === 0 ? (
+              <div className="text-center p-8 bg-muted/50 rounded-lg text-muted-foreground border-2 border-dashed border-border/50">
+                <Gamepad2 className="mx-auto h-8 w-8 mb-3 opacity-20" />
+                <p>{(t.fun as any).emptyPokedex || 'You haven\'t caught any Pokémon yet. Click on a wild Pokémon to catch it!'}</p>
+              </div>
+            ) : (
+              <div className="flex flex-wrap gap-2 pt-2">
+                {caughtPokemon.map((p, index) => (
+                  <div key={`${p.id}-${index}`} className="group relative bg-muted rounded-md p-1 border border-border/50 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 hover:border-yellow-400 transition-colors w-[60px] h-[60px] flex items-center justify-center cursor-help tooltip-trigger">
+                    <img
+                      src={p.sprites.front_default}
+                      alt={p.name}
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                    />
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 capitalize">
+                      {p.name}
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black"></div>
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
           </CardContent>

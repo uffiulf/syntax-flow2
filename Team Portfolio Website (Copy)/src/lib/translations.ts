@@ -156,8 +156,11 @@ export const translations = {
       users: 'Users',
       activities: 'Activities',
       pokemon: 'Wild Pokémon',
-      pokemonSubtitle: 'Catch a random Pokémon from the tall grass',
+      pokemonSubtitle: 'Hunt for a random Pokémon in the tall grass',
       catchPokemon: 'Search Grass',
+      caught: 'Caught!',
+      pokedex: 'My Pokédex',
+      emptyPokedex: 'No Pokémon caught yet. Search the grass and click a wild Pokémon to catch it!'
     },
   },
   no: {
@@ -319,6 +322,9 @@ export const translations = {
       pokemon: 'Vill Pokémon',
       pokemonSubtitle: 'Let etter en tilfeldig Pokémon i det høye gresset',
       catchPokemon: 'Gå i Gresset',
+      caught: 'Fanget!',
+      pokedex: 'Min Pokédex',
+      emptyPokedex: 'Du har ikke fanget noen Pokémon ennå. Gå i gresset og klikk på en vill Pokémon for å fange den!'
     },
   },
 };
