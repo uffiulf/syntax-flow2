@@ -620,7 +620,9 @@ export const JustForFunPage: React.FC = () => {
                 </div>
 
                 {/* Walking Sprite */}
-                <div className="pokemon-walking absolute bottom-2 w-full h-[100px] pointer-events-none">
+                <div
+                  className="pokemon-walking absolute bottom-2 h-[100px] w-auto pointer-events-none z-20"
+                >
                   <img
                     src={pokemon.sprites.versions?.['generation-v']?.['black-white']?.animated?.front_default || pokemon.sprites.front_default}
                     alt={pokemon.name}
