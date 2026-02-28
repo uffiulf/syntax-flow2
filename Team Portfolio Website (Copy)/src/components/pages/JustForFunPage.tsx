@@ -673,9 +673,10 @@ export const JustForFunPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Walking Sprite */}
+                {/* Walking/Caught Sprite */}
                 <div
-                  className={`pokemon-walking absolute bottom-2 h-[100px] w-auto pointer-events-none ${isCurrentlyCaught ? 'hidden' : 'z-20'}`}
+                  className={`pokemon-walking absolute bottom-2 h-[100px] w-auto pointer-events-none z-20 ${isCurrentlyCaught ? 'grayscale opacity-80' : ''}`}
+                  style={isCurrentlyCaught ? { animationPlayState: 'paused' } : undefined}
                 >
                   <img
                     src={pokemon.sprites.versions?.['generation-v']?.['black-white']?.animated?.front_default || pokemon.sprites.front_default}
@@ -683,13 +684,6 @@ export const JustForFunPage: React.FC = () => {
                     className="h-full object-contain filter drop-shadow-xl"
                   />
                 </div>
-
-                {/* Caught state sprite inside a ball icon representation */}
-                {isCurrentlyCaught && (
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-[80px] h-[80px] bg-white/30 backdrop-blur-sm rounded-full border-2 border-white/50 flex items-center justify-center z-20">
-                    <img src={pokemon.sprites.front_default} alt={pokemon.name} className="w-[80px] h-[80px] object-contain drop-shadow-md" />
-                  </div>
-                )}
               </div>
             ) : (
               <div
