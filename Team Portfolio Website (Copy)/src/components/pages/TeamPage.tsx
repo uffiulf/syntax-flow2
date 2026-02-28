@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useApp } from '../../lib/AppContext';
 import { translations } from '../../lib/translations';
 import { teamMembers } from '../../lib/mock-data';
-import { Search, Download } from 'lucide-react';
+import { Search, Download, Mail } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Card, CardContent, CardFooter, CardHeader } from '../ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
@@ -19,7 +19,7 @@ import {
 export const TeamPage: React.FC = () => {
   const { language, setCurrentPage, setSelectedProfileId } = useApp();
   const t = translations[language];
-  
+
   const [searchQuery, setSearchQuery] = useState('');
   const [roleFilter, setRoleFilter] = useState('all');
   const [sortBy, setSortBy] = useState('alpha');
@@ -151,8 +151,8 @@ export const TeamPage: React.FC = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground text-center mb-4 line-clamp-2">
-                    {typeof member.bio === 'string' 
-                      ? member.bio 
+                    {typeof member.bio === 'string'
+                      ? member.bio
                       : member.bio[language]
                     }
                   </p>
@@ -173,19 +173,17 @@ export const TeamPage: React.FC = () => {
                   <Button size="sm" variant="default">
                     {t.team.viewProfile}
                   </Button>
-                  {member.cvUrl && (
-                    <Button 
-                      size="sm" 
-                      variant="outline"
-                      asChild
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <a href={member.cvUrl} download>
-                        <Download className="h-3 w-3 mr-1" />
-                        {t.team.downloadCV}
-                      </a>
-                    </Button>
-                  )}
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    asChild
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <a href={`mailto:${member.links.email || member.contactInfo.email}?subject=Forespørsel om CV - ${member.name}&body=Hei ${member.name},%0D%0A%0D%0AJeg ønsker gjerne å ta en titt på din CV.%0D%0A%0D%0AMvh,`}>
+                      <Mail className="h-3 w-3 mr-1" />
+                      {t.team.downloadCV}
+                    </a>
+                  </Button>
                 </CardFooter>
               </Card>
             ))}

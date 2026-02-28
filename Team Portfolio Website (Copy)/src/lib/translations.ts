@@ -32,10 +32,10 @@ export const translations = {
       sortRole: 'Role',
       allRoles: 'All roles',
       viewProfile: 'View Profile',
-      downloadCV: 'Download CV',
+      downloadCV: 'Request CV',
     },
     profile: {
-      downloadCV: 'Download CV',
+      downloadCV: 'Request CV',
       contact: 'Contact',
       bio: 'About',
       highlights: 'Highlights',
@@ -46,7 +46,7 @@ export const translations = {
       present: 'Present',
     },
     projects: {
-      title: 'Our Projects',
+      title: 'Past Projects',
       subtitle: 'Work we\'re proud of',
       searchPlaceholder: 'Search projects...',
       filterByTag: 'Filter by tag',
@@ -119,7 +119,7 @@ export const translations = {
     },
     footer: {
       tagline: 'Building exceptional digital experiences',
-      downloadTeamCV: 'Download Team CV Pack',
+      downloadTeamCV: 'Request Team CV Pack',
       legal: 'Legal',
       privacy: 'Privacy',
       terms: 'Terms',
@@ -190,10 +190,10 @@ export const translations = {
       sortRole: 'Rolle',
       allRoles: 'Alle roller',
       viewProfile: 'Se profil',
-      downloadCV: 'Last ned CV',
+      downloadCV: 'Be om CV',
     },
     profile: {
-      downloadCV: 'Last ned CV',
+      downloadCV: 'Be om CV',
       contact: 'Kontakt',
       bio: 'Om',
       highlights: 'Høydepunkter',
@@ -204,7 +204,7 @@ export const translations = {
       present: 'Nåværende',
     },
     projects: {
-      title: 'Våre prosjekter',
+      title: 'Tidligere prosjekter',
       subtitle: 'Arbeid vi er stolte av',
       searchPlaceholder: 'Søk prosjekter...',
       filterByTag: 'Filtrer etter tag',

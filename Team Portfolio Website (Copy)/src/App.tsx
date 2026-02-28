@@ -55,8 +55,7 @@ const AppContent: React.FC = () => {
         {renderPage()}
       </main>
       <Footer />
-      {/* Temporarily disabled for testing */}
-      {/* <ConsentBanner language={language} /> */}
+      <ConsentBanner language={language} />
       <Toaster />
     </div>
   );

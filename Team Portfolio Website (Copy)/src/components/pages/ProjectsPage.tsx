@@ -20,7 +20,7 @@ import { ImageWithFallback } from '../figma/ImageWithFallback';
 export const ProjectsPage: React.FC = () => {
   const { language, setCurrentPage, setSelectedProjectId } = useApp();
   const t = translations[language];
-  
+
   const [searchQuery, setSearchQuery] = useState('');
   const [tagFilter, setTagFilter] = useState('all');
   const [techFilter, setTechFilter] = useState('all');
@@ -48,11 +48,11 @@ export const ProjectsPage: React.FC = () => {
     if (searchQuery) {
       filtered = filtered.filter(project =>
         project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (typeof project.summary === 'string' 
+        (typeof project.summary === 'string'
           ? project.summary.toLowerCase().includes(searchQuery.toLowerCase())
           : project.summary[language].toLowerCase().includes(searchQuery.toLowerCase())
         ) ||
-        (typeof project.description === 'string' 
+        (typeof project.description === 'string'
           ? project.description.toLowerCase().includes(searchQuery.toLowerCase())
           : project.description[language].toLowerCase().includes(searchQuery.toLowerCase())
         )
@@ -145,7 +145,7 @@ export const ProjectsPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project) => {
               const teamMembersForProject = getProjectTeamMembers(project.teamMemberIds);
-              
+
               return (
                 <Card
                   key={project.id}
@@ -166,8 +166,8 @@ export const ProjectsPage: React.FC = () => {
                   <CardHeader>
                     <h3>{project.title}</h3>
                     <p className="text-sm text-muted-foreground line-clamp-2">
-                      {typeof project.summary === 'string' 
-                        ? project.summary 
+                      {typeof project.summary === 'string'
+                        ? project.summary
                         : project.summary[language]
                       }
                     </p>
@@ -219,9 +219,12 @@ export const ProjectsPage: React.FC = () => {
         )}
 
         {/* Side Projects Section */}
-        <div className="mt-64">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-2">{t.projects.sideProjects}</h2>
+        <div
+          className="w-full border-t border-border/50"
+          style={{ marginTop: '100px', paddingTop: '100px' }}
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-3">{t.projects.sideProjects}</h2>
             <p className="text-muted-foreground">{t.projects.sideProjectsSubtitle}</p>
           </div>
 

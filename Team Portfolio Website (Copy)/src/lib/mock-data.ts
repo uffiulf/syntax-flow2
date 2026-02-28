@@ -444,7 +444,7 @@ export const teamMembers: TeamMember[] = [
     id: "5",
     name: "Ludvig Valter Angell Uteng", // Replace with actual name
     role: ["Utvikler", "Backend Developer", "Frontend Developer"], // Replace with actual roles
-    location: "Soul, Korea", // Replace with location
+    location: "Seoul, Korea", // Replace with location
     bio: {
       no: "Erfaren utvikler med bred kompetanse innen både backend og frontend utvikling. Spesialisert i Java, JavaScript, React og moderne webteknologier. Har erfaring med fullstack-utvikling og brenner for å skape robuste og brukervennlige løsninger.",
       en: "Experienced developer with broad expertise in both backend and frontend development. Specialized in Java, JavaScript, React and modern web technologies. Has experience with fullstack development and is passionate about creating robust and user-friendly solutions."
@@ -495,7 +495,7 @@ export const teamMembers: TeamMember[] = [
     contactInfo: {
       phone: "N/A", // Replace with phone number
       email: "ludvig.v.uteng@hiof.no", // Replace with email
-      address: "Soul, Korea", // Replace with address/city
+      address: "Seoul, Korea", // Replace with address/city
     },
     cvUrl: "/path/to/your-cv.pdf", // REPLACE with actual CV PDF URL or remove
     projectIds: ["1"],
@@ -664,14 +664,14 @@ export const projects: Project[] = [
   },
   {
     id: "3",
-    title: "Power – Forretningssystemer (Høst 2024)",
+    title: "Power – Forretningssystemer (Vår 2025)",
     summary: {
       no: "Et omfattende gruppeprosjekt i faget Forretningssystemer ved Høgskolen i Østfold som analyserte hvordan bedriften Power bruker ERP- og forretningssystemer for å skape verdi og effektivisere interne prosesser.",
       en: "A comprehensive group project in the Business Systems course at Østfold University College that analyzed how the company Power uses ERP and business systems to create value and streamline internal processes."
     },
     description: {
-      no: "Power – Forretningssystemer (Høst 2024) var et omfattende gruppeprosjekt i faget Forretningssystemer ved Høgskolen i Østfold. Oppgaven gikk ut på å analysere hvordan bedriften Power bruker ERP- og forretningssystemer for å skape verdi og effektivisere interne prosesser.",
-      en: "Power – Business Systems (Fall 2024) was a comprehensive group project in the Business Systems course at Østfold University College. The task was to analyze how the company Power uses ERP and business systems to create value and streamline internal processes."
+      no: "Power – Forretningssystemer (Vår 2025) var et omfattende gruppeprosjekt i faget Forretningssystemer ved Høgskolen i Østfold. Oppgaven gikk ut på å analysere hvordan bedriften Power bruker ERP- og forretningssystemer for å skape verdi og effektivisere interne prosesser.",
+      en: "Power – Business Systems (Spring 2025) was a comprehensive group project in the Business Systems course at Østfold University College. The task was to analyze how the company Power uses ERP and business systems to create value and streamline internal processes."
     },
     goals: {
       no: [

@@ -107,14 +107,12 @@ export const ProfilePage: React.FC = () => {
                 </div>
 
                 <div className="flex gap-2">
-                  {member.cvUrl && (
-                    <Button asChild>
-                      <a href={member.cvUrl} download>
-                        <Download className="h-4 w-4 mr-2" />
-                        {t.profile.downloadCV}
-                      </a>
-                    </Button>
-                  )}
+                  <Button asChild>
+                    <a href={`mailto:${member.links.email || member.contactInfo.email}?subject=Forespørsel om CV - ${member.name}&body=Hei ${member.name},%0D%0A%0D%0AJeg ønsker gjerne å ta en titt på din CV.%0D%0A%0D%0AMvh,`}>
+                      <Mail className="h-4 w-4 mr-2" />
+                      {t.profile.downloadCV}
+                    </a>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -129,8 +127,8 @@ export const ProfilePage: React.FC = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                {typeof member.bio === 'string' 
-                  ? member.bio 
+                {typeof member.bio === 'string'
+                  ? member.bio
                   : member.bio[language]
                 }
               </p>
@@ -146,7 +144,7 @@ export const ProfilePage: React.FC = () => {
               {member.contactInfo.email && (
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Email</p>
-                  <a 
+                  <a
                     href={`mailto:${member.contactInfo.email}`}
                     className="hover:text-primary transition-colors"
                   >
@@ -157,7 +155,7 @@ export const ProfilePage: React.FC = () => {
               {member.contactInfo.phone && (
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Phone</p>
-                  <a 
+                  <a
                     href={`tel:${member.contactInfo.phone.replace(/\s/g, '')}`}
                     className="hover:text-primary transition-colors"
                   >
@@ -264,8 +262,8 @@ export const ProfilePage: React.FC = () => {
                     <CardContent className="p-4">
                       <h4>{project.title}</h4>
                       <p className="text-sm text-muted-foreground line-clamp-2">
-                        {typeof project.summary === 'string' 
-                          ? project.summary 
+                        {typeof project.summary === 'string'
+                          ? project.summary
                           : project.summary[language]
                         }
                       </p>
@@ -301,8 +299,8 @@ export const ProfilePage: React.FC = () => {
                       <p className="text-sm text-muted-foreground">{exp.period}</p>
                       {exp.description && (
                         <p className="text-sm text-muted-foreground mt-2">
-                          {typeof exp.description === 'string' 
-                            ? exp.description 
+                          {typeof exp.description === 'string'
+                            ? exp.description
                             : exp.description[language]
                           }
                         </p>
