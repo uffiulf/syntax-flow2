@@ -131,6 +131,14 @@ export const JustForFunPage: React.FC = () => {
   const [isCurrentlyCaught, setIsCurrentlyCaught] = useState<boolean>(false);
   const [pokemonGuess, setPokemonGuess] = useState<string>('');
   const [catchMessage, setCatchMessage] = useState<{ text: string, type: 'success' | 'error' } | null>(null);
+  const [correctGuesses, setCorrectGuesses] = useState<number>(() => {
+    try {
+      const saved = localStorage.getItem('correctGuesses');
+      return saved !== null ? parseInt(saved, 10) : 0;
+    } catch {
+      return 0;
+    }
+  });
 
   // Click counters
   const [jokeClicks, setJokeClicks] = useState<number>(0);
@@ -268,19 +276,35 @@ export const JustForFunPage: React.FC = () => {
     }
   };
 
-  const handleCatchAction = () => {
+  const handleCatchAction = (isGrassClick = false) => {
     if (!pokemon || isCurrentlyCaught) return;
 
-    const isCorrectGuess = pokemonGuess.toLowerCase().trim() === pokemon.name.toLowerCase();
+    const isCorrectGuess = !isGrassClick && pokemonGuess.trim() !== '' && pokemonGuess.toLowerCase().trim() === pokemon.name.toLowerCase();
 
-    if (pokemonGuess.trim() !== '' && isCorrectGuess) {
+    if (isCorrectGuess) {
       // Free catch on correct guess
-      setCatchMessage({ text: (t.fun as any).correctGuess || 'Correct! Caught without using a Pokéball!', type: 'success' });
+      const newCorrect = correctGuesses + 1;
+      let msg = (t.fun as any).correctGuess || 'Correct! Caught without using a Pokéball!';
+
+      // Bonus every 10 guesses
+      if (newCorrect > 0 && newCorrect % 10 === 0) {
+        setPokeBalls(prev => prev + 1);
+        msg = `Correct! +1 Bonus Pokéball for reaching ${newCorrect} correct guesses! 🎉`;
+      }
+
+      setCorrectGuesses(newCorrect);
+      setCatchMessage({ text: msg, type: 'success' });
       finalizeCatch();
     } else {
-      // Incorrect guess or just throwing a ball blindly
+      // Incorrect guess or throwing a ball blindly
       if (pokeBalls > 0) {
         setPokeBalls(prev => prev - 1);
+
+        // Reset streak only if it was an active incorrect guess (not a silent grass click with empty field)
+        if (!isGrassClick && pokemonGuess.trim() !== '') {
+          setCorrectGuesses(0);
+        }
+
         setCatchMessage({ text: (t.fun as any).gotcha || 'Gotcha! Pokémon caught.', type: 'success' });
         finalizeCatch();
       } else {
@@ -298,6 +322,11 @@ export const JustForFunPage: React.FC = () => {
   useEffect(() => {
     localStorage.setItem('pokeBalls', pokeBalls.toString());
   }, [pokeBalls]);
+
+  // Sync correct guesses streak
+  useEffect(() => {
+    localStorage.setItem('correctGuesses', correctGuesses.toString());
+  }, [correctGuesses]);
 
   // Fetch initial data on component mount (without incrementing counters)
   useEffect(() => {
@@ -685,7 +714,7 @@ export const JustForFunPage: React.FC = () => {
                     className={`absolute inset-0 z-40 ${isCurrentlyCaught ? 'cursor-default' : 'cursor-pointer hover:bg-white/10 group'}`}
                     onClick={() => {
                       if (!isCurrentlyCaught) {
-                        handleCatchAction();
+                        handleCatchAction(true);
                       } else if (pokemon.cries?.latest) {
                         const audio = new Audio(pokemon.cries.latest);
                         audio.volume = 0.2;
@@ -725,22 +754,21 @@ export const JustForFunPage: React.FC = () => {
                 </div>
 
                 {/* Catch Game Controls */}
-                <div className="mt-4 flex flex-col sm:flex-row gap-3 items-center w-full">
-                  <div className="flex-grow flex items-center w-full">
-                    <Input
-                      type="text"
-                      placeholder={(t.fun as any).guessName || "Guess Pokémon name"}
-                      value={pokemonGuess}
-                      onChange={(e) => setPokemonGuess(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') handleCatchAction();
-                      }}
-                      disabled={isCurrentlyCaught}
-                      className="w-full text-center sm:text-left h-11 border-2 border-primary/20 focus-visible:border-primary font-semibold"
-                    />
-                  </div>
+                <div className="mt-4 flex flex-col sm:flex-row gap-3 w-full justify-center items-center">
+                  <Input
+                    id="pokemon-guess-input"
+                    type="text"
+                    placeholder={(t.fun as any).guessName || "Guess Pokémon name"}
+                    value={pokemonGuess}
+                    onChange={(e) => setPokemonGuess(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') handleCatchAction(false);
+                    }}
+                    disabled={isCurrentlyCaught}
+                    className="w-full sm:flex-1 h-12 border-2 border-primary/20 focus-visible:border-primary font-bold text-center sm:text-left text-lg px-4"
+                  />
                   <Button
-                    onClick={handleCatchAction}
+                    onClick={() => handleCatchAction(false)}
                     disabled={isCurrentlyCaught}
                     className="w-full sm:w-auto min-w-[200px] font-bold h-11"
                     variant={pokeBalls > 0 ? "default" : "destructive"}
