@@ -155,6 +155,9 @@ export const translations = {
       cats: 'Cats',
       users: 'Users',
       activities: 'Activities',
+      pokemon: 'Wild Pokémon',
+      pokemonSubtitle: 'Catch a random Pokémon from the tall grass',
+      catchPokemon: 'Search Grass',
     },
   },
   no: {
@@ -313,6 +316,9 @@ export const translations = {
       cats: 'Katter',
       users: 'Brukere',
       activities: 'Aktiviteter',
+      pokemon: 'Vill Pokémon',
+      pokemonSubtitle: 'Let etter en tilfeldig Pokémon i det høye gresset',
+      catchPokemon: 'Gå i Gresset',
     },
   },
 };

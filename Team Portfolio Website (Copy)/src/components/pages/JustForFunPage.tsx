@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader } from '../ui/card';
 import { Skeleton } from '../ui/skeleton';
 import { Badge } from '../ui/badge';
 import { Avatar, AvatarImage, AvatarFallback } from '../ui/avatar';
-import { Laugh, RefreshCw, Cat, User, Lightbulb } from 'lucide-react';
+import { Laugh, RefreshCw, Cat, User, Lightbulb, Gamepad2 } from 'lucide-react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 
 interface DadJoke {
@@ -57,6 +57,25 @@ interface BoredActivity {
   accessibility: number;
 }
 
+interface PokemonData {
+  id: number;
+  name: string;
+  sprites: {
+    front_default: string;
+    versions: {
+      'generation-v': {
+        'black-white': {
+          animated: {
+            front_default: string;
+          }
+        }
+      }
+    }
+  };
+  types: { type: { name: string } }[];
+  cries?: { latest: string };
+}
+
 const HTTP_STATUS_CODES = [
   { code: 200, label: 'OK' },
   { code: 201, label: 'Created' },
@@ -87,11 +106,16 @@ export const JustForFunPage: React.FC = () => {
   const [activityLoading, setActivityLoading] = useState<boolean>(false);
   const [activityError, setActivityError] = useState<string>('');
 
+  const [pokemon, setPokemon] = useState<PokemonData | null>(null);
+  const [pokemonLoading, setPokemonLoading] = useState<boolean>(false);
+  const [pokemonError, setPokemonError] = useState<string>('');
+
   // Click counters
   const [jokeClicks, setJokeClicks] = useState<number>(0);
   const [catClicks, setCatClicks] = useState<number>(0);
   const [userClicks, setUserClicks] = useState<number>(0);
   const [activityClicks, setActivityClicks] = useState<number>(0);
+  const [pokemonClicks, setPokemonClicks] = useState<number>(0);
 
   const fetchJoke = async () => {
     setJokeClicks(prev => prev + 1);
@@ -168,6 +192,37 @@ export const JustForFunPage: React.FC = () => {
       console.error('Error fetching activity:', err);
     } finally {
       setActivityLoading(false);
+    }
+  };
+
+  const fetchPokemon = async () => {
+    setPokemonClicks(prev => prev + 1);
+    setPokemonLoading(true);
+    setPokemonError('');
+    try {
+      const randomId = Math.floor(Math.random() * 649) + 1; // Gen 1-5 have best animated sprites
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch Pokemon');
+      }
+
+      const data: PokemonData = await response.json();
+      setPokemon(data);
+
+      // Play cry if available
+      if (data.cries?.latest) {
+        const audio = new Audio(data.cries.latest);
+        audio.volume = 0.2;
+        audio.play().catch(e => console.log('Audio playback prevented by browser:', e));
+      }
+    } catch (err) {
+      setPokemonError(language === 'en'
+        ? 'Failed to find Pokémon. Please try again.'
+        : 'Fant ingen Pokémon. Vennligst prøv igjen.');
+      console.error('Error fetching Pokemon:', err);
+    } finally {
+      setPokemonLoading(false);
     }
   };
 
@@ -507,6 +562,83 @@ export const JustForFunPage: React.FC = () => {
           </CardContent>
         </Card>
 
+        {/* Pokemon Card */}
+        <Card className="mb-8">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <h2 className="italic font-bold text-[20px]">{(t.fun as any).pokemon || 'Wild Pokémon'}</h2>
+                  <Badge variant="secondary" className="text-sm">
+                    {pokemonClicks}
+                  </Badge>
+                </div>
+                <p className="text-sm text-muted-foreground">{(t.fun as any).pokemonSubtitle || 'Catch a random Pokémon from the tall grass'}</p>
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={fetchPokemon}
+                disabled={pokemonLoading}
+                className="hover:bg-primary hover:text-primary-foreground transition-colors"
+                title={(t.fun as any).catchPokemon || 'Search Grass'}
+              >
+                <Gamepad2 className={`h-5 w-5 ${pokemonLoading ? 'animate-pulse' : ''}`} />
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {pokemonLoading ? (
+              <div className="flex items-start gap-4 h-[150px]">
+                <div className="w-full h-full bg-muted rounded flex items-center justify-center">
+                  <Skeleton className="w-16 h-16 rounded-full" />
+                </div>
+              </div>
+            ) : pokemonError ? (
+              <div className="text-center h-[150px] flex flex-col justify-center items-center">
+                <p className="text-destructive mb-4">{pokemonError}</p>
+                <Button onClick={fetchPokemon} className="hover:bg-primary hover:text-primary-foreground transition-colors">
+                  {t.fun.tryAgain}
+                </Button>
+              </div>
+            ) : pokemon ? (
+              <div className="relative rounded-lg overflow-hidden grass-bg h-[200px] border-4 border-green-800 flex items-center shadow-inner cursor-pointer" onClick={() => {
+                if (pokemon.cries?.latest) {
+                  const audio = new Audio(pokemon.cries.latest);
+                  audio.volume = 0.2;
+                  audio.play().catch(e => console.log(e));
+                }
+              }}>
+                {/* Information Badge */}
+                <div className="absolute top-3 left-3 bg-white/90 dark:bg-black/80 backdrop-blur-sm p-3 rounded-lg border border-border shadow-md z-10 w-fit">
+                  <h3 className="capitalize font-bold text-lg mb-1">{pokemon.name}</h3>
+                  <div className="flex gap-1">
+                    {pokemon.types.map(t => (
+                      <Badge key={t.type.name} variant="outline" className="text-xs">{t.type.name}</Badge>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Walking Sprite */}
+                <div className="pokemon-walking absolute bottom-2 w-full h-[100px] pointer-events-none">
+                  <img
+                    src={pokemon.sprites.versions?.['generation-v']?.['black-white']?.animated?.front_default || pokemon.sprites.front_default}
+                    alt={pokemon.name}
+                    className="h-full object-contain filter drop-shadow-xl"
+                  />
+                </div>
+              </div>
+            ) : (
+              <div className="text-center h-[150px] flex flex-col justify-center items-center grass-bg rounded-lg border-4 border-green-800 opacity-90 cursor-pointer shadow-inner relative overflow-hidden group" onClick={fetchPokemon}>
+                <p className="mb-4 text-white font-bold drop-shadow-md text-lg z-10">{(t.fun as any).catchPokemon || 'Search Grass'}</p>
+                <Button variant="secondary" className="bg-white text-black hover:bg-gray-100 z-10">{(t.fun as any).catchPokemon || 'Search Grass'}</Button>
+                {/* decorative grass blades */}
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
         {/* Click Counter Section */}
         <Card className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20">
           <CardHeader>
@@ -530,10 +662,14 @@ export const JustForFunPage: React.FC = () => {
                 <div className="text-2xl font-bold text-primary">{activityClicks}</div>
                 <div className="text-sm text-muted-foreground">{t.fun.activities}</div>
               </div>
+              <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg col-span-2 sm:col-span-4 lg:col-span-1">
+                <div className="text-2xl font-bold text-primary">{pokemonClicks}</div>
+                <div className="text-sm text-muted-foreground">{(t.fun as any).pokemon || 'Pokémon'}</div>
+              </div>
             </div>
             <div className="text-center mt-4">
               <div className="text-lg font-semibold">
-                {t.fun.totalClicks}: <span className="text-primary">{jokeClicks + catClicks + userClicks + activityClicks}</span>
+                {t.fun.totalClicks}: <span className="text-primary">{jokeClicks + catClicks + userClicks + activityClicks + pokemonClicks}</span>
               </div>
             </div>
           </CardContent>
@@ -545,6 +681,7 @@ export const JustForFunPage: React.FC = () => {
           <p>HTTP Cats powered by http.cat</p>
           <p>Random User powered by randomuser.me</p>
           <p>Bored API powered by apis.scrimba.com</p>
+          <p>Pokémon powered by PokéAPI</p>
         </div>
       </div>
     </div>

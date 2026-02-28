@@ -138,6 +138,35 @@
   text-color: black;
 }
 
+/* Pokemon Animations */
+@keyframes walk-right {
+  0% { transform: translateX(-100%) scaleX(-1); }
+  45% { transform: translateX(50vw) scaleX(-1); }
+  50% { transform: translateX(50vw) scaleX(1); }
+  95% { transform: translateX(-100%) scaleX(1); }
+  100% { transform: translateX(-100%) scaleX(-1); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.pokemon-walking {
+  animation: walk-right 20s linear infinite, bounce 0.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+.grass-bg {
+  background: repeating-linear-gradient(
+    45deg,
+    #7cb342,
+    #7cb342 10px,
+    #8bc34a 10px,
+    #8bc34a 20px
+  );
+}
+
 @layer base {
   *, :after, :before, ::backdrop {
     box-sizing: border-box;
