@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useApp } from '../../lib/AppContext';
 import { translations } from '../../lib/translations';
 import { teamMembers, projects } from '../../lib/mock-data';
-import { Search, Code, Cloud, Users, Palette, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, Code, Cloud, Users, Palette, ChevronLeft, ChevronRight, User, Folder } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Badge } from '../ui/badge';
@@ -16,6 +16,42 @@ export const HomePage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [featuredScroll, setFeaturedScroll] = useState(0);
   const [visibleWords, setVisibleWords] = useState(0); // Start with nothing visible
+  const [showDropdown, setShowDropdown] = useState(false);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
+
+  // Lukk dropdown når man klikker utenfor
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Finn matchende prosjekter og profiler dynamisk
+  const searchResults = useMemo(() => {
+    if (!searchQuery.trim()) return { members: [], projs: [] };
+    const query = searchQuery.toLowerCase();
+
+    const members = teamMembers.filter(m =>
+      m.name.toLowerCase().includes(query) ||
+      (m.skills && m.skills.some(s => s.toLowerCase().includes(query))) ||
+      (m.role && m.role.some(r => r.toLowerCase().includes(query)))
+    ).slice(0, 3);
+
+    const projs = projects.filter(p => {
+      const titleMatch = p.title.toLowerCase().includes(query);
+      const sumMatch = typeof p.summary === 'string'
+        ? p.summary.toLowerCase().includes(query)
+        : p.summary[language].toLowerCase().includes(query);
+      const tagMatch = p.tags && p.tags.some(t => t.toLowerCase().includes(query));
+      return titleMatch || sumMatch || tagMatch;
+    }).slice(0, 3);
+
+    return { members, projs };
+  }, [searchQuery, language]);
 
   const services = [
     {
@@ -44,13 +80,13 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
-    
+
     // "From idea" / "Fra idé" appears immediately
     timers.push(setTimeout(() => setVisibleWords(1), 0));
-    
+
     // "to reality" / "til virkelighet" after 1 second
     timers.push(setTimeout(() => setVisibleWords(2), 1000));
-    
+
     // Subtitle 2 seconds after "til virkelighet" (total 3 seconds)
     timers.push(setTimeout(() => setVisibleWords(3), 3000));
 
@@ -68,10 +104,10 @@ export const HomePage: React.FC = () => {
     const container = document.getElementById('featured-projects');
     if (container) {
       const scrollAmount = 400;
-      const newScroll = direction === 'left' 
+      const newScroll = direction === 'left'
         ? Math.max(0, featuredScroll - scrollAmount)
         : Math.min(container.scrollWidth - container.clientWidth, featuredScroll + scrollAmount);
-      
+
       container.scrollTo({ left: newScroll, behavior: 'smooth' });
       setFeaturedScroll(newScroll);
     }
@@ -97,7 +133,7 @@ export const HomePage: React.FC = () => {
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         {/* Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
-        
+
         {/* Geometric Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 right-20 w-64 h-64 border border-primary rotate-45" />
@@ -108,34 +144,30 @@ export const HomePage: React.FC = () => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight">
             {language === 'no' ? (
               <>
-                <span 
-                  className={`inline-block mr-4 sm:mr-6 transition-all duration-700 ${
-                    visibleWords >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                  }`}
+                <span
+                  className={`inline-block mr-4 sm:mr-6 transition-all duration-700 ${visibleWords >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    }`}
                 >
                   Fra idé
                 </span>
-                <span 
-                  className={`inline-block transition-all duration-700 ${
-                    visibleWords >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                  }`}
+                <span
+                  className={`inline-block transition-all duration-700 ${visibleWords >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    }`}
                 >
                   til virkelighet
                 </span>
               </>
             ) : (
               <>
-                <span 
-                  className={`inline-block mr-4 sm:mr-6 transition-all duration-700 ${
-                    visibleWords >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                  }`}
+                <span
+                  className={`inline-block mr-4 sm:mr-6 transition-all duration-700 ${visibleWords >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    }`}
                 >
                   From idea
                 </span>
-                <span 
-                  className={`inline-block transition-all duration-700 ${
-                    visibleWords >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                  }`}
+                <span
+                  className={`inline-block transition-all duration-700 ${visibleWords >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    }`}
                 >
                   to reality
                 </span>
@@ -143,10 +175,9 @@ export const HomePage: React.FC = () => {
             )}
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            <span 
-              className={`inline-block transition-all duration-700 ${
-                visibleWords >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
+            <span
+              className={`inline-block transition-all duration-700 ${visibleWords >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}
             >
               {t.home.heroSubtitle}
             </span>
@@ -171,21 +202,95 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Search Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-30">
         <Card className="shadow-xl">
           <CardContent className="p-6">
             <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-4">
-              <div className="flex-1 relative">
+              <div className="flex-1 relative" ref={searchContainerRef}>
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   type="text"
                   placeholder={t.home.searchPlaceholder}
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10"
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    setShowDropdown(true);
+                  }}
+                  onFocus={() => setShowDropdown(true)}
+                  className="pl-10 relative z-10 bg-background"
                 />
+
+                {/* Autocomplete Dropdown */}
+                {showDropdown && searchQuery.trim() && (
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-background border rounded-lg shadow-xl overflow-hidden z-50">
+                    {searchResults.members.length === 0 && searchResults.projs.length === 0 ? (
+                      <div className="p-4 text-center text-muted-foreground text-sm">
+                        {language === 'no' ? 'Ingen treff for' : 'No results found for'} "{searchQuery}"
+                      </div>
+                    ) : (
+                      <div className="max-h-[350px] overflow-y-auto w-full py-2">
+                        {/* Team Members */}
+                        {searchResults.members.length > 0 && (
+                          <div className="mb-2">
+                            <div className="px-3 py-1 text-xs font-semibold text-muted-foreground uppercase tracking-wider bg-muted/40">
+                              Team
+                            </div>
+                            {searchResults.members.map(member => (
+                              <div
+                                key={member.id}
+                                className="px-4 py-2 hover:bg-muted cursor-pointer flex items-center gap-3 transition-colors"
+                                onClick={() => {
+                                  setShowDropdown(false);
+                                  handleViewProfile(member.id);
+                                }}
+                              >
+                                <Avatar className="w-8 h-8">
+                                  <AvatarImage src={member.avatar} />
+                                  <AvatarFallback><User className="w-4 h-4" /></AvatarFallback>
+                                </Avatar>
+                                <div>
+                                  <div className="font-medium text-sm">{member.name}</div>
+                                  <div className="text-xs text-muted-foreground">{member.role?.[0]}</div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Projects */}
+                        {searchResults.projs.length > 0 && (
+                          <div>
+                            <div className="px-3 py-1 text-xs font-semibold text-muted-foreground uppercase tracking-wider bg-muted/40">
+                              {language === 'no' ? 'Prosjekter' : 'Projects'}
+                            </div>
+                            {searchResults.projs.map(project => (
+                              <div
+                                key={project.id}
+                                className="px-4 py-2 hover:bg-muted cursor-pointer flex items-center gap-3 transition-colors"
+                                onClick={() => {
+                                  setShowDropdown(false);
+                                  handleViewProject(project.id);
+                                }}
+                              >
+                                <div className="w-8 h-8 rounded shrink-0 bg-primary/10 flex items-center justify-center">
+                                  <Folder className="w-4 h-4 text-primary" />
+                                </div>
+                                <div className="overflow-hidden">
+                                  <div className="font-medium text-sm truncate">{project.title}</div>
+                                  <div className="text-xs text-muted-foreground truncate">
+                                    {typeof project.summary === 'string' ? project.summary : project.summary[language]}
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
-              <div className="flex gap-2 flex-wrap">
+              <div className="flex gap-2 flex-wrap items-center">
                 {roles.map((role) => (
                   <Badge
                     key={role}
@@ -251,8 +356,8 @@ export const HomePage: React.FC = () => {
               <CardHeader>
                 <h3>{project.title}</h3>
                 <p className="text-muted-foreground">
-                  {typeof project.summary === 'string' 
-                    ? project.summary 
+                  {typeof project.summary === 'string'
+                    ? project.summary
                     : project.summary[language]
                   }
                 </p>
