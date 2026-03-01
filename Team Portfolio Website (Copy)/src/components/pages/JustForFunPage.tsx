@@ -6,9 +6,17 @@ import { Card, CardContent, CardHeader } from '../ui/card';
 import { Skeleton } from '../ui/skeleton';
 import { Badge } from '../ui/badge';
 import { Avatar, AvatarImage, AvatarFallback } from '../ui/avatar';
-import { Laugh, RefreshCw, Cat, User, Lightbulb, Gamepad2, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Laugh, RefreshCw, Cat, User, Lightbulb, Gamepad2, AlertCircle, CheckCircle2, Trophy, Ghost } from 'lucide-react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Input } from '../ui/input';
+
+// Enkel obfuscation helpers for localStorage security (Base64)
+const encodeData = (data: string) => {
+  try { return btoa(data); } catch { return data; }
+};
+const decodeData = (encodedData: string) => {
+  try { return atob(encodedData); } catch { return encodedData; }
+};
 
 interface DadJoke {
   id: string;
@@ -115,7 +123,7 @@ export const JustForFunPage: React.FC = () => {
   const [caughtPokemon, setCaughtPokemon] = useState<PokemonData[]>(() => {
     try {
       const saved = localStorage.getItem('caughtPokemon');
-      return saved ? JSON.parse(saved) : [];
+      return saved ? JSON.parse(decodeData(saved)) : [];
     } catch {
       return [];
     }
@@ -123,24 +131,44 @@ export const JustForFunPage: React.FC = () => {
   const [pokeBalls, setPokeBalls] = useState<number>(() => {
     try {
       const saved = localStorage.getItem('pokeBalls');
-      return saved !== null ? parseInt(saved, 10) : 10;
+      return saved !== null ? parseInt(decodeData(saved), 10) : 10;
     } catch {
       return 10;
     }
   });
+
+  // Scoreboard / Player States
+  const [playerName, setPlayerName] = useState<string>(() => {
+    try {
+      const saved = localStorage.getItem('pokemonPlayerName');
+      return saved ? decodeData(saved) : '';
+    } catch { return ''; }
+  });
+  const [missedPokemonCount, setMissedPokemonCount] = useState<number>(() => {
+    try {
+      const saved = localStorage.getItem('missedPokemonCount');
+      return saved !== null ? parseInt(decodeData(saved), 10) : 0;
+    } catch { return 0; }
+  });
+
   const [isCurrentlyCaught, setIsCurrentlyCaught] = useState<boolean>(false);
   const [hasFled, setHasFled] = useState<boolean>(false);
+  const [isThrowing, setIsThrowing] = useState<boolean>(false);
+  const [isTeamRocketEncounter, setIsTeamRocketEncounter] = useState<boolean>(false);
   const [throwAttempts, setThrowAttempts] = useState<number>(0);
   const [pokemonGuess, setPokemonGuess] = useState<string>('');
-  const [catchMessage, setCatchMessage] = useState<{ text: string, type: 'success' | 'error' } | null>(null);
+  const [catchMessage, setCatchMessage] = useState<{ text: string, type: 'success' | 'error' | 'rocket' } | null>(null);
   const [correctGuesses, setCorrectGuesses] = useState<number>(() => {
     try {
       const saved = localStorage.getItem('correctGuesses');
-      return saved !== null ? parseInt(saved, 10) : 0;
+      return saved !== null ? parseInt(decodeData(saved), 10) : 0;
     } catch {
       return 0;
     }
   });
+
+  // Name Registration State
+  const [inputName, setInputName] = useState('');
 
   // Click counters
   const [jokeClicks, setJokeClicks] = useState<number>(0);
@@ -281,73 +309,106 @@ export const JustForFunPage: React.FC = () => {
   };
 
   const handleCatchAction = (isGrassClick = false) => {
-    if (!pokemon || isCurrentlyCaught || hasFled) return;
+    if (!pokemon || isCurrentlyCaught || hasFled || isThrowing || isTeamRocketEncounter) return;
 
     const isGuessEntry = !isGrassClick && pokemonGuess.trim() !== '';
     const isCorrectGuess = isGuessEntry && pokemonGuess.toLowerCase().trim() === pokemon.name.toLowerCase();
 
     if (isGuessEntry) {
       if (isCorrectGuess) {
-        // Free catch on correct guess
-        const newCorrect = correctGuesses + 1;
-        let msg = (t.fun as any).correctGuess || 'Correct! Caught without using a Pokéball!';
+        // Correct Guess
+        const catchSuccessLogic = () => {
+          const newCorrect = correctGuesses + 1;
+          let msg = (t.fun as any).correctGuess || `Correct! You caught ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}!`;
 
-        // Bonus every 10 guesses
-        if (newCorrect > 0 && newCorrect % 10 === 0) {
-          setPokeBalls(prev => prev + 1);
-          msg = `Correct! +1 Bonus Pokéball for reaching ${newCorrect} correct guesses! 🎉`;
-        }
+          if (newCorrect > 0 && newCorrect % 5 === 0) {
+            setPokeBalls(prev => prev + 1);
+            msg = `Correct! +1 Bonus Pokéball for a ${newCorrect} winstreak! 🎉`;
+          }
+          setCorrectGuesses(newCorrect);
 
-        setCorrectGuesses(newCorrect);
-        setCatchMessage({ text: msg, type: 'success' });
-        finalizeCatch();
+          // Team Rocket Check (20% steal chance on any successful catch)
+          if (Math.random() < 0.20) {
+            setIsTeamRocketEncounter(true);
+            setMissedPokemonCount(prev => prev + 1);
+            setCatchMessage({ text: `Oh no! Team Rocket appeared and stole your ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}!`, type: 'rocket' });
+            setHasFled(true); // Treat it as fled so they can't throw again
+          } else {
+            setCatchMessage({ text: msg, type: 'success' });
+            finalizeCatch();
+          }
+        };
+        catchSuccessLogic();
+
       } else {
         // Wrong Guess -> Flee!
         setCorrectGuesses(0);
         setHasFled(true);
+        setMissedPokemonCount(prev => prev + 1);
         setCatchMessage({ text: (t.fun as any).fledWrongName || 'Wrong! The Pokémon fled!', type: 'error' });
       }
     } else {
       // Throw Pokeball Logic
       if (pokeBalls > 0) {
-        setPokeBalls(prev => prev - 1);
-        const currentAttempt = throwAttempts + 1;
-        setThrowAttempts(currentAttempt);
+        setIsThrowing(true); // Trigger UI wait/shake animation
+        setCatchMessage(null);
 
-        // Let's formulate a 70% chance to catch
-        const catchSuccess = Math.random() < 0.70;
+        // Wait 1.5 seconds for dramatic effect before showing result
+        setTimeout(() => {
+          setIsThrowing(false);
+          setPokeBalls(prev => prev - 1);
+          const currentAttempt = throwAttempts + 1;
+          setThrowAttempts(currentAttempt);
 
-        if (catchSuccess) {
-          setCatchMessage({ text: (t.fun as any).gotcha || 'Gotcha! Pokémon caught.', type: 'success' });
-          finalizeCatch();
-        } else {
-          if (currentAttempt >= 3) {
-            setHasFled(true);
-            setCatchMessage({ text: (t.fun as any).fledMaxThrows || 'Oh no! The Pokémon broke free and ran away!', type: 'error' });
+          const catchSuccess = Math.random() < 0.70;
+
+          if (catchSuccess) {
+            // Team Rocket Check on throw catch
+            if (Math.random() < 0.20) {
+              setIsTeamRocketEncounter(true);
+              setMissedPokemonCount(prev => prev + 1);
+              setCatchMessage({ text: `Oh no! Team Rocket appeared and stole your ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}!`, type: 'rocket' });
+              setHasFled(true); // Run away
+            } else {
+              setCatchMessage({ text: `Gotcha! You caught ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}!`, type: 'success' });
+              finalizeCatch();
+            }
           } else {
-            setCatchMessage({ text: `${(t.fun as any).brokeFree || 'Darn! The Pokémon broke free!'} (${currentAttempt}/3)`, type: 'error' });
+            if (currentAttempt >= 3) {
+              setHasFled(true);
+              setMissedPokemonCount(prev => prev + 1);
+              setCatchMessage({ text: `Oh no! ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} broke free and ran away!`, type: 'error' });
+            } else {
+              setCatchMessage({ text: `${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} broke free! (${currentAttempt}/3)`, type: 'error' });
+            }
           }
-        }
+        }, 1500); // 1.5 sec Throw Wait Time
       } else {
         setCatchMessage({ text: (t.fun as any).outOfBalls || 'Out of Pokéballs! You must guess the name.', type: 'error' });
       }
     }
   };
 
-  // Sync caught pokemon to local storage
+  // Sync states to local storage securely
   useEffect(() => {
-    localStorage.setItem('caughtPokemon', JSON.stringify(caughtPokemon));
+    localStorage.setItem('caughtPokemon', encodeData(JSON.stringify(caughtPokemon)));
   }, [caughtPokemon]);
 
-  // Sync pokeballs
   useEffect(() => {
-    localStorage.setItem('pokeBalls', pokeBalls.toString());
+    localStorage.setItem('pokeBalls', encodeData(pokeBalls.toString()));
   }, [pokeBalls]);
 
-  // Sync correct guesses streak
   useEffect(() => {
-    localStorage.setItem('correctGuesses', correctGuesses.toString());
+    localStorage.setItem('correctGuesses', encodeData(correctGuesses.toString()));
   }, [correctGuesses]);
+
+  useEffect(() => {
+    localStorage.setItem('pokemonPlayerName', encodeData(playerName));
+  }, [playerName]);
+
+  useEffect(() => {
+    localStorage.setItem('missedPokemonCount', encodeData(missedPokemonCount.toString()));
+  }, [missedPokemonCount]);
 
   // Fetch initial data on component mount (without incrementing counters)
   useEffect(() => {
@@ -711,7 +772,29 @@ export const JustForFunPage: React.FC = () => {
             </div>
           </CardHeader>
           <CardContent>
-            {pokemonLoading ? (
+            {!playerName ? (
+              <div className="text-center flex flex-col justify-center items-center py-10 space-y-4">
+                <Gamepad2 className="w-16 h-16 text-primary mb-2 opacity-80" />
+                <h3 className="text-2xl font-bold">Velkommen, Trener!</h3>
+                <p className="text-muted-foreground mb-4">Skriv inn trener-navnet ditt for å starte reisen.</p>
+                <form
+                  className="flex gap-2 max-w-sm w-full"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (inputName.trim()) setPlayerName(inputName.trim());
+                  }}
+                >
+                  <Input
+                    placeholder="Mitt navn er..."
+                    value={inputName}
+                    onChange={(e) => setInputName(e.target.value)}
+                    maxLength={15}
+                    className="flex-1"
+                  />
+                  <Button type="submit">Start</Button>
+                </form>
+              </div>
+            ) : pokemonLoading ? (
               <div className="flex items-start gap-4 h-[150px]">
                 <div className="w-full h-full bg-muted rounded flex items-center justify-center">
                   <Skeleton className="w-16 h-16 rounded-full" />
@@ -725,9 +808,20 @@ export const JustForFunPage: React.FC = () => {
                 </Button>
               </div>
             ) : pokemon ? (
-              <div className="flex flex-col w-full">
+              <div className="flex flex-col w-full relative">
+                {/* Scoreboard */}
+                <div className="absolute top-2 right-2 z-50 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border shadow-md flex items-center gap-3">
+                  <span className="font-bold text-sm max-w-[100px] truncate">{playerName}</span>
+                  <div className="flex items-center gap-1 text-green-600 dark:text-green-400 font-bold text-sm">
+                    <Trophy className="w-3.5 h-3.5" /> {caughtPokemon.length}
+                  </div>
+                  <div className="flex items-center gap-1 text-red-600 dark:text-red-400 font-bold text-sm">
+                    <AlertCircle className="w-3.5 h-3.5" /> {-missedPokemonCount}
+                  </div>
+                </div>
+
                 <div
-                  className="relative rounded-lg overflow-hidden grass-bg border-4 border-green-800 flex items-center shadow-inner"
+                  className="relative rounded-lg overflow-hidden grass-bg border-4 border-green-800 flex items-center shadow-inner mt-4"
                   style={{ minHeight: '200px' }}
                 >
                   {/* Clickable Overlay */}
@@ -774,26 +868,27 @@ export const JustForFunPage: React.FC = () => {
                     <Input
                       id="pokemon-guess-input"
                       type="text"
+                      autoComplete="off"
                       placeholder={(t.fun as any).guessName || "Guess Pokémon name"}
                       value={pokemonGuess}
                       onChange={(e) => setPokemonGuess(e.target.value)}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') handleCatchAction(false);
                       }}
-                      disabled={isCurrentlyCaught || hasFled}
+                      disabled={isCurrentlyCaught || hasFled || isThrowing || isTeamRocketEncounter}
                       className="w-full h-14 border-2 border-primary/30 focus-visible:border-primary font-bold text-center text-xl px-4 rounded-xl disabled:opacity-80 mb-2"
                     />
 
                     {!isCurrentlyCaught && !hasFled ? (
                       <Button
                         onClick={() => handleCatchAction(false)}
-                        disabled={isCurrentlyCaught || hasFled}
+                        disabled={isCurrentlyCaught || hasFled || isThrowing}
                         className="w-full px-4 font-bold h-14 text-lg"
                         title={(t.fun as any).throwBall || "Throw Ball"}
                         variant={pokeBalls > 0 ? "default" : "destructive"}
                       >
                         <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 rounded-full border-2 border-current bg-red-500 overflow-hidden relative shadow-inner shrink-0">
+                          <div className={`w-6 h-6 rounded-full border-2 border-current bg-red-500 overflow-hidden relative shadow-inner shrink-0 ${isThrowing ? 'throw-pokeball' : ''}`}>
                             <div className="absolute bottom-0 w-full h-1/2 bg-white"></div>
                             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rounded-full border border-black z-10"></div>
                             <div className="absolute top-1/2 w-full h-px bg-black transform -translate-y-1/2"></div>
@@ -815,8 +910,8 @@ export const JustForFunPage: React.FC = () => {
 
                 {/* Catch Messages */}
                 {catchMessage && (
-                  <div className={`mt-3 p-3 rounded-md text-sm font-bold flex items-center justify-center gap-2 shadow-sm border ${catchMessage.type === 'success' ? 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-800/50' : 'bg-red-100 text-red-800 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800/50'}`}>
-                    {catchMessage.type === 'success' ? <CheckCircle2 className="w-5 h-5" /> : <AlertCircle className="w-5 h-5" />}
+                  <div className={`mt-3 p-3 rounded-md text-sm font-bold flex items-center justify-center gap-2 shadow-sm border ${catchMessage.type === 'success' ? 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-800/50' : catchMessage.type === 'rocket' ? 'bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/30 dark:text-purple-400 dark:border-purple-800/50' : 'bg-red-100 text-red-800 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800/50'}`}>
+                    {catchMessage.type === 'success' ? <CheckCircle2 className="w-5 h-5" /> : catchMessage.type === 'rocket' ? <Ghost className="w-5 h-5" /> : <AlertCircle className="w-5 h-5" />}
                     {catchMessage.text}
                   </div>
                 )}
