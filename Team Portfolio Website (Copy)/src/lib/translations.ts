@@ -119,7 +119,6 @@ export const translations = {
     },
     footer: {
       tagline: 'Building exceptional digital experiences',
-      downloadTeamCV: 'Request Team CV Pack',
       legal: 'Legal',
       privacy: 'Privacy',
       terms: 'Terms',
@@ -293,7 +292,6 @@ export const translations = {
     },
     footer: {
       tagline: 'Bygger eksepsjonelle digitale opplevelser',
-      downloadTeamCV: 'Last ned team CV-pakke',
       legal: 'Juridisk',
       privacy: 'Personvern',
       terms: 'Vilkår',

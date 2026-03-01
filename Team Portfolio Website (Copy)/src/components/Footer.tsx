@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
                       <stop offset="100%" stopColor="#a78bfa" />
                     </linearGradient>
                   </defs>
-                  
+
                   {/* Left bracket { */}
                   <path
                     d="M15 8C15 8 12 8 12 11L12 16C12 17 11 18 9 18C11 18 12 19 12 20L12 25C12 28 15 28 15 28"
@@ -47,7 +47,7 @@ export const Footer: React.FC = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  
+
                   {/* Right bracket } */}
                   <path
                     d="M25 8C25 8 28 8 28 11L28 16C28 17 29 18 31 18C29 18 28 19 28 20L28 25C28 28 25 28 25 28"
@@ -56,7 +56,7 @@ export const Footer: React.FC = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  
+
                   {/* Flow wave in the middle */}
                   <path
                     d="M17 20C18 18 19 18 20 20C21 22 22 22 23 20"
@@ -74,9 +74,6 @@ export const Footer: React.FC = () => {
             <p className="text-muted-foreground mb-4">
               {t.footer.tagline}
             </p>
-            <Button variant="outline" size="sm">
-              {t.footer.downloadTeamCV}
-            </Button>
           </div>
 
           {/* Quick Links */}
@@ -173,21 +170,19 @@ export const Footer: React.FC = () => {
             <div className="flex items-center bg-muted rounded-lg p-1">
               <button
                 onClick={() => setLanguage('en')}
-                className={`px-2 py-1 text-xs rounded transition-colors ${
-                  language === 'en'
+                className={`px-2 py-1 text-xs rounded transition-colors ${language === 'en'
                     ? 'bg-background text-foreground shadow-sm'
                     : 'text-muted-foreground hover:text-foreground'
-                }`}
+                  }`}
               >
                 EN
               </button>
               <button
                 onClick={() => setLanguage('no')}
-                className={`px-2 py-1 text-xs rounded transition-colors ${
-                  language === 'no'
+                className={`px-2 py-1 text-xs rounded transition-colors ${language === 'no'
                     ? 'bg-background text-foreground shadow-sm'
                     : 'text-muted-foreground hover:text-foreground'
-                }`}
+                  }`}
               >
                 NO
               </button>
