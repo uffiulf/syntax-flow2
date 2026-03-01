@@ -141,7 +141,7 @@ export const teamMembers: TeamMember[] = [
       address: "Fredrikstad, Norway",
     },
     cvUrl: "/path/to/your-cv.pdf",
-    projectIds: ["1", "5", "6", "7", "8"],
+    projectIds: ["1", "5", "6", "7", "8", "9"],
   },
 
   // TEAM MEMBER 2
@@ -835,4 +835,47 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
     ],
   },
+  {
+    id: "9",
+    title: "Oplero Auto-Grouper",
+    summary: {
+      no: "Et automatisk gruppeinndelingsverktøy for Oplero-plattformen. Lynraskt bygget og demonstrert via Vibe Coding.",
+      en: "An automatic group allocation tool for the Oplero platform. Rapidly built and demonstrated via Vibe Coding."
+    },
+    description: {
+      no: "Oplero Auto-Grouper er en webapp bygget for å forenkle prosessen med å dele inn studenter eller deltakere i meningsfulle arbeidsgrupper. Løsningen ble konseptualisert og ferdigstilt nesten utelukkende gjennom 'Vibe Coding', altså ved å lede AI-agenter til å skrive hele kodebasen basert på instrukser og stemning.",
+      en: "Oplero Auto-Grouper is a web app built to simplify the process of dividing students or participants into meaningful working groups. The solution was conceptualized and completed almost entirely through 'Vibe Coding', directing AI agents to write the entire codebase based on instructions and vibe."
+    },
+    goals: [
+      "Forenkle gruppeinndeling for forelesere",
+      "Demonstrere styrken til Vibe Coding og generative AI-verktøy i praksis",
+    ],
+    responsibilities: [
+      "Utvikler",
+      "Prompting og Vibe Coding",
+    ],
+    outcomes: [
+      "Fullt fungerende applikasjon deployet på nettet",
+    ],
+    tags: ["Oplero", "AI Tools", "Vibe Coding", "Completed"],
+    tech: [
+      "Vibe Coding",
+      "React",
+      "TypeScript",
+      "Firebase",
+      "AI",
+    ],
+    teamMemberIds: ["1"],
+    teamMemberRoles: {
+      "1": ["Utvikler (Vibe Coder)"]
+    },
+    coverImage:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1080",
+    images: [
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
+    ],
+    links: {
+      demo: "https://oplero-auto-grouper.web.app/"
+    }
+  }
 ];
