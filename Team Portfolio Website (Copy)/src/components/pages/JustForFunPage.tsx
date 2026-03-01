@@ -766,11 +766,11 @@ export const JustForFunPage: React.FC = () => {
                 </div>
 
                 {/* Catch Game Controls */}
-                <div className="mt-4 flex flex-col w-full">
-                  <p className="text-sm font-bold text-muted-foreground mb-2 text-center sm:text-left px-2">
+                <div className="mt-4 flex flex-col w-full max-w-sm mx-auto">
+                  <p className="text-sm font-bold text-muted-foreground mb-2 text-center px-2">
                     {(t.fun as any).guessPrompt || "Name the pokemon to catch"}
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3 w-full justify-center items-center">
+                  <div className="flex flex-col gap-3 w-full justify-center items-center">
                     <Input
                       id="pokemon-guess-input"
                       type="text"
@@ -781,24 +781,35 @@ export const JustForFunPage: React.FC = () => {
                         if (e.key === 'Enter') handleCatchAction(false);
                       }}
                       disabled={isCurrentlyCaught || hasFled}
-                      className="w-full sm:flex-1 h-12 border-2 border-primary/20 focus-visible:border-primary font-bold text-center sm:text-left text-lg px-4"
+                      className="w-full h-14 border-2 border-primary/30 focus-visible:border-primary font-bold text-center text-xl px-4 rounded-xl disabled:opacity-80"
                     />
-                    <Button
-                      onClick={() => handleCatchAction(false)}
-                      disabled={isCurrentlyCaught || hasFled}
-                      className="w-full sm:w-auto px-4 sm:px-6 font-bold h-12"
-                      title={(t.fun as any).throwBall || "Throw Ball"}
-                      variant={pokeBalls > 0 ? "default" : "destructive"}
-                    >
-                      <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 rounded-full border-2 border-current bg-red-500 overflow-hidden relative shadow-inner shrink-0">
-                          <div className="absolute bottom-0 w-full h-1/2 bg-white"></div>
-                          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full border border-black z-10"></div>
-                          <div className="absolute top-1/2 w-full h-px bg-black transform -translate-y-1/2"></div>
+
+                    {!isCurrentlyCaught && !hasFled ? (
+                      <Button
+                        onClick={() => handleCatchAction(false)}
+                        disabled={isCurrentlyCaught || hasFled}
+                        className="w-full px-4 font-bold h-14 text-lg"
+                        title={(t.fun as any).throwBall || "Throw Ball"}
+                        variant={pokeBalls > 0 ? "default" : "destructive"}
+                      >
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 rounded-full border-2 border-current bg-red-500 overflow-hidden relative shadow-inner shrink-0">
+                            <div className="absolute bottom-0 w-full h-1/2 bg-white"></div>
+                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rounded-full border border-black z-10"></div>
+                            <div className="absolute top-1/2 w-full h-px bg-black transform -translate-y-1/2"></div>
+                          </div>
+                          <span className="whitespace-nowrap">{(t.fun as any).throwBall || "Throw Ball"} ({pokeBalls})</span>
                         </div>
-                        <span className="whitespace-nowrap">{(t.fun as any).throwBall || "Throw Ball"} ({pokeBalls})</span>
-                      </div>
-                    </Button>
+                      </Button>
+                    ) : (
+                      <Button
+                        onClick={fetchPokemon}
+                        className="w-full font-bold h-14 text-lg bg-green-600 hover:bg-green-700 text-white"
+                      >
+                        <Gamepad2 className="w-5 h-5 mr-2" />
+                        {(t.fun as any).nextPokemon || "Search for new Pokémon"}
+                      </Button>
+                    )}
                   </div>
                 </div>
 
