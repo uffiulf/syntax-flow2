@@ -732,25 +732,16 @@ export const JustForFunPage: React.FC = () => {
                 >
                   {/* Clickable Overlay */}
                   <div
-                    className={`absolute inset-0 z-40 ${isCurrentlyCaught || hasFled ? 'cursor-default' : 'cursor-pointer hover:bg-white/10 group'}`}
+                    className={`absolute inset-0 z-40 ${isCurrentlyCaught ? 'cursor-pointer hover:bg-white/10 group' : 'cursor-default'}`}
                     onClick={() => {
-                      if (!isCurrentlyCaught && !hasFled) {
-                        handleCatchAction(true);
-                      } else if (isCurrentlyCaught && pokemon.cries?.latest) {
+                      if (isCurrentlyCaught && pokemon.cries?.latest) {
                         const audio = new Audio(pokemon.cries.latest);
                         audio.volume = 0.2;
                         audio.play().catch(e => console.log(e));
                       }
                     }}
-                    title={!isCurrentlyCaught && !hasFled ? ((t.fun as any).throwBall || "Throw Pokéball") : (isCurrentlyCaught ? "Play Cry" : "")}
+                    title={isCurrentlyCaught ? "Play Cry" : ""}
                   />
-
-                  {/* Catch overlay text (visible on group hover from the overlay) */}
-                  {!isCurrentlyCaught && !hasFled && (
-                    <div className="absolute inset-0 z-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                      <span className="bg-yellow-400 text-black font-black px-4 py-2 rounded-full transform -translate-y-4 shadow-xl">THROW POKÉBALL</span>
-                    </div>
-                  )}
                   {/* Information Badge */}
                   <div className="absolute top-3 left-3 bg-white/90 dark:bg-black/80 backdrop-blur-sm p-3 rounded-lg border border-border shadow-md z-10 w-fit">
                     <h3 className="capitalize font-bold text-lg mb-1">{isCurrentlyCaught || hasFled ? pokemon.name : '???'}</h3>
@@ -775,34 +766,40 @@ export const JustForFunPage: React.FC = () => {
                 </div>
 
                 {/* Catch Game Controls */}
-                <div className="mt-4 flex flex-col sm:flex-row gap-3 w-full justify-center items-center">
-                  <Input
-                    id="pokemon-guess-input"
-                    type="text"
-                    placeholder={(t.fun as any).guessName || "Guess Pokémon name"}
-                    value={pokemonGuess}
-                    onChange={(e) => setPokemonGuess(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') handleCatchAction(false);
-                    }}
-                    disabled={isCurrentlyCaught || hasFled}
-                    className="w-full sm:flex-1 h-12 border-2 border-primary/20 focus-visible:border-primary font-bold text-center sm:text-left text-lg px-4"
-                  />
-                  <Button
-                    onClick={() => handleCatchAction(false)}
-                    disabled={isCurrentlyCaught || hasFled}
-                    className="w-full sm:w-auto min-w-[200px] font-bold h-11"
-                    variant={pokeBalls > 0 ? "default" : "destructive"}
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-full border-2 border-current bg-red-500 overflow-hidden relative shadow-inner">
-                        <div className="absolute bottom-0 w-full h-1/2 bg-white"></div>
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full border border-black z-10"></div>
-                        <div className="absolute top-1/2 w-full h-px bg-black transform -translate-y-1/2"></div>
+                <div className="mt-4 flex flex-col w-full">
+                  <p className="text-sm font-bold text-muted-foreground mb-2 text-center sm:text-left px-2">
+                    {(t.fun as any).guessPrompt || "Name the pokemon to catch"}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 w-full justify-center items-center">
+                    <Input
+                      id="pokemon-guess-input"
+                      type="text"
+                      placeholder={(t.fun as any).guessName || "Guess Pokémon name"}
+                      value={pokemonGuess}
+                      onChange={(e) => setPokemonGuess(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') handleCatchAction(false);
+                      }}
+                      disabled={isCurrentlyCaught || hasFled}
+                      className="w-full sm:flex-1 h-12 border-2 border-primary/20 focus-visible:border-primary font-bold text-center sm:text-left text-lg px-4"
+                    />
+                    <Button
+                      onClick={() => handleCatchAction(false)}
+                      disabled={isCurrentlyCaught || hasFled}
+                      className="w-full sm:w-auto px-4 sm:px-6 font-bold h-12"
+                      title={(t.fun as any).throwBall || "Throw Ball"}
+                      variant={pokeBalls > 0 ? "default" : "destructive"}
+                    >
+                      <div className="flex items-center gap-2">
+                        <div className="w-5 h-5 rounded-full border-2 border-current bg-red-500 overflow-hidden relative shadow-inner shrink-0">
+                          <div className="absolute bottom-0 w-full h-1/2 bg-white"></div>
+                          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full border border-black z-10"></div>
+                          <div className="absolute top-1/2 w-full h-px bg-black transform -translate-y-1/2"></div>
+                        </div>
+                        <span className="whitespace-nowrap">{(t.fun as any).throwBall || "Throw Ball"} ({pokeBalls})</span>
                       </div>
-                      {(t.fun as any).throwBall || "Throw Ball"} ({pokeBalls})
-                    </div>
-                  </Button>
+                    </Button>
+                  </div>
                 </div>
 
                 {/* Catch Messages */}
