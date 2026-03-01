@@ -10,12 +10,15 @@ import { Laugh, RefreshCw, Cat, User, Lightbulb, Gamepad2, AlertCircle, CheckCir
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Input } from '../ui/input';
 
-// Enkel obfuscation helpers for localStorage security (Base64)
+// Sikker obfuscation helpers for localStorage
 const encodeData = (data: string) => {
-  try { return btoa(data); } catch { return data; }
+  try { return 'b64_' + btoa(encodeURIComponent(data)); } catch { return data; }
 };
 const decodeData = (encodedData: string) => {
-  try { return atob(encodedData); } catch { return encodedData; }
+  if (encodedData.startsWith('b64_')) {
+    try { return decodeURIComponent(atob(encodedData.slice(4))); } catch { return encodedData; }
+  }
+  return encodedData; // Tillater eldre plaintext localStorage verdier
 };
 
 interface DadJoke {
@@ -819,31 +822,29 @@ export const JustForFunPage: React.FC = () => {
             ) : pokemon ? (
               <div className="flex flex-col w-full relative">
                 {/* Scoreboard */}
-                <div className="absolute top-2 right-2 z-50 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-border shadow-md flex items-center gap-3">
-                  <span className="font-bold text-sm max-w-[100px] truncate">{playerName}</span>
-                  <div className="flex items-center gap-1 text-green-600 dark:text-green-400 font-bold text-sm">
-                    <Trophy className="w-3.5 h-3.5" /> {caughtPokemon.length}
+                <div className="self-end mb-2 z-50 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-4 py-2 rounded-full border border-border shadow-sm flex items-center justify-end gap-4 w-fit">
+                  <span className="font-bold text-sm max-w-[120px] truncate">{playerName}</span>
+                  <div className="flex items-center gap-1.5 text-green-600 dark:text-green-400 font-bold text-sm">
+                    <Trophy className="w-4 h-4" /> {caughtPokemon.length}
                   </div>
-                  <div className="flex items-center gap-1 text-red-600 dark:text-red-400 font-bold text-sm">
-                    <AlertCircle className="w-3.5 h-3.5" /> {-missedPokemonCount}
+                  <div className="flex items-center gap-1.5 text-red-600 dark:text-red-400 font-bold text-sm">
+                    <AlertCircle className="w-4 h-4" /> {-missedPokemonCount}
                   </div>
                 </div>
 
                 <div
-                  className="relative rounded-lg overflow-hidden grass-bg border-4 border-green-800 flex items-center shadow-inner mt-4"
+                  className="relative rounded-lg overflow-hidden grass-bg border-4 border-green-800 flex items-center shadow-inner"
                   style={{ minHeight: '200px' }}
                 >
                   {/* Clickable Overlay */}
                   <div
-                    className={`absolute inset-0 z-40 ${isCurrentlyCaught ? 'cursor-pointer hover:bg-white/10 group' : 'cursor-default'}`}
+                    className={`absolute inset-0 z-40 ${isCurrentlyCaught || hasFled ? 'cursor-pointer hover:bg-white/10 group' : 'cursor-default'}`}
                     onClick={() => {
-                      if (isCurrentlyCaught && pokemon.cries?.latest) {
-                        const audio = new Audio(pokemon.cries.latest);
-                        audio.volume = 0.2;
-                        audio.play().catch(e => console.log(e));
+                      if (isCurrentlyCaught || hasFled) {
+                        fetchPokemon();
                       }
                     }}
-                    title={isCurrentlyCaught ? "Play Cry" : ""}
+                    title={(isCurrentlyCaught || hasFled) ? ((t.fun as any).nextPokemon || "Search for new Pokémon") : ""}
                   />
                   {/* Information Badge */}
                   <div className="absolute top-3 left-3 bg-white/90 dark:bg-black/80 backdrop-blur-sm p-3 rounded-lg border border-border shadow-md z-10 w-fit">
@@ -866,14 +867,25 @@ export const JustForFunPage: React.FC = () => {
                       className="h-full object-contain filter drop-shadow-xl"
                     />
                   </div>
+
+                  {/* Throwing Animation Overlay */}
+                  {isThrowing && (
+                    <div className="absolute inset-0 bg-black/10 z-30 flex items-center justify-center animate-in fade-in duration-300 pointer-events-none">
+                      <div className="w-16 h-16 rounded-full border-4 border-black bg-red-500 overflow-hidden relative shadow-inner throw-pokeball drop-shadow-2xl translate-y-2">
+                        <div className="absolute bottom-0 w-full h-1/2 bg-white"></div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-2 border-black z-10"></div>
+                        <div className="absolute top-1/2 w-full h-[3px] bg-black transform -translate-y-1/2"></div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Catch Game Controls */}
-                <div className="mt-4 flex flex-col w-full max-w-sm mx-auto">
-                  <p className="text-sm font-bold text-muted-foreground mb-2 text-center px-2">
+                <div className="mt-8 flex flex-col w-full max-w-xs mx-auto">
+                  <p className="text-sm font-bold text-muted-foreground mb-3 text-center px-2">
                     {(t.fun as any).guessPrompt || "Name the pokemon to catch"}
                   </p>
-                  <div className="flex flex-col gap-5 w-full justify-center items-center">
+                  <div className="flex flex-col gap-4 w-full justify-center items-center">
                     <Input
                       id="pokemon-guess-input"
                       type="text"
@@ -897,7 +909,7 @@ export const JustForFunPage: React.FC = () => {
                         variant={pokeBalls > 0 ? "default" : "destructive"}
                       >
                         <div className="flex items-center gap-2">
-                          <div className={`w-6 h-6 rounded-full border-2 border-current bg-red-500 overflow-hidden relative shadow-inner shrink-0 ${isThrowing ? 'throw-pokeball' : ''}`}>
+                          <div className="w-6 h-6 rounded-full border-2 border-current bg-red-500 overflow-hidden relative shadow-inner shrink-0 group-hover:animate-bounce">
                             <div className="absolute bottom-0 w-full h-1/2 bg-white"></div>
                             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rounded-full border border-black z-10"></div>
                             <div className="absolute top-1/2 w-full h-px bg-black transform -translate-y-1/2"></div>
