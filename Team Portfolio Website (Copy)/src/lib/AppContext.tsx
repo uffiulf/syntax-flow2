@@ -14,6 +14,8 @@ interface AppContextType {
   setSelectedProjectId: (id: string | null) => void;
   navigationHistory: Page[];
   goBack: () => void;
+  globalSearchQuery: string;
+  setGlobalSearchQuery: (query: string) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -37,12 +39,13 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [selectedProfileId, setSelectedProfileId] = useState<string | null>(null);
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
   const [navigationHistory, setNavigationHistory] = useState<Page[]>(['home']);
+  const [globalSearchQuery, setGlobalSearchQuery] = useState('');
 
   // Load preferences from localStorage
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language') as Language;
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
-    
+
     if (savedLanguage) setLanguageState(savedLanguage);
     if (savedTheme) setThemeState(savedTheme);
   }, []);
@@ -97,7 +100,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       // Get the page from the URL hash or use home as default
       const hash = window.location.hash.slice(1);
       const pageFromHash = hash as Page || 'home';
-      
+
       if (pageFromHash !== currentPage) {
         setCurrentPage(pageFromHash);
         setNavigationHistory(prev => {
@@ -151,6 +154,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         setSelectedProjectId,
         navigationHistory,
         goBack,
+        globalSearchQuery,
+        setGlobalSearchQuery,
       }}
     >
       {children}

@@ -770,7 +770,7 @@ export const JustForFunPage: React.FC = () => {
                   <p className="text-sm font-bold text-muted-foreground mb-2 text-center px-2">
                     {(t.fun as any).guessPrompt || "Name the pokemon to catch"}
                   </p>
-                  <div className="flex flex-col gap-3 w-full justify-center items-center">
+                  <div className="flex flex-col gap-5 w-full justify-center items-center">
                     <Input
                       id="pokemon-guess-input"
                       type="text"
@@ -781,7 +781,7 @@ export const JustForFunPage: React.FC = () => {
                         if (e.key === 'Enter') handleCatchAction(false);
                       }}
                       disabled={isCurrentlyCaught || hasFled}
-                      className="w-full h-14 border-2 border-primary/30 focus-visible:border-primary font-bold text-center text-xl px-4 rounded-xl disabled:opacity-80"
+                      className="w-full h-14 border-2 border-primary/30 focus-visible:border-primary font-bold text-center text-xl px-4 rounded-xl disabled:opacity-80 mb-2"
                     />
 
                     {!isCurrentlyCaught && !hasFled ? (
