@@ -588,80 +588,7 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800",
     ],
   },
-  {
-    id: "2",
-    title: "Project Management: Oplero",
-    summary: {
-      no: "Oplero er en smart læringsplattform som transformerer undervisning ved å gjøre den inkluderende og effektiv. Den fjerner administrativ byrde for forelesere gjennom automatisert gruppeinndeling, samtidig som den sikrer lik tilgang til læringsinnhold for alle studenter via GDPR-kompatible opptak, teksting og AI-verktøy.",
-      en: "Oplero is a smart learning platform that transforms teaching by making it inclusive and effective. It removes administrative burden from lecturers through automated group allocation, while ensuring equal access to learning content for all students via GDPR-compliant recordings, transcription and AI tools."
-    },
-    description: {
-      no: "Oplero er en GDPR-kompatibel digital læringsplattform utviklet for å adressere kritiske utfordringer i høyere utdanning, spesielt mangelen på fleksibilitet, tilgjengelighet og ineffektiv administrativ praksis. Prosjektets kjernefokus er å bygge en robust løsning som ivaretar både studenters læringsbehov og foreleseres administrative byrde.",
-      en: "Oplero is a GDPR-compliant digital learning platform developed to address critical challenges in higher education, particularly the lack of flexibility, accessibility and inefficient administrative practices. The project's core focus is to build a robust solution that addresses both students' learning needs and lecturers' administrative burden."
-    },
-    goals: {
-      no: [
-        "Tilgjengelighet og Inkludering",
-        "Automatisert Effektivitet",
-        "Engasjement og Innsikt",
-        "Sikre overholdelse GDPR",
-      ],
-      en: [
-        "Accessibility and Inclusion",
-        "Automated Efficiency",
-        "Engagement and Insight",
-        "Ensure GDPR compliance",
-      ]
-    },
-    responsibilities: {
-      no: [
-        "Utvikling av Kjernefunksjonalitet - Utvikle AI-motor for sanntidsteksting og transkripsjon. Kode algoritmen for preferansebasert auto-gruppeinndeling. Bygge modul for anonym spørsmålschat",
-        "Sikre Compliance og Sikkerhet - Implementere kryptering av lagrede data. Etablere prosedyrer for Feide/2FA autentisering. Utføre juridisk gjennomgang for full GDPR-kompatibilitet",
-        "Design og Brukeropplevelse - Utvikle rollebasert UI (Analytisk for foreleser, Forenklet for student). Sikre Universell Utforming i hele plattformen.",
-        "Infrastruktur og Ytelse - Sette opp skylagring og database (SQL/NoSQL). Teste ytelsen mot 200 samtidige brukere."
-      ],
-      en: [
-        "Core Functionality Development - Develop AI engine for real-time transcription and transcription. Code algorithm for preference-based auto-group allocation. Build module for anonymous question chat",
-        "Ensure Compliance and Security - Implement encryption of stored data. Establish procedures for Feide/2FA authentication. Conduct legal review for full GDPR compliance",
-        "Design and User Experience - Develop role-based UI (Analytical for lecturer, Simplified for student). Ensure Universal Design throughout the platform.",
-        "Infrastructure and Performance - Set up cloud storage and database (SQL/NoSQL). Test performance against 200 concurrent users."
-      ]
-    },
-    outcomes: {
-      no: [
-        "Økt Effektivitet for Foreleser - Reduksjon av administrativ tid brukt på gruppeinndeling (Timer spart). Økt tilfredshet med arbeidshverdagen (Stressfri gruppesamarbeid).",
-        "Bedre Læringsutbytte - Økning i studentenes gjennomføringsgrad og redusert frafall/stryk. Høyere score på læringsutbyttemålinger.",
-        "Forbedret Tilgjengelighet - 100% av innholdet er tilgjengelig for studenter uavhengig av fravær eller språkbarriere (Fleksibel og tilpasset læring)",
-        "Strategisk Verdi for Institusjonen - Forsterket omdømme som en digital og studentvennlig institusjon. Redusert juridisk risiko knyttet til håndtering av videoopptak og personvern.",
-        "Pedagogisk Kvalitet - Økt studentengasjement målt gjennom bruksdata i Oplero Engage. Forbedret formidlingsevne hos foreleser (kvalitativt mål).",
-      ],
-      en: [
-        "Increased Efficiency for Lecturers - Reduction of administrative time spent on group allocation (Hours saved). Increased satisfaction with working day (Stress-free group collaboration).",
-        "Better Learning Outcomes - Increase in students' completion rate and reduced dropout/failure. Higher scores on learning outcome measurements.",
-        "Improved Accessibility - 100% of content is accessible to students regardless of absence or language barriers (Flexible and adapted learning)",
-        "Strategic Value for the Institution - Strengthened reputation as a digital and student-friendly institution. Reduced legal risk related to handling video recordings and privacy.",
-        "Pedagogical Quality - Increased student engagement measured through usage data in Oplero Engage. Improved communication skills in lecturers (qualitative measure).",
-      ]
-    },
-    tags: ["Education", "GDPR", "Availability", "AI", "Automation", "Efficiency", "Engagement"],
-    tech: [
-      "React",
-      "TypeScript",
-      "MySQL",
-      "Cloud storage",
-      "AI speech-to-text",
-      "Desktop & Mobile App (IOS/Android)",
-      "2FA/Feide Authentication",
-      "Hendelsesloggging",
-    ],
-    teamMemberIds: ["1", "2", "3", "4"],
-    coverImage:
-      "https://cdn.pixabay.com/photo/2020/10/17/15/14/girl-5662435_1280.jpg",
-    images: [
-      "https://cdn.pixabay.com/photo/2023/01/02/21/11/conference-7693055_1280.jpg",
-      "https://cdn.pixabay.com/photo/2017/07/31/11/21/people-2557399_1280.jpg",
-    ],
-  },
+
   {
     id: "3",
     title: "Power – Forretningssystemer (Vår 2025)",
@@ -842,7 +769,6 @@ export const projects: Project[] = [
       "Trello",
       "Figma",
       "Microsoft 365",
-      "ChatGPT",
       "Gemini",
       "Sora",
     ],
