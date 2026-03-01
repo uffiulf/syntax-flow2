@@ -21,7 +21,7 @@ import { toast } from 'sonner@2.0.3';
 export const ContactPage: React.FC = () => {
   const { language, setCurrentPage, setSelectedProfileId } = useApp();
   const t = translations[language];
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,11 +31,11 @@ export const ContactPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Get recipient email
     let recipientEmail = '';
     let recipientName = '';
-    
+
     if (formData.recipient === 'any') {
       // Send to general team email or first available team member
       recipientEmail = teamMembers[0]?.contactInfo?.email || '';
@@ -46,12 +46,12 @@ export const ContactPage: React.FC = () => {
       recipientEmail = selectedMember?.contactInfo?.email || '';
       recipientName = selectedMember?.name || '';
     }
-    
+
     if (!recipientEmail) {
       toast.error(language === 'en' ? 'No email address found for selected recipient' : 'Ingen e-postadresse funnet for valgt mottaker');
       return;
     }
-    
+
     // Create email subject and body
     const subject = encodeURIComponent(`Message from ${formData.name} - Portfolio Contact Form`);
     const body = encodeURIComponent(
@@ -60,20 +60,20 @@ export const ContactPage: React.FC = () => {
       `---\n` +
       `Sent via Portfolio Contact Form`
     );
-    
+
     // Open default email client
     const mailtoLink = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
     window.open(mailtoLink, '_blank');
-    
+
     console.log('Form submitted:', formData);
     console.log('Email opened for:', recipientName, recipientEmail);
-    
+
     toast.success(
-      language === 'en' 
-        ? `Email opened for ${recipientName}! Please send from your email client.` 
+      language === 'en'
+        ? `Email opened for ${recipientName}! Please send from your email client.`
         : `E-post åpnet for ${recipientName}! Vennligst send fra din e-postklient.`
     );
-    
+
     // Reset form
     setFormData({
       name: '',
@@ -109,7 +109,7 @@ export const ContactPage: React.FC = () => {
         <div className="max-w-3xl mx-auto mb-16">
           <Card>
             <CardHeader>
-              <h2>Send us a message</h2>
+              <h2>{t.contact.sendMessage}</h2>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -177,7 +177,7 @@ export const ContactPage: React.FC = () => {
                     required
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tell us about your project..."
+                    placeholder={t.contact.messagePlaceholder}
                     rows={6}
                   />
                 </div>
@@ -187,12 +187,12 @@ export const ContactPage: React.FC = () => {
                     <Mail className="h-4 w-4 mr-2" />
                     {language === 'en' ? 'Open Email Client' : 'Åpne E-postklient'}
                   </Button>
-                  
+
                   <div className="space-y-2">
                     <p className="text-sm text-muted-foreground flex items-center">
                       <span className="w-2 h-2 rounded-full bg-blue-500 mr-2" />
-                      {language === 'en' 
-                        ? 'This will open your default email client with a pre-filled message' 
+                      {language === 'en'
+                        ? 'This will open your default email client with a pre-filled message'
                         : 'Dette åpner din standard e-postklient med en forutfylt melding'
                       }
                     </p>
@@ -245,8 +245,8 @@ export const ContactPage: React.FC = () => {
 
                 <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground text-center line-clamp-2">
-                    {typeof member.bio === 'string' 
-                      ? member.bio 
+                    {typeof member.bio === 'string'
+                      ? member.bio
                       : member.bio[language]
                     }
                   </p>

@@ -125,6 +125,7 @@ export const JustForFunPage: React.FC = () => {
       const saved = localStorage.getItem('caughtPokemon');
       return saved ? JSON.parse(decodeData(saved)) : [];
     } catch {
+      localStorage.removeItem('caughtPokemon');
       return [];
     }
   });
@@ -133,6 +134,7 @@ export const JustForFunPage: React.FC = () => {
       const saved = localStorage.getItem('pokeBalls');
       return saved !== null ? parseInt(decodeData(saved), 10) : 10;
     } catch {
+      localStorage.removeItem('pokeBalls');
       return 10;
     }
   });
@@ -142,13 +144,19 @@ export const JustForFunPage: React.FC = () => {
     try {
       const saved = localStorage.getItem('pokemonPlayerName');
       return saved ? decodeData(saved) : '';
-    } catch { return ''; }
+    } catch {
+      localStorage.removeItem('pokemonPlayerName');
+      return '';
+    }
   });
   const [missedPokemonCount, setMissedPokemonCount] = useState<number>(() => {
     try {
       const saved = localStorage.getItem('missedPokemonCount');
       return saved !== null ? parseInt(decodeData(saved), 10) : 0;
-    } catch { return 0; }
+    } catch {
+      localStorage.removeItem('missedPokemonCount');
+      return 0;
+    }
   });
 
   const [isCurrentlyCaught, setIsCurrentlyCaught] = useState<boolean>(false);
@@ -163,6 +171,7 @@ export const JustForFunPage: React.FC = () => {
       const saved = localStorage.getItem('correctGuesses');
       return saved !== null ? parseInt(decodeData(saved), 10) : 0;
     } catch {
+      localStorage.removeItem('correctGuesses');
       return 0;
     }
   });
