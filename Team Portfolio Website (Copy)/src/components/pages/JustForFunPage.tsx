@@ -388,7 +388,7 @@ export const JustForFunPage: React.FC = () => {
               setMissedPokemonCount(prev => prev + 1);
               setCatchMessage({ text: `Oh no! ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} broke free and ran away!`, type: 'error' });
             } else {
-              setCatchMessage({ text: `${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} broke free! (${currentAttempt}/3)`, type: 'error' });
+              setCatchMessage({ text: `${(t.fun as any).brokeFree || 'The Pokémon broke free!'} (${currentAttempt}/3)`, type: 'error' });
             }
           }
         }, 1500); // 1.5 sec Throw Wait Time
