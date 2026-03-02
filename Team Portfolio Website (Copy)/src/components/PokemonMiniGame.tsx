@@ -69,7 +69,11 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
   const [pokeBalls, setPokeBalls] = useState<number>(() => {
     try {
       const saved = localStorage.getItem('pokeBalls');
-      return saved !== null ? parseInt(decodeData(saved), 10) : 10;
+      if (saved !== null) {
+        const val = parseInt(decodeData(saved), 10);
+        return isNaN(val) ? 10 : val;
+      }
+      return 10;
     } catch {
       localStorage.removeItem('pokeBalls');
       return 10;
@@ -80,7 +84,13 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
   const [playerName, setPlayerName] = useState<string>(() => {
     try {
       const saved = localStorage.getItem('pokemonPlayerName');
-      return saved ? decodeData(saved) : '';
+      if (saved) {
+        const decoded = decodeData(saved);
+        // Validate: if it looks like raw base64 or encoded junk, discard it
+        if (/^[A-Za-z0-9+/=]{20,}$/.test(decoded)) return '';
+        return decoded;
+      }
+      return '';
     } catch {
       localStorage.removeItem('pokemonPlayerName');
       return '';
@@ -89,7 +99,11 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
   const [missedPokemonCount, setMissedPokemonCount] = useState<number>(() => {
     try {
       const saved = localStorage.getItem('missedPokemonCount');
-      return saved !== null ? parseInt(decodeData(saved), 10) : 0;
+      if (saved !== null) {
+        const val = parseInt(decodeData(saved), 10);
+        return isNaN(val) ? 0 : val;
+      }
+      return 0;
     } catch {
       localStorage.removeItem('missedPokemonCount');
       return 0;
@@ -106,7 +120,11 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
   const [correctGuesses, setCorrectGuesses] = useState<number>(() => {
     try {
       const saved = localStorage.getItem('correctGuesses');
-      return saved !== null ? parseInt(decodeData(saved), 10) : 0;
+      if (saved !== null) {
+        const val = parseInt(decodeData(saved), 10);
+        return isNaN(val) ? 0 : val;
+      }
+      return 0;
     } catch {
       localStorage.removeItem('correctGuesses');
       return 0;
@@ -125,7 +143,11 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
   const [score, setScore] = useState<number>(() => {
     try {
       const saved = localStorage.getItem('pokemonScore');
-      return saved !== null ? parseInt(decodeData(saved), 10) : 0;
+      if (saved !== null) {
+        const val = parseInt(decodeData(saved), 10);
+        return isNaN(val) ? 0 : val;
+      }
+      return 0;
     } catch {
       localStorage.removeItem('pokemonScore');
       return 0;
