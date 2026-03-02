@@ -614,11 +614,10 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
                       animation: 'pokeball-throw 1.4s ease-out forwards'
                     }}>
                       <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        {/* Background - white */}
+                        <circle cx="50" cy="50" r="46" fill="white" stroke="#1a1a1a" strokeWidth="6" />
                         {/* Top half - red */}
-                        <circle cx="50" cy="50" r="46" fill="#EF4444" stroke="#1a1a1a" strokeWidth="6" />
-                        {/* Bottom half - white */}
                         <path d="M 4 50 A 46 46 0 0 0 96 50 L 4 50 Z" fill="#EF4444" />
-                        <path d="M 4 50 A 46 46 0 0 1 96 50 L 4 50 Z" fill="white" />
                         {/* Center line */}
                         <rect x="2" y="47" width="96" height="6" fill="#1a1a1a" />
                         {/* Center button */}
