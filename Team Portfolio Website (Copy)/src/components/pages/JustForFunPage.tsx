@@ -154,10 +154,8 @@ export const JustForFunPage: React.FC = () => {
         setRandomUser(data.results[0]);
       }
     } catch (err) {
-      setUserError(language === 'en'
-        ? 'Failed to load user. Please try again.'
-        : 'Kunne ikke laste bruker. Vennligst prøv igjen.');
-      console.error('Error fetching user:', err);
+      console.warn('RandomUser API failed, using fallback:', err);
+      setRandomUser(FALLBACK_USER);
     } finally {
       setUserLoading(false);
     }
@@ -235,10 +233,8 @@ export const JustForFunPage: React.FC = () => {
         }
       })
       .catch(err => {
-        setUserError(language === 'en'
-          ? 'Failed to load user. Please try again.'
-          : 'Kunne ikke laste bruker. Vennligst prøv igjen.');
-        console.error('Error fetching user:', err);
+        console.warn('RandomUser API failed in useEffect, using fallback:', err);
+        setRandomUser(FALLBACK_USER);
       })
       .finally(() => {
         setUserLoading(false);
