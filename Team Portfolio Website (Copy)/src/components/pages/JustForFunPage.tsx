@@ -101,6 +101,12 @@ export const JustForFunPage: React.FC = () => {
   const [activityLoading, setActivityLoading] = useState<boolean>(false);
   const [activityError, setActivityError] = useState<string>('');
 
+  // Click counters
+  const [jokeClicks, setJokeClicks] = useState<number>(0);
+  const [catClicks, setCatClicks] = useState<number>(0);
+  const [userClicks, setUserClicks] = useState<number>(0);
+  const [activityClicks, setActivityClicks] = useState<number>(0);
+  const [pokemonClicks, setPokemonClicks] = useState<number>(0);
 
   const fetchJoke = async () => {
     setJokeClicks(prev => prev + 1);

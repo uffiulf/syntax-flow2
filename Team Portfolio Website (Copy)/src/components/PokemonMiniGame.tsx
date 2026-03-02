@@ -38,7 +38,7 @@ interface PokemonData {
 interface PokemonMiniGameProps {
   language: string;
   t: any;
-  onPokemonClick: () => void;
+  onPokemonClick?: () => void;
 }
 
 export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, onPokemonClick }) => {
@@ -51,13 +51,14 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
     try {
       const saved = localStorage.getItem('caughtPokemon');
       if (saved) {
-        // Rednings-sjekk mot kræsj for de som the har the the cachet the The for mye
-        if (saved.length > 500000) {
-          console.warn("Pokemon limit reached, wiping local storage caughtPokemon to prevent crash");
+        const decoded = decodeData(saved);
+        // Safety check: if decoded data is too large (>200KB), clear it
+        if (decoded.length > 200000) {
+          console.warn('Pokédex data too large, clearing to prevent crash');
           localStorage.removeItem('caughtPokemon');
           return [];
         }
-        return JSON.parse(decodeData(saved));
+        return JSON.parse(decoded);
       }
       return [];
     } catch {
