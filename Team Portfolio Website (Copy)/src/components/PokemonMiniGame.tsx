@@ -605,13 +605,26 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
 
                 {/* Throwing Animation Overlay */}
                 {isThrowing && (
-                  <div className="absolute inset-0 bg-black/40 z-[60] flex items-center justify-center pointer-events-none">
-                    <div className="throw-pokeball">
-                      <div className="w-28 h-28 rounded-full border-[6px] border-zinc-900 bg-red-500 overflow-hidden relative shadow-2xl">
-                        <div className="absolute bottom-0 w-full h-1/2 bg-white"></div>
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-7 h-7 bg-white rounded-full border-[4px] border-zinc-900 z-10"></div>
-                        <div className="absolute top-1/2 w-full h-[5px] bg-zinc-900 transform -translate-y-1/2"></div>
-                      </div>
+                  <div style={{
+                    position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.4)',
+                    zIndex: 60, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    pointerEvents: 'none'
+                  }}>
+                    <div style={{
+                      animation: 'pokeball-throw 1.4s ease-out forwards'
+                    }}>
+                      <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        {/* Top half - red */}
+                        <circle cx="50" cy="50" r="46" fill="#EF4444" stroke="#1a1a1a" strokeWidth="6" />
+                        {/* Bottom half - white */}
+                        <path d="M 4 50 A 46 46 0 0 0 96 50 L 4 50 Z" fill="#EF4444" />
+                        <path d="M 4 50 A 46 46 0 0 1 96 50 L 4 50 Z" fill="white" />
+                        {/* Center line */}
+                        <rect x="2" y="47" width="96" height="6" fill="#1a1a1a" />
+                        {/* Center button */}
+                        <circle cx="50" cy="50" r="12" fill="white" stroke="#1a1a1a" strokeWidth="4" />
+                        <circle cx="50" cy="50" r="6" fill="white" stroke="#1a1a1a" strokeWidth="2" />
+                      </svg>
                     </div>
                   </div>
                 )}
