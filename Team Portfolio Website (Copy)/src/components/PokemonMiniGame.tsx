@@ -141,7 +141,7 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
   const [isSliderActive, setIsSliderActive] = useState(false);
 
   const fetchPokemon = async () => {
-    onPokemonClick(); // Trigger global counter
+    onPokemonClick?.(); // Trigger global counter if provided
     setPokemonLoading(true);
     setPokemonError('');
     setIsCurrentlyCaught(false);
@@ -648,7 +648,7 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
                       <Button
                         key={i}
                         variant="outline"
-                        className="w-full capitalize font-bold h-12 text-md transition-all hover:bg-primary hover:text-primary-foreground border-2 border-primary/20 dark:border-primary/30 shadow-sm"
+                        className="w-full capitalize font-bold h-12 text-md transition-all bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white hover:bg-purple-600 hover:text-white border-2 border-zinc-300 dark:border-zinc-600 shadow-sm"
                         onClick={() => {
                           setPokemonGuess(opt);
                           handleCatchAction(false, opt);

@@ -524,7 +524,7 @@ export const JustForFunPage: React.FC = () => {
         </Card>
 
         {/* Pokemon Game Component */}
-        <PokemonMiniGame language={language} t={t} />
+        <PokemonMiniGame language={language} t={t} onPokemonClick={() => setPokemonClicks(prev => prev + 1)} />
 
         {/* Click Counter Section */}
         <Card className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20">
