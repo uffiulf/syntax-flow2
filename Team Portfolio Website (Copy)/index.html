@@ -1,35 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
 
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3K2VQEQP2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      
-      // Default consent mode setup
-      gtag('consent', 'default', {
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'analytics_storage': 'denied'
-      });
-      
-      gtag('js', new Date());
-      gtag('config', 'G-G3K2VQEQP2', {
-        'anonymize_ip': true
-      });
-    </script>
-    
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Team Portfolio Website (Copy)</title>
-  </head>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3K2VQEQP2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
 
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+    // Hent lagret samtykke fra localStorage hvis det finnes
+    var savedConsentStr = localStorage.getItem('consent-settings');
+    var savedConsent = savedConsentStr ? JSON.parse(savedConsentStr) : null;
+
+    // 1. Global default: granted for alle regioner utenfor EEA
+    gtag('consent', 'default', {
+      'ad_storage': savedConsent ? (savedConsent.marketing ? 'granted' : 'denied') : 'granted',
+      'ad_user_data': savedConsent ? (savedConsent.marketing ? 'granted' : 'denied') : 'granted',
+      'ad_personalization': savedConsent ? (savedConsent.marketing ? 'granted' : 'denied') : 'granted',
+      'analytics_storage': savedConsent ? (savedConsent.analytics ? 'granted' : 'denied') : 'granted',
+      'wait_for_update': 500
+    });
+
+    // 2. Region-spesifikk: denied som default KUN for EEA-land (GDPR)
+    gtag('consent', 'default', {
+      'ad_storage': savedConsent ? (savedConsent.marketing ? 'granted' : 'denied') : 'denied',
+      'ad_user_data': savedConsent ? (savedConsent.marketing ? 'granted' : 'denied') : 'denied',
+      'ad_personalization': savedConsent ? (savedConsent.marketing ? 'granted' : 'denied') : 'denied',
+      'analytics_storage': savedConsent ? (savedConsent.analytics ? 'granted' : 'denied') : 'denied',
+      'region': ['AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU', 'IE', 'IS', 'IT', 'LI', 'LT', 'LU', 'LV', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK'],
+      'wait_for_update': 500
+    });
+
+    gtag('js', new Date());
+    gtag('config', 'G-G3K2VQEQP2', {
+      'anonymize_ip': true
+    });
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Portfolio Website (Copy)</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

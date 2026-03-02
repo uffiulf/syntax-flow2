@@ -24,6 +24,17 @@ export const ConsentBanner: React.FC<ConsentBannerProps> = ({ language }) => {
     const consentGiven = localStorage.getItem('consent-given');
     if (!consentGiven) {
       setIsVisible(true);
+    } else {
+      // User has a saved consent, let's update GTM
+      const savedSettingsStr = localStorage.getItem('consent-settings');
+      if (savedSettingsStr) {
+        try {
+          const savedSettings = JSON.parse(savedSettingsStr);
+          updateConsentMode(savedSettings.analytics, savedSettings.marketing);
+        } catch (e) {
+          console.error("Could not parse consent settings", e);
+        }
+      }
     }
   }, []);
 
@@ -98,7 +109,7 @@ export const ConsentBanner: React.FC<ConsentBannerProps> = ({ language }) => {
                     {language === 'en' ? 'Cookie Consent' : 'Informasjonskapsler'}
                   </h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    {language === 'en' 
+                    {language === 'en'
                       ? 'We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.'
                       : 'Vi bruker informasjonskapsler for å forbedre din opplevelse, vise tilpasset innhold og analysere trafikken vår. Ved å klikke "Godta alle" samtykker du til vår bruk av informasjonskapsler.'
                     }
@@ -118,16 +129,16 @@ export const ConsentBanner: React.FC<ConsentBannerProps> = ({ language }) => {
                 <Button onClick={handleAcceptAll} className="flex-1">
                   {language === 'en' ? 'Accept All' : 'Godta alle'}
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => setShowSettings(true)}
                   className="flex-1"
                 >
                   <Settings className="h-4 w-4 mr-2" />
                   {language === 'en' ? 'Customize' : 'Tilpass'}
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={handleRejectAll}
                   className="flex-1"
                 >
@@ -160,7 +171,7 @@ export const ConsentBanner: React.FC<ConsentBannerProps> = ({ language }) => {
                         {language === 'en' ? 'Necessary Cookies' : 'Nødvendige informasjonskapsler'}
                       </h4>
                       <p className="text-sm text-muted-foreground">
-                        {language === 'en' 
+                        {language === 'en'
                           ? 'Required for the website to function properly'
                           : 'Påkrevd for at nettsiden skal fungere riktig'
                         }
@@ -183,7 +194,7 @@ export const ConsentBanner: React.FC<ConsentBannerProps> = ({ language }) => {
                         {language === 'en' ? 'Analytics Cookies' : 'Analyse informasjonskapsler'}
                       </h4>
                       <p className="text-sm text-muted-foreground">
-                        {language === 'en' 
+                        {language === 'en'
                           ? 'Help us understand how visitors interact with our website'
                           : 'Hjelper oss å forstå hvordan besøkende samhandler med nettsiden vår'
                         }
@@ -195,8 +206,8 @@ export const ConsentBanner: React.FC<ConsentBannerProps> = ({ language }) => {
                     size="sm"
                     onClick={() => handleToggleSetting('analytics')}
                   >
-                    {consentSettings.analytics 
-                      ? (language === 'en' ? 'On' : 'På') 
+                    {consentSettings.analytics
+                      ? (language === 'en' ? 'On' : 'På')
                       : (language === 'en' ? 'Off' : 'Av')
                     }
                   </Button>
@@ -211,7 +222,7 @@ export const ConsentBanner: React.FC<ConsentBannerProps> = ({ language }) => {
                         {language === 'en' ? 'Marketing Cookies' : 'Markedsføring informasjonskapsler'}
                       </h4>
                       <p className="text-sm text-muted-foreground">
-                        {language === 'en' 
+                        {language === 'en'
                           ? 'Used to deliver personalized advertisements'
                           : 'Brukes til å levere tilpassede annonser'
                         }
@@ -223,8 +234,8 @@ export const ConsentBanner: React.FC<ConsentBannerProps> = ({ language }) => {
                     size="sm"
                     onClick={() => handleToggleSetting('marketing')}
                   >
-                    {consentSettings.marketing 
-                      ? (language === 'en' ? 'On' : 'På') 
+                    {consentSettings.marketing
+                      ? (language === 'en' ? 'On' : 'På')
                       : (language === 'en' ? 'Off' : 'Av')
                     }
                   </Button>
@@ -235,8 +246,8 @@ export const ConsentBanner: React.FC<ConsentBannerProps> = ({ language }) => {
                 <Button onClick={handleSaveSettings} className="flex-1">
                   {language === 'en' ? 'Save Settings' : 'Lagre innstillinger'}
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => setShowSettings(false)}
                   className="flex-1"
                 >
