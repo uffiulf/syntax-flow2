@@ -676,7 +676,7 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
                       <Button
                         key={i}
                         variant="outline"
-                        className="w-full capitalize font-bold h-12 text-md transition-all bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white hover:bg-purple-600 hover:text-white border-2 border-zinc-300 dark:border-zinc-600 shadow-sm"
+                        className="w-full capitalize font-bold h-12 text-md transition-all bg-purple-50 dark:bg-zinc-800 text-purple-900 dark:text-white hover:bg-purple-600 hover:text-white border-2 border-purple-300 dark:border-purple-700 shadow-sm"
                         onClick={() => {
                           setPokemonGuess(opt);
                           handleCatchAction(false, opt);
