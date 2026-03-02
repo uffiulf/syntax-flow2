@@ -384,7 +384,7 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
   };
 
   const restartGame = () => {
-    if (confirm(language === 'en' ? 'Are you sure you want to delete all saved data (except your name)?' : 'Er du sikker på at du vil slette all lagret data (bortsett fra navnet ditt)?')) {
+    if (window.confirm(language === 'en' ? 'Are you sure you want to delete all saved data (except your name)?' : 'Er du sikker på at du vil slette all lagret data (bortsett fra navnet ditt)?')) {
       setCaughtPokemon([]);
       setPokeBalls(10);
       setScore(0);
@@ -393,9 +393,13 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
       setPokemon(null);
       setIsCurrentlyCaught(false);
       setHasFled(false);
+      setIsThrowing(false);
+      setIsTeamRocketEncounter(false);
       setCatchMessage(null);
       setIsTimerActive(false);
+      setIsSliderActive(false);
       setPokemonGuess('');
+      setQuizOptions([]);
     }
   };
 
@@ -645,7 +649,7 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
 
                 {/* 3 Quiz Options */}
                 {!isCurrentlyCaught && !hasFled ? (
-                  <div className="flex flex-col gap-5 w-full max-w-sm mx-auto justify-center items-center px-4">
+                  <div className="flex flex-col gap-6 w-full max-w-sm mx-auto justify-center items-center px-4 my-2">
                     {quizOptions.map((opt, i) => (
                       <Button
                         key={i}
