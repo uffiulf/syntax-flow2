@@ -146,6 +146,8 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
     setPokemonError('');
     setIsCurrentlyCaught(false);
     setHasFled(false);
+    setIsThrowing(false);
+    setIsTeamRocketEncounter(false);
     setThrowAttempts(0);
     setPokemonGuess('');
     setCatchMessage(null);
