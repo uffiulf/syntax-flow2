@@ -691,56 +691,55 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
               </div>
 
             </div>
+          ) : (
+            <div
+              className="text-center flex flex-col justify-center items-center grass-bg rounded-lg border-4 border-green-800 opacity-90 cursor-pointer shadow-inner relative overflow-hidden group"
+              style={{ minHeight: '150px' }}
+              onClick={fetchPokemon}
+            >
+              <p className="mb-4 text-white font-bold drop-shadow-md text-lg z-10">🌿 {language === 'en' ? 'A wild Pokémon might be hiding here...' : 'En vill Pokémon kan gjemme seg her...'}</p>
+              <Button className="bg-purple-600 hover:bg-purple-700 active:scale-95 transition-transform text-white font-bold border-2 border-white/20 shadow-lg z-10">{(t.fun as any).catchPokemon || 'Search Grass'}</Button>
+              {/* decorative grass blades */}
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
             </div>
-        ) : (
-        <div
-          className="text-center flex flex-col justify-center items-center grass-bg rounded-lg border-4 border-green-800 opacity-90 cursor-pointer shadow-inner relative overflow-hidden group"
-          style={{ minHeight: '150px' }}
-          onClick={fetchPokemon}
-        >
-          <p className="mb-4 text-white font-bold drop-shadow-md text-lg z-10">🌿 {language === 'en' ? 'A wild Pokémon might be hiding here...' : 'En vill Pokémon kan gjemme seg her...'}</p>
-          <Button className="bg-purple-600 hover:bg-purple-700 active:scale-95 transition-transform text-white font-bold border-2 border-white/20 shadow-lg z-10">{(t.fun as any).catchPokemon || 'Search Grass'}</Button>
-          {/* decorative grass blades */}
-          <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
-        </div>
           )}
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
 
-      {/* Pokedex Section */ }
-  <Card className="mb-8">
-    <CardHeader>
-      <div className="flex items-center gap-3">
-        <h2 className="text-xl font-bold">{(t.fun as any).pokedex || 'My Pokédex'}</h2>
-        <Badge>{caughtPokemon.length}</Badge>
-      </div>
-    </CardHeader>
-    <CardContent>
-      {caughtPokemon.length === 0 ? (
-        <div className="text-center p-8 bg-muted/50 rounded-lg text-muted-foreground border-2 border-dashed border-border/50">
-          <Gamepad2 className="mx-auto h-8 w-8 mb-3 opacity-20" />
-          <p>{(t.fun as any).emptyPokedex || 'You haven\'t caught any Pokémon yet. Click on a wild Pokémon to catch it!'}</p>
-        </div>
-      ) : (
-        <div className="flex flex-wrap gap-2 pt-2">
-          {caughtPokemon.map((p, index) => (
-            <div key={`${p.id}-${index}`} className="group relative bg-muted rounded-md p-1 border border-border/50 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 hover:border-yellow-400 transition-colors w-[60px] h-[60px] flex items-center justify-center cursor-help tooltip-trigger">
-              <img
-                src={p.sprites.front_default}
-                alt={p.name}
-                className="w-full h-full object-contain"
-                loading="lazy"
-              />
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 capitalize">
-                {p.name}
-                <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black"></div>
-              </div>
+      {/* Pokedex Section */}
+      <Card className="mb-8">
+        <CardHeader>
+          <div className="flex items-center gap-3">
+            <h2 className="text-xl font-bold">{(t.fun as any).pokedex || 'My Pokédex'}</h2>
+            <Badge>{caughtPokemon.length}</Badge>
+          </div>
+        </CardHeader>
+        <CardContent>
+          {caughtPokemon.length === 0 ? (
+            <div className="text-center p-8 bg-muted/50 rounded-lg text-muted-foreground border-2 border-dashed border-border/50">
+              <Gamepad2 className="mx-auto h-8 w-8 mb-3 opacity-20" />
+              <p>{(t.fun as any).emptyPokedex || 'You haven\'t caught any Pokémon yet. Click on a wild Pokémon to catch it!'}</p>
             </div>
-          ))}
-        </div>
-      )}
-    </CardContent>
-  </Card>
+          ) : (
+            <div className="flex flex-wrap gap-2 pt-2">
+              {caughtPokemon.map((p, index) => (
+                <div key={`${p.id}-${index}`} className="group relative bg-muted rounded-md p-1 border border-border/50 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 hover:border-yellow-400 transition-colors w-[60px] h-[60px] flex items-center justify-center cursor-help tooltip-trigger">
+                  <img
+                    src={p.sprites.front_default}
+                    alt={p.name}
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 capitalize">
+                    {p.name}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
     </div >
   );
 };
