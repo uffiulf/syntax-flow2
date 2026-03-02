@@ -752,7 +752,7 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
               <p>{(t.fun as any).emptyPokedex || 'You haven\'t caught any Pokémon yet. Click on a wild Pokémon to catch it!'}</p>
             </div>
           ) : (
-            <div className="grid grid-rows-6 grid-flow-col gap-2 pt-2 overflow-x-auto pb-2 auto-cols-[60px]">
+            <div className="flex flex-col flex-wrap gap-2 pt-2 overflow-x-auto pb-2" style={{ maxHeight: '400px' }}>
               {caughtPokemon.map((p, index) => (
                 <div key={`${p.id}-${index}`} className="group relative bg-muted rounded-md p-1 border border-border/50 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 hover:border-yellow-400 transition-colors w-[60px] h-[60px] flex items-center justify-center cursor-help">
                   <img
