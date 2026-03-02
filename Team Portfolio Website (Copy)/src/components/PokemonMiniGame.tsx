@@ -605,11 +605,13 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
 
                 {/* Throwing Animation Overlay */}
                 {isThrowing && (
-                  <div className="absolute inset-0 bg-black/10 z-[60] flex items-center justify-center animate-in fade-in duration-300 pointer-events-none">
-                    <div className="w-24 h-24 rounded-full border-[6px] border-black bg-red-500 overflow-hidden relative shadow-inner throw-pokeball drop-shadow-2xl translate-y-2">
-                      <div className="absolute bottom-0 w-full h-1/2 bg-white"></div>
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full border-[3px] border-black z-10"></div>
-                      <div className="absolute top-1/2 w-full h-[5px] bg-black transform -translate-y-1/2"></div>
+                  <div className="absolute inset-0 bg-black/40 z-[60] flex items-center justify-center pointer-events-none">
+                    <div className="throw-pokeball">
+                      <div className="w-28 h-28 rounded-full border-[6px] border-zinc-900 bg-red-500 overflow-hidden relative shadow-2xl">
+                        <div className="absolute bottom-0 w-full h-1/2 bg-white"></div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-7 h-7 bg-white rounded-full border-[4px] border-zinc-900 z-10"></div>
+                        <div className="absolute top-1/2 w-full h-[5px] bg-zinc-900 transform -translate-y-1/2"></div>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -711,7 +713,7 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
                 ) : (
                   <Button
                     onClick={fetchPokemon}
-                    className="w-full max-w-sm mx-auto font-bold h-14 text-lg bg-purple-600 hover:bg-purple-700 active:scale-95 transition-transform text-white"
+                    className="w-full max-w-sm mx-auto font-bold h-14 text-lg !bg-purple-600 hover:!bg-purple-700 active:scale-95 transition-transform !text-white"
                   >
                     <Gamepad2 className="w-5 h-5 mr-2" />
                     {(t.fun as any).nextPokemon || "Search for new Pokémon"}
