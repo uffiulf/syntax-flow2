@@ -617,7 +617,7 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
                         {/* Background - white */}
                         <circle cx="50" cy="50" r="46" fill="white" stroke="#1a1a1a" strokeWidth="6" />
                         {/* Top half - red */}
-                        <path d="M 4 50 A 46 46 0 0 0 96 50 L 4 50 Z" fill="#EF4444" />
+                        <path d="M 4 50 A 46 46 0 0 1 96 50 L 4 50 Z" fill="#EF4444" />
                         {/* Center line */}
                         <rect x="2" y="47" width="96" height="6" fill="#1a1a1a" />
                         {/* Center button */}
