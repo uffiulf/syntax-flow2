@@ -553,16 +553,14 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
                 style={{ minHeight: '200px' }}
                 ref={grassRef}
               >
-                {/* Clickable Overlay */}
-                <div
-                  className={`absolute inset-0 z-40 ${isCurrentlyCaught || hasFled ? 'cursor-pointer hover:bg-white/10 group' : 'cursor-default'}`}
-                  onClick={() => {
-                    if (isCurrentlyCaught || hasFled) {
-                      fetchPokemon();
-                    }
-                  }}
-                  title={(isCurrentlyCaught || hasFled) ? ((t.fun as any).nextPokemon || "Search for new Pokémon") : ""}
-                />
+                {/* Clickable Overlay - only active when caught/fled, z-30 to not block scoreboard */}
+                {(isCurrentlyCaught || hasFled) && (
+                  <div
+                    className="absolute inset-0 z-30 cursor-pointer hover:bg-white/10"
+                    onClick={() => fetchPokemon()}
+                    title={(t.fun as any).nextPokemon || "Search for new Pokémon"}
+                  />
+                )}
 
                 {/* Walking/Caught Sprite */}
                 <div
@@ -700,7 +698,7 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
           style={{ minHeight: '150px' }}
           onClick={fetchPokemon}
         >
-          <p className="mb-4 text-white font-bold drop-shadow-md text-lg z-10">{(t.fun as any).catchPokemon || 'Search Grass'}</p>
+          <p className="mb-4 text-white font-bold drop-shadow-md text-lg z-10">🌿 {language === 'en' ? 'A wild Pokémon might be hiding here...' : 'En vill Pokémon kan gjemme seg her...'}</p>
           <Button className="bg-purple-600 hover:bg-purple-700 active:scale-95 transition-transform text-white font-bold border-2 border-white/20 shadow-lg z-10">{(t.fun as any).catchPokemon || 'Search Grass'}</Button>
           {/* decorative grass blades */}
           <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
