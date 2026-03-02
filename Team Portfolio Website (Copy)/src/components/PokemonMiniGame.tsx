@@ -645,7 +645,7 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
 
                 {/* 3 Quiz Options */}
                 {!isCurrentlyCaught && !hasFled ? (
-                  <div className="flex flex-col gap-4 w-full justify-center items-center px-4">
+                  <div className="flex flex-col gap-5 w-full max-w-sm mx-auto justify-center items-center px-4">
                     {quizOptions.map((opt, i) => (
                       <Button
                         key={i}
@@ -685,7 +685,7 @@ export const PokemonMiniGame: React.FC<PokemonMiniGameProps> = ({ language, t, o
                 ) : (
                   <Button
                     onClick={fetchPokemon}
-                    className="w-full font-bold h-14 text-lg bg-purple-600 hover:bg-purple-700 active:scale-95 transition-transform text-white"
+                    className="w-full max-w-sm mx-auto font-bold h-14 text-lg bg-purple-600 hover:bg-purple-700 active:scale-95 transition-transform text-white"
                   >
                     <Gamepad2 className="w-5 h-5 mr-2" />
                     {(t.fun as any).nextPokemon || "Search for new Pokémon"}
